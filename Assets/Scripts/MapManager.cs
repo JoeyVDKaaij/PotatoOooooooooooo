@@ -14,6 +14,7 @@ public struct TileSection
 
 public class MapManager : MonoBehaviour
 {
+    public static MapManager instance {  get; private set; }
 
     [SerializeField] TileSection[] tileSections;
 
@@ -34,6 +35,28 @@ public class MapManager : MonoBehaviour
     TMP_Text text;
 
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            if (transform.parent.gameObject != null) DontDestroyOnLoad(transform.parent.gameObject);
+            else DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +97,11 @@ public class MapManager : MonoBehaviour
             timer = delay;
 
         }
+    }
+
+    public void hello()
+    {
+        
     }
 
     Vector3 MoveTo(int section, int tile)
