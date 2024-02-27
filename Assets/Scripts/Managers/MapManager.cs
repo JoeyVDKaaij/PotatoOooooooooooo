@@ -36,6 +36,17 @@ public class MapManager : MonoBehaviour
     TMP_Text text;
 
 
+
+    private void OnEnable()
+    {
+        TurnManager.ChangeTurn += MoveNPC;
+    }
+
+    private void OnDisable()
+    {
+        TurnManager.ChangeTurn -= MoveNPC;
+    }
+    
     private void Awake()
     {
         if (instance == null)
@@ -53,6 +64,8 @@ public class MapManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        TurnManager.ChangeTurn -= StartMoving;
+        
         if (instance == this)
         {
             instance = null;
@@ -89,6 +102,8 @@ public class MapManager : MonoBehaviour
             stepsLeft--;
             timer = delay;
 
+            if (stepsLeft == 0)
+                TurnManager.instance.ChangePlayersTurn();
         }
     }
     
@@ -104,6 +119,28 @@ public class MapManager : MonoBehaviour
 
             if (text != null)
                 text.text = "rolled: " + stepsLeft.ToString();
+        }
+        else
+        {
+            Debug.LogError("No gamers are set in the GameManager!");
+        }
+    }
+
+    private void MoveNPC(int pSelectedGamer)
+    {
+        if (GameManager.instance.gamers.Length > 0)
+        {
+            if (pSelectedGamer != 0)
+            {
+                pSelectedGamer = Math.Clamp(pSelectedGamer, 0, GameManager.instance.gamers.Length);
+                
+                selectedGamer = pSelectedGamer;
+
+                stepsLeft = Random.Range(1, 12);
+
+                if (text != null)
+                    text.text = "rolled: " + stepsLeft.ToString();
+            }
         }
         else
         {
