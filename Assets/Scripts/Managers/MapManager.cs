@@ -21,8 +21,8 @@ public class MapManager : MonoBehaviour
 
     private int selectedGamer = 0;
 
-    int currentTile;
-    int currentSection;
+    int[] currentTile = new int[4];
+    int[] currentSection = new int[4];
 
     int playerTurn;
     bool canChoose;
@@ -76,7 +76,7 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         foreach (GameObject gamer in GameManager.instance.gamers)
-            gamer.transform.position = tileSections[currentSection].tiles[currentTile].transform.position;
+            gamer.transform.position = tileSections[currentSection[selectedGamer]].tiles[currentTile[selectedGamer]].transform.position;
     }
 
     // Update is called once per frame
@@ -86,17 +86,17 @@ public class MapManager : MonoBehaviour
 
         if(stepsLeft> 0 && timer < 0)
         {
-            if (currentTile < tileSections[currentSection].tiles.Length - 1)
+            if (currentTile[selectedGamer] < tileSections[currentSection[selectedGamer]].tiles.Length - 1)
             {
-                currentTile++;
-                GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection, currentTile);
+                currentTile[selectedGamer]++;
+                GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
             }
             else
             {
                 //change this for a selection screen
-                currentSection = tileSections[currentSection].connectsTo[Random.Range(0, tileSections[currentSection].connectsTo.Length)];
-                currentTile = 0;
-                GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection, currentTile);
+                currentSection[selectedGamer] = tileSections[currentSection[selectedGamer]].connectsTo[Random.Range(0, tileSections[currentSection[selectedGamer]].connectsTo.Length)];
+                currentTile[selectedGamer] = 0;
+                GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
             }
 
             stepsLeft--;
