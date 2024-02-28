@@ -32,6 +32,14 @@ public class MapManager : MonoBehaviour
     float delay;
     int stepsLeft;
 
+    //player movement
+    float totalDistance;
+    float movedDistance;
+
+    Vector3 movingFrom;
+    Vector3 movingTo;
+    Vector3 moveAlong;
+
     [SerializeField]
     TMP_Text text;
 
@@ -49,6 +57,9 @@ public class MapManager : MonoBehaviour
     
     private void Awake()
     {
+
+        //Start();
+
         if (instance == null)
         {
             instance = this;
@@ -76,7 +87,9 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         foreach (GameObject gamer in GameManager.instance.gamers)
-            gamer.transform.position = tileSections[currentSection[selectedGamer]].tiles[currentTile[selectedGamer]].transform.position;
+            gamer.transform.position = MoveTo(0, 0);
+
+        movingFrom = MoveTo(0, 0);
     }
 
     // Update is called once per frame
@@ -84,26 +97,62 @@ public class MapManager : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if(stepsLeft> 0 && timer < 0)
+        movedDistance += Time.deltaTime / 0.2f;
+        
+        GameManager.instance.gamers[selectedGamer].transform.position = movingFrom + moveAlong.normalized * movedDistance;
+
+        //Debug.Log(movingFrom);
+        //Debug.Log(movingTo);
+        //Debug.Log(moveAlong);
+
+        //Debug.Log(totalDistance);
+        //Debug.Log(movedDistance);
+
+        //if it is time to step
+        if (stepsLeft > 0 && movedDistance >= totalDistance)
         {
+
+            movingFrom = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+
+            //if the tile is just a tile in the middle of a section (no intersection)
             if (currentTile[selectedGamer] < tileSections[currentSection[selectedGamer]].tiles.Length - 1)
             {
                 currentTile[selectedGamer]++;
-                GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+                //GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+
+                movingTo = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+
             }
+            //if the player is at an intersection, select a tile to move to
             else
             {
                 //change this for a selection screen
                 currentSection[selectedGamer] = tileSections[currentSection[selectedGamer]].connectsTo[Random.Range(0, tileSections[currentSection[selectedGamer]].connectsTo.Length)];
                 currentTile[selectedGamer] = 0;
-                GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+                
+                //GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+
+                movingTo = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
             }
 
+            //prepare for next step
             stepsLeft--;
-            timer = delay;
+            //timer = delay;
 
-            if (stepsLeft == 0)
+            moveAlong = movingTo - movingFrom;
+            totalDistance = Vector3.Magnitude(moveAlong);
+            movedDistance = 0;
+
+            //if the player is out of steps, load the next
+            if (stepsLeft <= 0)
+            {
                 TurnManager.instance.ChangePlayersTurn();
+                totalDistance = 0;
+
+                //last
+            }
+
+
         }
     }
     
@@ -114,6 +163,8 @@ public class MapManager : MonoBehaviour
             pSelectedGamer = Math.Clamp(pSelectedGamer, 0, GameManager.instance.gamers.Length);
             
             selectedGamer = pSelectedGamer;
+
+            movingFrom = MoveTo(currentTile[selectedGamer], currentSection[selectedGamer]);
 
             stepsLeft = Random.Range(1, 12);
 
@@ -148,7 +199,7 @@ public class MapManager : MonoBehaviour
         }
     }
         
-    private Vector3 MoveTo(int section, int tile)
+    public Vector3 MoveTo(int section, int tile)
     {
         return tileSections[section].tiles[tile].transform.position;
     }

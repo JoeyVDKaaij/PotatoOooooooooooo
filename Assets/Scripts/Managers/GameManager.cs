@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
+        //foreach (GameObject gamer in instance.gamers)
+        //    gamer.transform.position = MapManager.instance.MoveTo(0, 0);
+
     }
 
     private void OnDestroy()
