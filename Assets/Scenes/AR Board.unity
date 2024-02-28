@@ -822,7 +822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef13cb29f68a6b4988bd09d9642f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGamer: 0
 --- !u!1 &161533349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,7 +3301,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 930142701}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 50, y: -210, z: 0}
 --- !u!114 &705507996
 MonoBehaviour:
@@ -4432,13 +4431,14 @@ Transform:
   - {fileID: 408971127}
   - {fileID: 850860035}
   - {fileID: 1841504241}
-  - {fileID: 1867247593}
   - {fileID: 705507995}
+  - {fileID: 1151388027459383073}
+  - {fileID: 1867247593}
   - {fileID: 1701955957}
   - {fileID: 1637473717}
   - {fileID: 1629115717}
   m_Father: {fileID: 1587013904}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &935098395
 GameObject:
@@ -5052,7 +5052,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 1, z: 0.4}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 963194228}
   m_Father: {fileID: 930142701}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6135,13 +6136,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526867358}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.3, z: -14.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548934839
 GameObject:
@@ -6480,7 +6481,7 @@ Transform:
   m_Children:
   - {fileID: 930142701}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629115716
 GameObject:
@@ -6512,7 +6513,7 @@ Transform:
   m_Children:
   - {fileID: 2086049959}
   - {fileID: 52677763}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 930142701}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637473716
@@ -6545,7 +6546,7 @@ Transform:
   m_Children:
   - {fileID: 2531960976590318331}
   - {fileID: 1878930619}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 930142701}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1650188813
@@ -6754,7 +6755,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 930142701}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1706924523
@@ -6931,7 +6932,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710806910
 GameObject:
@@ -7628,6 +7629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd5f74e843b4d547be2c5ec712826ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnPhase: 0
 --- !u!4 &1841504241
 Transform:
   m_ObjectHideFlags: 0
@@ -7955,12 +7957,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867247589}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -1.01, y: -0.33635, z: -0.16}
-  m_LocalScale: {x: 1600.06, y: -1600, z: -2425.4}
+  m_LocalScale: {x: 1600.0602, y: -1600.0001, z: -2425.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 930142701}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &1871851070
@@ -9715,8 +9717,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 930142701}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1587545475078927103
 MeshRenderer:
