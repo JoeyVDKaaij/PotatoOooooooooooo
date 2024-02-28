@@ -12,6 +12,8 @@ public class DiceScript : MonoBehaviour
 
     private bool rolling = false;
 
+    private Vector3 oldPosition;
+
     [Header("Dice Settings")]
     [SerializeField, Tooltip("Roll the dice by pressing a button for testing purposes.")]
     private bool testDiceRoll = false;
@@ -28,16 +30,7 @@ public class DiceScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    private void Update()
-    {
-        if (testDiceRoll && Input.GetKeyDown(KeyCode.Space)) RollTheDice(result =>
-            {
-                Debug.Log("You rolled " + result);
-            }
-        );
-    }
-
+    
     public void RollTheDice(Action<int> callback)
     {
         StartCoroutine(WaitForValueChange(callback));
@@ -47,25 +40,28 @@ public class DiceScript : MonoBehaviour
     {
         if (rolling)
         {
-            timer += Time.time;
-            if (timer >= checkDelay)
+            if (transform.position == oldPosition)
             {
-                foreach (ContactPoint contactPoint in other.contacts)
+                timer += Time.time;
+                if (timer >= checkDelay)
                 {
-                    Vector3 normal = contactPoint.normal;
+                    foreach (ContactPoint contactPoint in other.contacts)
+                    {
+                        Vector3 normal = contactPoint.normal;
 
-                    if (normal == Vector3.up)
-                        diceRoll = 1;
-                    else if (normal == Vector3.down)
-                        diceRoll = 2;
-                    else if (normal == Vector3.left)
-                        diceRoll = 3;
-                    else if (normal == Vector3.right)
-                        diceRoll = 4;
-                    else if (normal == Vector3.forward)
-                        diceRoll = 5;
-                    else if (normal == Vector3.back)
-                        diceRoll = 6;
+                        if (normal == transform.up)
+                            diceRoll = 1;
+                        else if (normal == -transform.up)
+                            diceRoll = 6;
+                        else if (normal == transform.right)
+                            diceRoll = 5;
+                        else if (normal == -transform.right)
+                            diceRoll = 2;
+                        else if (normal == transform.forward)
+                            diceRoll = 4;
+                        else if (normal == -transform.forward)
+                            diceRoll = 3;
+                    }
                 }
             }
         }
@@ -74,7 +70,8 @@ public class DiceScript : MonoBehaviour
 
     IEnumerator WaitForValueChange(Action<int> callback)
     {
-        rb.AddForce(RandomizeVector() * rollSpeed);
+        rb.AddForce(RandomizeVector() * rollSpeed, ForceMode.Impulse);
+        rb.AddTorque(new Vector3(1,1,1));
         
         rolling = true;
         
@@ -95,12 +92,32 @@ public class DiceScript : MonoBehaviour
     {
         Vector3 vector = new Vector3();
         
-        vector.x = Random.Range(-1,1);
+        vector.x = Random.Range(-5,5);
         vector.y = Random.Range(-1,1);
-        vector.z = Random.Range(-1,1);
+        vector.z = Random.Range(-5,5);
 
-        if (vector != Vector3.zero) vector.y = 1;
+        if (vector != Vector3.zero)
+        {
+            vector.y = 1;
+        }
+
+        if (vector.x == 0)
+            vector.x = 1;
+        
+        if(vector.z == 0)
+            vector.z = 1;
         
         return vector;
+    }
+    
+    private void Update()
+    {
+        if (testDiceRoll && Input.GetKeyDown(KeyCode.Space)) RollTheDice(result =>
+            {
+                Debug.Log("You rolled " + result);
+            }
+        );
+
+        oldPosition = transform.position;
     }
 }
