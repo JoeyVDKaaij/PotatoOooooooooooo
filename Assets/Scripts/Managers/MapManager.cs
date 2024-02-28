@@ -28,14 +28,15 @@ public class MapManager : MonoBehaviour
     bool canChoose;
 
     float timer;
-    [SerializeField]
+    [SerializeField, Tooltip("Set the delay")]
     float delay;
     int stepsLeft;
 
-    [SerializeField]
+    [SerializeField, Tooltip("Set the text that shows what you roll")]
     TMP_Text text;
 
-
+    [SerializeField, Tooltip("Set the dice that is being used")]
+    private GameObject dice;
 
     private void OnEnable()
     {
@@ -64,7 +65,7 @@ public class MapManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        TurnManager.ChangeTurn -= StartMoving;
+        TurnManager.ChangeTurn -= MoveNPC;
         
         if (instance == this)
         {
@@ -114,8 +115,14 @@ public class MapManager : MonoBehaviour
             pSelectedGamer = Math.Clamp(pSelectedGamer, 0, GameManager.instance.gamers.Length);
             
             selectedGamer = pSelectedGamer;
-
-            stepsLeft = Random.Range(1, 12);
+            if (dice != null)
+            {
+                dice.GetComponent<DiceScript>().RollTheDice(result =>
+                {
+                    stepsLeft = result;
+                });
+            }
+            else stepsLeft = Random.Range(1, 12);
 
             if (text != null)
                 text.text = "rolled: " + stepsLeft.ToString();
@@ -135,7 +142,7 @@ public class MapManager : MonoBehaviour
                 pSelectedGamer = Math.Clamp(pSelectedGamer, 0, GameManager.instance.gamers.Length);
                 
                 selectedGamer = pSelectedGamer;
-
+                
                 stepsLeft = Random.Range(1, 12);
 
                 if (text != null)
