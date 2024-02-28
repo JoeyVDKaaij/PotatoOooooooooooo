@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public static TurnManager instance {  get; private set; }
+    public static TurnManager instance { get; private set; }
 
     private int currentPlayer = 0;
-    
+
+    private int turnPhase = 0;
+
     public static event Action<int> ChangeTurn;
-    
+
+    public static event Action<int> AdvanceTurnPhase;
+
     private void Awake()
     {
         if (instance == null)
@@ -16,7 +20,7 @@ public class TurnManager : MonoBehaviour
             instance = this;
             // if (transform.parent.gameObject != null) DontDestroyOnLoad(transform.parent.gameObject);
             // else 
-                DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -39,12 +43,25 @@ public class TurnManager : MonoBehaviour
         int nextPlayer = currentPlayer + 1;
         if (nextPlayer < GameManager.instance.gamers.Length)
             ChangeTurn?.Invoke(nextPlayer);
-        else 
+        else
             ChangeTurn?.Invoke(0);
     }
 
     private void NextPlayerTurnChanges(int pSelectedPlayer)
     {
         currentPlayer = pSelectedPlayer;
+    }
+
+    public void NextTurnPhase()
+    {
+        turnPhase++;
+        if (turnPhase < 2)
+        {
+            //AdvanceTurnPhase
+        }
+        else
+        {
+            ChangePlayersTurn();
+        }
     }
 }
