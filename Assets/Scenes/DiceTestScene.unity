@@ -356,8 +356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testDiceRoll: 1
-  rollSpeed: 300
-  checkDelay: 4.4
+  rollSpeed: 2
+  checkDelay: 2
 --- !u!54 &1555117396
 Rigidbody:
   m_ObjectHideFlags: 0
