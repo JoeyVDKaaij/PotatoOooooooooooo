@@ -40,29 +40,22 @@ public class DiceScript : MonoBehaviour
     {
         if (rolling)
         {
-            if (transform.position == oldPosition)
+            foreach (ContactPoint contactPoint in other.contacts)
             {
-                timer += Time.time;
-                if (timer >= checkDelay)
-                {
-                    foreach (ContactPoint contactPoint in other.contacts)
-                    {
-                        Vector3 normal = contactPoint.normal;
+                Vector3 normal = contactPoint.normal;
 
-                        if (normal == transform.up)
-                            diceRoll = 1;
-                        else if (normal == -transform.up)
-                            diceRoll = 6;
-                        else if (normal == transform.right)
-                            diceRoll = 5;
-                        else if (normal == -transform.right)
-                            diceRoll = 2;
-                        else if (normal == transform.forward)
-                            diceRoll = 4;
-                        else if (normal == -transform.forward)
-                            diceRoll = 3;
-                    }
-                }
+                if (normal == transform.up)
+                    diceRoll = 1;
+                else if (normal == -transform.up)
+                    diceRoll = 6;
+                else if (normal == transform.right)
+                    diceRoll = 5;
+                else if (normal == -transform.right)
+                    diceRoll = 2;
+                else if (normal == transform.forward)
+                    diceRoll = 4;
+                else if (normal == -transform.forward)
+                    diceRoll = 3;
             }
         }
         else diceRoll = 0;
@@ -81,6 +74,8 @@ public class DiceScript : MonoBehaviour
             yield return null; // Yielding null will wait for the next frame
         }
 
+        yield return new WaitForSeconds(checkDelay);
+        
         rolling = false;
         timer = 0;
         

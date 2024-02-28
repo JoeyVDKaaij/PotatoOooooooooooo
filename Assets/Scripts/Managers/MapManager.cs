@@ -19,8 +19,6 @@ public class MapManager : MonoBehaviour
     [SerializeField, Tooltip("Set the tiles in groups")]
     private TileSection[] tileSections;
 
-    private int selectedGamer = 0;
-
     int[] currentTile = new int[4];
     int[] currentSection = new int[4];
 
@@ -45,15 +43,10 @@ public class MapManager : MonoBehaviour
 
 
 
-    private void OnEnable()
-    {
-        TurnManager.ChangeTurn += MoveNPC;
-    }
+    private void OnEnable() { TurnManager.AdvanceTurnPhase += MoveNPC; }
 
-    private void OnDisable()
-    {
-        TurnManager.ChangeTurn -= MoveNPC;
-    }
+    private void OnDisable() { TurnManager.AdvanceTurnPhase -= MoveNPC; }
+
 
     private void Awake()
     {
@@ -95,64 +88,74 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-
-        movedDistance += Time.deltaTime / 0.2f;
-
-        GameManager.instance.gamers[selectedGamer].transform.position = movingFrom + moveAlong.normalized * movedDistance;
-
-        //Debug.Log(movingFrom);
-        //Debug.Log(movingTo);
-        //Debug.Log(moveAlong);
-
-        //Debug.Log(totalDistance);
-        //Debug.Log(movedDistance);
-
-        //if it is time to step
-        if (stepsLeft > 0 && movedDistance >= totalDistance)
+        if (TurnManager.instance.turnPhase == 1)
         {
 
-            movingFrom = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+            movedDistance += Time.deltaTime / 0.2f;
 
-            //if the tile is just a tile in the middle of a section (no intersection)
-            if (currentTile[selectedGamer] < tileSections[currentSection[selectedGamer]].tiles.Length - 1)
+            GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingFrom + moveAlong.normalized * movedDistance;
+
+            //Debug.Log(movingFrom);
+            //Debug.Log(movingTo);
+            //Debug.Log(moveAlong);
+
+            //Debug.Log(totalDistance);
+            //Debug.Log(movedDistance);
+
+            //if it is time to step
+            if (stepsLeft > 0 && movedDistance >= totalDistance)
             {
-                currentTile[selectedGamer]++;
-                //GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
 
-                movingTo = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
+                movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
+                //if the tile is just a tile in the middle of a section (no intersection)
+                if (currentTile[GameManager.instance.SelectedGamer] < tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles.Length - 1)
+                {
+                    currentTile[GameManager.instance.SelectedGamer]++;
+                    //GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                    movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                }
+                //if the player is at an intersection, select a tile to move to
+                else
+                {
+                    //change this for a selection screen
+                    currentSection[GameManager.instance.SelectedGamer] = tileSections[currentSection[GameManager.instance.SelectedGamer]]
+                        .connectsTo[Random.Range(0, tileSections[currentSection[GameManager.instance.SelectedGamer]].connectsTo.Length)];
+                    currentTile[GameManager.instance.SelectedGamer] = 0;
+
+                    //GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                    movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                }
+
+                //prepare for next step
+                stepsLeft--;
+                //timer = delay;
+
+                moveAlong = movingTo - movingFrom;
+                totalDistance = Vector3.Magnitude(moveAlong);
+                movedDistance = 0.0001f;
+
+                //if the player is out of steps, load the next
+                if (stepsLeft <= 0)
+                {
+
+
+                    //add tile actions here
+                    TurnManager.instance.NextTurnPhase();
+
+                    //if (GameManager.instance.SelectedGamer > 0)
+                    //{
+                    TurnManager.instance.NextTurnPhase();
+                    //}
+
+                    totalDistance = 0;
+
+                    //last
+                }
             }
-            //if the player is at an intersection, select a tile to move to
-            else
-            {
-                //change this for a selection screen
-                currentSection[selectedGamer] = tileSections[currentSection[selectedGamer]].connectsTo[Random.Range(0, tileSections[currentSection[selectedGamer]].connectsTo.Length)];
-                currentTile[selectedGamer] = 0;
-
-                //GameManager.instance.gamers[selectedGamer].transform.position = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
-
-                movingTo = MoveTo(currentSection[selectedGamer], currentTile[selectedGamer]);
-            }
-
-            //prepare for next step
-            stepsLeft--;
-            //timer = delay;
-
-            moveAlong = movingTo - movingFrom;
-            totalDistance = Vector3.Magnitude(moveAlong);
-            movedDistance = 0;
-
-            //if the player is out of steps, load the next
-            if (stepsLeft <= 0)
-            {
-                TurnManager.instance.NextTurnPhase();
-                totalDistance = 0;
-
-                //last
-            }
-
-
         }
     }
 
@@ -160,11 +163,8 @@ public class MapManager : MonoBehaviour
     {
         if (GameManager.instance.gamers.Length > 0)
         {
-            pSelectedGamer = Math.Clamp(pSelectedGamer, 0, GameManager.instance.gamers.Length);
-
-            selectedGamer = pSelectedGamer;
-
-            movingFrom = MoveTo(currentTile[selectedGamer], currentSection[selectedGamer]);
+            
+            TurnManager.instance.NextTurnPhase();
 
             stepsLeft = Random.Range(1, 12);
 
@@ -183,9 +183,7 @@ public class MapManager : MonoBehaviour
         {
             if (pSelectedGamer != 0)
             {
-                pSelectedGamer = Math.Clamp(pSelectedGamer, 0, GameManager.instance.gamers.Length);
-
-                selectedGamer = pSelectedGamer;
+                TurnManager.instance.NextTurnPhase();
 
                 stepsLeft = Random.Range(1, 12);
 

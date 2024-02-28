@@ -7,7 +7,7 @@ public class TurnManager : MonoBehaviour
 
     private int currentPlayer = 0;
 
-    private int turnPhase = 0;
+    public int turnPhase = 0;
 
     public static event Action<int> ChangeTurn;
 
@@ -55,13 +55,15 @@ public class TurnManager : MonoBehaviour
     public void NextTurnPhase()
     {
         turnPhase++;
-        if (turnPhase < 2)
+        if (turnPhase < 3)
         {
-            //AdvanceTurnPhase
+            AdvanceTurnPhase?.Invoke(currentPlayer);
         }
         else
         {
+            turnPhase = 0;
             ChangePlayersTurn();
+            AdvanceTurnPhase?.Invoke(currentPlayer);
         }
     }
 }

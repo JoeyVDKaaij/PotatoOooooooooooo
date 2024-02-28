@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("Set the GameObject that are the gamers.")] 
     public GameObject[] gamers;
+
+    private int selectedGamer = 0;
+
+    public int SelectedGamer
+    {
+        get { return selectedGamer; }
+    }
     
     private void Awake()
     {
@@ -21,6 +28,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        TurnManager.ChangeTurn += ChangeSelectedGamer;
     }
 
     private void OnDestroy()
@@ -29,5 +38,12 @@ public class GameManager : MonoBehaviour
         {
             instance = null;
         }
+        
+        TurnManager.ChangeTurn -= ChangeSelectedGamer;
+    }
+
+    private void ChangeSelectedGamer(int nextPlayer)
+    {
+        selectedGamer = nextPlayer;
     }
 }
