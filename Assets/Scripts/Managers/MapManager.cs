@@ -19,6 +19,9 @@ public class MapManager : MonoBehaviour
     [SerializeField, Tooltip("Set the tiles in groups")]
     private TileSection[] tileSections;
 
+    [SerializeField, Tooltip("Set the dice to roll.")]
+    private DiceScript dice;
+
     int[] currentTile = new int[4];
     int[] currentSection = new int[4];
 
@@ -26,8 +29,6 @@ public class MapManager : MonoBehaviour
     bool canChoose;
 
     float timer;
-    [SerializeField]
-    float delay;
     int stepsLeft;
 
     //player movement
@@ -39,9 +40,6 @@ public class MapManager : MonoBehaviour
     Vector3 moveAlong;
 
     bool decidingPath;
-
-    [SerializeField]
-    TMP_Text text;
 
 
 
@@ -168,11 +166,16 @@ public class MapManager : MonoBehaviour
     {
         if (GameManager.instance.gamers.Length > 0 && pCurrentPhase == 0)
         {
-
-            stepsLeft = Random.Range(1, 12);
-
-            GameManager.instance.NextTurnPhase();
-
+            dice.gameObject.SetActive(true);
+            dice.transform.position =
+                GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
+            dice.RollTheDice(result =>
+            {
+                stepsLeft = result +1;
+                dice.gameObject.SetActive(false);
+                GameManager.instance.NextTurnPhase();
+            });
+            
             //if (text != null)
             //    text.text = "rolled: " + stepsLeft.ToString();
         }
@@ -189,9 +192,15 @@ public class MapManager : MonoBehaviour
             if (GameManager.instance.SelectedGamer != 0 && pCurrentPhase == 0)
             {
 
-                stepsLeft = Random.Range(1, 12);
-
-                GameManager.instance.NextTurnPhase();
+                dice.gameObject.SetActive(true);
+                dice.transform.position =
+                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
+                dice.RollTheDice(result =>
+                {
+                    stepsLeft = result + 1;
+                    dice.gameObject.SetActive(false);
+                    GameManager.instance.NextTurnPhase();
+                });
 
                 //if (text != null)
                 //    text.text = "rolled: " + stepsLeft.ToString();
