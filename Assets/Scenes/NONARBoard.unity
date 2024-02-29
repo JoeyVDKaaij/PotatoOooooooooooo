@@ -1171,8 +1171,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 104959355}
-        m_TargetAssemblyTypeName: TurnScript, Assembly-CSharp
-        m_MethodName: Movement
+        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
+        m_MethodName: MovePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
