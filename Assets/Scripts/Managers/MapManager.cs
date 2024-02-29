@@ -32,7 +32,9 @@ public class MapManager : MonoBehaviour
     int stepsLeft;
 
     //player movement
+    [SerializeField]
     float totalDistance;
+    [SerializeField]
     float movedDistance;
 
     Vector3 movingFrom;
@@ -97,6 +99,8 @@ public class MapManager : MonoBehaviour
 
             GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingFrom + moveAlong.normalized * movedDistance;
 
+            //Debug.Log(stepsLeft);
+
             //Debug.Log(movingFrom);
             //Debug.Log(movingTo);
             //Debug.Log(moveAlong);
@@ -107,6 +111,8 @@ public class MapManager : MonoBehaviour
             //if it is time to step
             if (stepsLeft > 0 && movedDistance >= totalDistance)
             {
+
+                //Debug.Log("TURN");
 
                 movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
@@ -134,31 +140,34 @@ public class MapManager : MonoBehaviour
 
                 //prepare for next step
                 stepsLeft--;
-                //timer = delay;
 
                 moveAlong = movingTo - movingFrom;
                 totalDistance = Vector3.Magnitude(moveAlong);
                 movedDistance = 0.0001f;
 
-                //if the player is out of steps, load the next
-                if (stepsLeft <= 0)
-                {
+                Debug.Log(totalDistance);
+                Debug.Log(movedDistance);
+            }
 
-                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingFrom;
+            //if the player is out of steps, load the next
+            if (stepsLeft <= 0 && movedDistance >= totalDistance)
+            {
 
-                    Debug.Log("anyways, moving on");
-                    //add tile actions here
-                    GameManager.instance.NextTurnPhase();
+                GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingTo;
 
-                    //if (GameManager.instance.SelectedGamer > 0)
-                    //{
-                    GameManager.instance.NextTurnPhase();
-                    //}
+                Debug.Log("anyways, moving on");
+                //add tile actions here
+                GameManager.instance.NextTurnPhase();
 
-                    totalDistance = 0;
+                //if (GameManager.instance.SelectedGamer > 0)
+                //{
+                GameManager.instance.NextTurnPhase();
+                //}
 
-                    //last
-                }
+                movedDistance = 0;
+                totalDistance = 0;
+
+                //last
             }
         }
     }
@@ -172,11 +181,18 @@ public class MapManager : MonoBehaviour
                 GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
             dice.RollTheDice(result =>
             {
-                stepsLeft = result +1;
+                stepsLeft = result;
                 dice.gameObject.SetActive(false);
                 GameManager.instance.NextTurnPhase();
+
+                movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
             }, mainCamera.transform);
             
+
+
+
             //if (text != null)
             //    text.text = "rolled: " + stepsLeft.ToString();
         }
@@ -198,9 +214,13 @@ public class MapManager : MonoBehaviour
                     GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
                 dice.RollTheDice(result =>
                 {
-                    stepsLeft = result + 1;
+                    stepsLeft = result;
                     dice.gameObject.SetActive(false);
                     GameManager.instance.NextTurnPhase();
+
+                    movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                    movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
                 });
 
                 //if (text != null)
@@ -215,6 +235,8 @@ public class MapManager : MonoBehaviour
 
     public Vector3 MoveTo(int section, int tile)
     {
+        Debug.Log(tileSections[section].tiles[tile]);
+
         return tileSections[section].tiles[tile].transform.position;
     }
 }
