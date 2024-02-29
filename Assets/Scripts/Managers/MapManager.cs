@@ -41,7 +41,8 @@ public class MapManager : MonoBehaviour
 
     bool decidingPath;
 
-
+    [SerializeField, Tooltip("Set the camera.")]
+    private Camera mainCamera;
 
     private void OnEnable() { GameManager.AdvanceTurnPhase += MoveNPC; }
 
@@ -174,7 +175,7 @@ public class MapManager : MonoBehaviour
                 stepsLeft = result +1;
                 dice.gameObject.SetActive(false);
                 GameManager.instance.NextTurnPhase();
-            });
+            }, mainCamera.transform);
             
             //if (text != null)
             //    text.text = "rolled: " + stepsLeft.ToString();
