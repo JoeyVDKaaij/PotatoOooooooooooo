@@ -128,7 +128,7 @@ public class DiceScript : MonoBehaviour
     {
         Vector3 vector = new Vector3();
         if (pARCamera != null)
-            vector = pARCamera.forward * Random.Range(1, 5);
+            vector = pARCamera.forward * Random.Range(5, 10);
         else
         {
             vector.x = Random.Range(-5,5);
