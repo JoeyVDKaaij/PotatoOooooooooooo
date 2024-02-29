@@ -38,6 +38,8 @@ public class MapManager : MonoBehaviour
     Vector3 movingTo;
     Vector3 moveAlong;
 
+    bool decidingPath;
+
     [SerializeField]
     TMP_Text text;
 
@@ -88,7 +90,8 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TurnManager.instance.turnPhase == 1)
+
+        if(TurnManager.instance.turnPhase == 1 && !decidingPath)
         {
 
             movedDistance += Time.deltaTime / 0.2f;
