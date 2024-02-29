@@ -31,9 +31,13 @@ public class DiceScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
     
-    public void RollTheDice(Action<int> callback)
+    public void RollTheDice(Action<int> callback, Transform pARCamera = null)
     {
-        StartCoroutine(WaitForValueChange(callback));
+        if (pARCamera != null)
+            StartCoroutine(WaitForValueChange(callback, pARCamera));
+        else 
+            StartCoroutine(WaitForValueChange(callback));
+            
     }
 
     private void OnCollisionStay(Collision other)
@@ -90,9 +94,12 @@ public class DiceScript : MonoBehaviour
         else diceRoll = 0;
     }
 
-    IEnumerator WaitForValueChange(Action<int> callback)
+    IEnumerator WaitForValueChange(Action<int> callback, Transform pARCamera = null)
     {
-        rb.AddForce(RandomizeVector() * rollSpeed, ForceMode.Impulse);
+        if (pARCamera != null)
+            rb.AddForce(RandomizeVector(pARCamera) * rollSpeed, ForceMode.Impulse);
+        else 
+            rb.AddForce(RandomizeVector() * rollSpeed, ForceMode.Impulse);
         rb.AddTorque(new Vector3(1,1,1));
         
         yield return new WaitForSeconds(checkDelay);
@@ -117,14 +124,19 @@ public class DiceScript : MonoBehaviour
         callback(diceRoll);
     }
 
-    private Vector3 RandomizeVector()
+    private Vector3 RandomizeVector(Transform pARCamera = null)
     {
         Vector3 vector = new Vector3();
+        if (pARCamera != null)
+            vector = pARCamera.forward * Random.Range(5, 10);
+        else
+        {
+            vector.x = Random.Range(-5,5);
+            vector.y = Random.Range(-1,1);
+            vector.z = Random.Range(-5,5);
+        }
         
-        vector.x = Random.Range(-5,5);
-        vector.y = Random.Range(-1,1);
-        vector.z = Random.Range(-5,5);
-
+        
         if (vector != Vector3.zero)
         {
             vector.y = 1;

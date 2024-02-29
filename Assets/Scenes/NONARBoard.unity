@@ -4865,6 +4865,7 @@ MonoBehaviour:
     Intersection: {fileID: 197657564}
     connectsTo: 01000000
   dice: {fileID: 2121277494}
+  mainCamera: {fileID: 963194227}
 --- !u!4 &573099994
 Transform:
   m_ObjectHideFlags: 0
