@@ -38,14 +38,16 @@ public class MapManager : MonoBehaviour
     Vector3 movingTo;
     Vector3 moveAlong;
 
+    bool decidingPath;
+
     [SerializeField]
     TMP_Text text;
 
 
 
-    private void OnEnable() { TurnManager.AdvanceTurnPhase += MoveNPC; }
+    private void OnEnable() { GameManager.AdvanceTurnPhase += MoveNPC; }
 
-    private void OnDisable() { TurnManager.AdvanceTurnPhase -= MoveNPC; }
+    private void OnDisable() { GameManager.AdvanceTurnPhase -= MoveNPC; }
 
 
     private void Awake()
@@ -68,7 +70,7 @@ public class MapManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        TurnManager.ChangeTurn -= StartMoving;
+        GameManager.AdvanceTurnPhase -= StartMoving;
 
         if (instance == this)
         {
@@ -88,7 +90,8 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TurnManager.instance.turnPhase == 1)
+
+        if(GameManager.instance.TurnPhase == 1 && !decidingPath)
         {
 
             movedDistance += Time.deltaTime / 0.2f;
@@ -142,13 +145,15 @@ public class MapManager : MonoBehaviour
                 if (stepsLeft <= 0)
                 {
 
+                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingFrom;
 
+                    Debug.Log("anyways, moving on");
                     //add tile actions here
-                    TurnManager.instance.NextTurnPhase();
+                    GameManager.instance.NextTurnPhase();
 
                     //if (GameManager.instance.SelectedGamer > 0)
                     //{
-                    TurnManager.instance.NextTurnPhase();
+                    GameManager.instance.NextTurnPhase();
                     //}
 
                     totalDistance = 0;
@@ -159,17 +164,17 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void StartMoving(int pSelectedGamer)
+    public void StartMoving(int pCurrentPhase)
     {
-        if (GameManager.instance.gamers.Length > 0)
+        if (GameManager.instance.gamers.Length > 0 && pCurrentPhase == 0)
         {
-            
-            TurnManager.instance.NextTurnPhase();
 
             stepsLeft = Random.Range(1, 12);
 
-            if (text != null)
-                text.text = "rolled: " + stepsLeft.ToString();
+            GameManager.instance.NextTurnPhase();
+
+            //if (text != null)
+            //    text.text = "rolled: " + stepsLeft.ToString();
         }
         else
         {
@@ -177,18 +182,19 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    private void MoveNPC(int pSelectedGamer)
+    private void MoveNPC(int pCurrentPhase)
     {
         if (GameManager.instance.gamers.Length > 0)
         {
-            if (pSelectedGamer != 0)
+            if (GameManager.instance.SelectedGamer != 0 && pCurrentPhase == 0)
             {
-                TurnManager.instance.NextTurnPhase();
 
                 stepsLeft = Random.Range(1, 12);
 
-                if (text != null)
-                    text.text = "rolled: " + stepsLeft.ToString();
+                GameManager.instance.NextTurnPhase();
+
+                //if (text != null)
+                //    text.text = "rolled: " + stepsLeft.ToString();
             }
         }
         else

@@ -44,18 +44,47 @@ public class DiceScript : MonoBehaviour
             {
                 Vector3 normal = contactPoint.normal;
 
-                if (normal == transform.up)
-                    diceRoll = 1;
-                else if (normal == -transform.up)
-                    diceRoll = 6;
-                else if (normal == transform.right)
-                    diceRoll = 5;
-                else if (normal == -transform.right)
-                    diceRoll = 2;
-                else if (normal == transform.forward)
+                // Get cube's local axes
+                Vector3 front = transform.forward;
+                Vector3 back = -transform.forward;
+                Vector3 right = transform.right;
+                Vector3 left = -transform.right;
+                Vector3 up = transform.up;
+                Vector3 down = -transform.up;
+
+                // Calculate dot products
+                float dotFront = Vector3.Dot(normal, front);
+                float dotBack = Vector3.Dot(normal, back);
+                float dotRight = Vector3.Dot(normal, right);
+                float dotLeft = Vector3.Dot(normal, left);
+                float dotUp = Vector3.Dot(normal, up);
+                float dotDown = Vector3.Dot(normal, down);
+
+                // Determine the side of collision
+                if (dotFront > 0.9f)
+                {
                     diceRoll = 4;
-                else if (normal == -transform.forward)
+                }
+                else if (dotBack > 0.9f)
+                {
                     diceRoll = 3;
+                }
+                else if (dotRight > 0.9f)
+                {
+                    diceRoll = 5;
+                }
+                else if (dotLeft > 0.9f)
+                {
+                    diceRoll = 2;
+                }
+                else if (dotUp > 0.9f)
+                {
+                    diceRoll = 1;
+                }
+                else if (dotDown > 0.9f)
+                {
+                    diceRoll = 6;
+                }
             }
         }
         else diceRoll = 0;
@@ -66,6 +95,13 @@ public class DiceScript : MonoBehaviour
         rb.AddForce(RandomizeVector() * rollSpeed, ForceMode.Impulse);
         rb.AddTorque(new Vector3(1,1,1));
         
+        yield return new WaitForSeconds(checkDelay);
+
+        if (transform.position == oldPosition)
+        {
+            rb.AddForce(0,0.1f,0, ForceMode.Impulse);
+        }
+        
         rolling = true;
         
         // Simulating waiting for the value to change, replace this with your actual condition
@@ -73,8 +109,6 @@ public class DiceScript : MonoBehaviour
         {
             yield return null; // Yielding null will wait for the next frame
         }
-
-        yield return new WaitForSeconds(checkDelay);
         
         rolling = false;
         timer = 0;

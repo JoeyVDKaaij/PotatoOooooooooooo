@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,31 +6,39 @@ public class GameManager : MonoBehaviour
     public static GameManager instance {  get; private set; }
     
 
-    [Tooltip("Set the GameObject that are the gamers.")] 
+    [Tooltip("Set the GameObjects that are the gamers.")] 
     public GameObject[] gamers;
 
+
+    [SerializeField]
     private int selectedGamer = 0;
 
+    [SerializeField]
+    private int turnPhase = 0;
+
+
+    public static event Action<int> AdvanceTurnPhase;
+
+
     public int SelectedGamer
-    {
-        get { return selectedGamer; }
-    }
-    
+    { get { return selectedGamer; } }
+
+    public int TurnPhase
+    { get { return turnPhase; } }
+
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            // if (transform.parent.gameObject != null) DontDestroyOnLoad(transform.parent.gameObject);
-            // else
+
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-        
-        TurnManager.ChangeTurn += ChangeSelectedGamer;
     }
 
     private void OnDestroy()
@@ -38,12 +47,43 @@ public class GameManager : MonoBehaviour
         {
             instance = null;
         }
-        
-        TurnManager.ChangeTurn -= ChangeSelectedGamer;
     }
 
-    private void ChangeSelectedGamer(int nextPlayer)
+    //private void ChangeSelectedGamer(int nextPlayer)
+    //{
+    //    selectedGamer = nextPlayer;
+    //}
+
+
+    public void NextTurnPhase()
     {
-        selectedGamer = nextPlayer;
+
+        turnPhase++;
+
+        switch(turnPhase)
+        {
+            //MOVEMENT PHASE
+            case (1):
+
+                AdvanceTurnPhase?.Invoke(turnPhase);
+
+            break;
+            //TILE PHASE
+            case (2):
+
+                AdvanceTurnPhase?.Invoke(turnPhase);
+
+            break;
+            //MENU PHASE
+            case (3):
+                turnPhase = 0;
+                selectedGamer++;
+                if(selectedGamer >= gamers.Length) selectedGamer = 0;
+
+                AdvanceTurnPhase?.Invoke(turnPhase);
+
+            break;
+        }
     }
+
 }
