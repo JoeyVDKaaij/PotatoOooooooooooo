@@ -2604,6 +2604,8 @@ MonoBehaviour:
     Intersection: {fileID: 1576256012}
     connectsTo: 01000000
   dice: {fileID: 1847763076}
+  totalDistance: 0
+  movedDistance: 0
   mainCamera: {fileID: 1526867363}
 --- !u!4 &225681023
 Transform:
@@ -14880,7 +14882,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
