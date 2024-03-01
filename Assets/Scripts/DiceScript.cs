@@ -23,8 +23,6 @@ public class DiceScript : MonoBehaviour
 
     [SerializeField, Tooltip("Wait until the delay is over before it checks the collisions after roll."), Min(0)]
     private float checkDelay = 1;
-
-    private float timer;
     
     void Start()
     {
@@ -118,7 +116,6 @@ public class DiceScript : MonoBehaviour
         }
         
         rolling = false;
-        timer = 0;
         
         // Once the value changes, return it via the callback
         callback(diceRoll);
