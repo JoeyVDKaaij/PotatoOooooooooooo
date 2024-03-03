@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Assertions.Must;
 
 public class MovementCheckerScript : MonoBehaviour
 {
@@ -43,12 +44,14 @@ public class MovementCheckerScript : MonoBehaviour
             {
                 Debug.Log("ABOUT TO CHECK");
                 checkPhase = CheckPhase.awakening;
+                MentionPhaseChange();
                 timer = 0;
             }
             else if (timer >= headsupCount && checkPhase == CheckPhase.awakening)
             {
                 Debug.Log("CHECKING MOVEMENT");
                 checkPhase = CheckPhase.awake;
+                MentionPhaseChange();
                 for (int i = 0; i < boats.Length; i++)
                 {
                     boatOldPositions[i] = boats[i].transform.position;
@@ -59,6 +62,7 @@ public class MovementCheckerScript : MonoBehaviour
             {
                 Debug.Log("NOT CHECKING ANYMORE");
                 checkPhase = CheckPhase.sleep;
+                MentionPhaseChange();
                 timer = 0;
             }
 
@@ -72,6 +76,14 @@ public class MovementCheckerScript : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void MentionPhaseChange()
+    {
+        foreach (var boat in boats)
+        {
+            boat.GetComponent<Movement2DScript>().SyncAIWithCheckPhase(checkPhase);
         }
     }
 }

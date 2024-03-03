@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Screen.orientation = ScreenOrientation.Portrait;
     }
 
     private void OnDestroy()
