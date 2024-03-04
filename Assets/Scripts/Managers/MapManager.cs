@@ -83,8 +83,8 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (GameObject gamer in GameManager.instance.gamers)
-            gamer.transform.position = MoveTo(0, 0);
+        foreach (Player gamer in GameManager.instance.gamers)
+            gamer.model.transform.position = MoveTo(0, 0);
 
         movingFrom = MoveTo(0, 0);
     }
@@ -102,7 +102,7 @@ public class MapManager : MonoBehaviour
 
             movedDistance += Time.deltaTime / 0.2f;
 
-            GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingFrom + moveAlong.normalized * movedDistance;
+            GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingFrom + moveAlong.normalized * movedDistance;
 
             //Debug.Log(stepsLeft);
 
@@ -189,7 +189,7 @@ public class MapManager : MonoBehaviour
             if (stepsLeft <= 0 && movedDistance >= totalDistance)
             {
 
-                GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingTo;
+                GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingTo;
 
                 Debug.Log("anyways, moving on");
                 //add tile actions here
@@ -267,7 +267,7 @@ public class MapManager : MonoBehaviour
         {
             dice.gameObject.SetActive(true);
             dice.transform.position =
-                GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
+                GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
             dice.RollTheDice(result =>
             {
                 stepsLeft = result;
@@ -300,7 +300,7 @@ public class MapManager : MonoBehaviour
 
                 dice.gameObject.SetActive(true);
                 dice.transform.position =
-                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
+                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
                 dice.RollTheDice(result =>
                 {
                     stepsLeft = result;
