@@ -5007,7 +5007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &354641380
 Transform:
   m_ObjectHideFlags: 0
@@ -11115,10 +11115,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef13cb29f68a6b4988bd09d9642f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedText: []
-  treasureText: []
-  turnUI: {fileID: 0}
-  Scoreboard: {fileID: 0}
+  seedText:
+  - {fileID: 1171813669}
+  - {fileID: 1374601070}
+  - {fileID: 2080250429}
+  - {fileID: 1807313686}
+  treasureText:
+  - {fileID: 1187943799}
+  - {fileID: 580734694}
+  - {fileID: 28841082}
+  - {fileID: 1343202652}
+  turnUI: {fileID: 1163463291}
+  Scoreboard: {fileID: 296390151}
 --- !u!114 &880647834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17576,7 +17584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1516525027
 Transform:
   m_ObjectHideFlags: 0
@@ -22449,7 +22457,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932724619}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2534964839176971238, guid: 7d881bdeb1b02db4fa6a04f7eae67315, type: 3}
 --- !u!4 &1932724623
 Transform:
   m_ObjectHideFlags: 0
@@ -22457,15 +22465,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932724619}
-  m_LocalRotation: {x: -0, y: 0.004534097, z: -0, w: 0.99998975}
+  m_LocalRotation: {x: -0.3668281, y: -0.604514, z: -0.604514, w: 0.3668281}
   m_LocalPosition: {x: 3.5579562, y: 0.2, z: 10.923277}
-  m_LocalScale: {x: 0.5, y: 0.11, z: 0.5}
+  m_LocalScale: {x: 25, y: 25, z: 11.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 354641380}
   m_Father: {fileID: 225681023}
   m_RootOrder: 55
-  m_LocalEulerAnglesHint: {x: 0, y: 0.52, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -117.5, z: 0}
 --- !u!1 &1932936373
 GameObject:
   m_ObjectHideFlags: 0

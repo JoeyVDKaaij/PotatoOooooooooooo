@@ -197,7 +197,7 @@ public class MapManager : MonoBehaviour
                 GameManager.instance.NextTurnPhase();
 
 
-                Debug.Log(tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentSection[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type.ToString());
+                Debug.Log(tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentTile[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type.ToString());
 
                 //if (GameManager.instance.SelectedGamer > 0)
                 //{
