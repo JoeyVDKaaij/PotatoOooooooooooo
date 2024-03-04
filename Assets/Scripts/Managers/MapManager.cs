@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -92,6 +93,10 @@ public class MapManager : MonoBehaviour
     void Update()
     {
 
+        //Debug.Log(Camera.main);
+
+        //deciding path check
+
         if(GameManager.instance.TurnPhase == 1 && !decidingPath)
         {
 
@@ -114,28 +119,59 @@ public class MapManager : MonoBehaviour
 
                 //Debug.Log("TURN");
 
-                movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                int gamerI = GameManager.instance.SelectedGamer;
+
+                movingFrom = MoveTo(currentSection[gamerI], currentTile[gamerI]);
 
                 //if the tile is just a tile in the middle of a section (no intersection)
-                if (currentTile[GameManager.instance.SelectedGamer] < tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles.Length - 1)
+                if (currentTile[gamerI] < tileSections[currentSection[gamerI]].tiles.Length - 1)
                 {
-                    currentTile[GameManager.instance.SelectedGamer]++;
+                    currentTile[gamerI]++;
                     //GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
-                    movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                    movingTo = MoveTo(currentSection[gamerI], currentTile[gamerI]);
 
                 }
                 //if the player is at an intersection, select a tile to move to
                 else
                 {
                     //change this for a selection screen
-                    currentSection[GameManager.instance.SelectedGamer] = tileSections[currentSection[GameManager.instance.SelectedGamer]]
-                        .connectsTo[Random.Range(0, tileSections[currentSection[GameManager.instance.SelectedGamer]].connectsTo.Length)];
-                    currentTile[GameManager.instance.SelectedGamer] = 0;
 
-                    //GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                    if (GameManager.instance.SelectedGamer != 0)
+                    {
 
-                    movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                        currentSection[gamerI] = tileSections[currentSection[gamerI]].connectsTo[Random.Range(0, tileSections[currentSection[gamerI]].connectsTo.Length)];
+                        currentTile[gamerI] = 0;
+
+                        movingTo = MoveTo(currentSection[gamerI], currentTile[gamerI]);
+
+                    }
+                    else
+                    {
+                        if (tileSections[currentSection[gamerI]].connectsTo.Length == 1)
+                        {
+
+                            currentSection[gamerI] = tileSections[currentSection[gamerI]].connectsTo[0];
+                            currentTile[gamerI] = 0;
+
+
+                            //currentSection[gamerI] = tileSections[currentSection[gamerI]]
+                            //.connectsTo[Random.Range(0, tileSections[currentSection[gamerI]].connectsTo.Length)];
+                            //currentTile[gamerI] = 0;
+
+                            movingTo = MoveTo(currentSection[gamerI], currentTile[gamerI]);
+
+                        }
+                        else
+                        {
+                            tileSections[currentSection[gamerI]].Intersection.transform.GetChild(0).gameObject.SetActive(true);
+                            Debug.Log("found a crossing!");
+                            decidingPath = true;
+                            return;
+                        }
+                    }
+
+
                 }
 
                 //prepare for next step
@@ -145,8 +181,8 @@ public class MapManager : MonoBehaviour
                 totalDistance = Vector3.Magnitude(moveAlong);
                 movedDistance = 0.0001f;
 
-                Debug.Log(totalDistance);
-                Debug.Log(movedDistance);
+                //Debug.Log(totalDistance);
+                //Debug.Log(movedDistance);
             }
 
             //if the player is out of steps, load the next
@@ -170,6 +206,59 @@ public class MapManager : MonoBehaviour
                 //last
             }
         }
+        else if (decidingPath)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, 100.0f))
+                {
+
+                    int gamerI = GameManager.instance.SelectedGamer;
+
+                    if (hit.transform.gameObject == tileSections[currentSection[gamerI]].Intersection.transform.GetChild(0).GetChild(0).gameObject)
+                    {
+
+                        tileSections[currentSection[gamerI]].Intersection.transform.GetChild(0).gameObject.SetActive(false);
+
+                        currentSection[gamerI] = tileSections[currentSection[gamerI]].connectsTo[0];
+                        currentTile[gamerI] = 0;
+
+                        movingTo = MoveTo(currentSection[gamerI], currentTile[gamerI]);
+
+                        decidingPath = false;
+
+                        stepsLeft--;
+
+                        moveAlong = movingTo - movingFrom;
+                        totalDistance = Vector3.Magnitude(moveAlong);
+                        movedDistance = 0.0001f;
+                    }
+                    else if (hit.transform.gameObject == tileSections[currentSection[GameManager.instance.SelectedGamer]].Intersection.transform.GetChild(0).GetChild(1).gameObject)
+                    {
+
+                        tileSections[currentSection[gamerI]].Intersection.transform.GetChild(0).gameObject.SetActive(false);
+
+                        currentSection[gamerI] = tileSections[currentSection[gamerI]].connectsTo[1];
+                        currentTile[gamerI] = 0;
+
+                        movingTo = MoveTo(currentSection[gamerI], currentTile[gamerI]);
+
+                        decidingPath = false;
+
+                        stepsLeft--;
+
+                        moveAlong = movingTo - movingFrom;
+                        totalDistance = Vector3.Magnitude(moveAlong);
+                        movedDistance = 0.0001f;
+                    }
+                }
+            }
+        }
+
+
+
     }
 
     public void StartMoving(int pCurrentPhase)
