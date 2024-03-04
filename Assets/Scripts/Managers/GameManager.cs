@@ -58,8 +58,6 @@ public class GameManager : MonoBehaviour
         }
         Screen.orientation = ScreenOrientation.Portrait;
 
-        ChangeUIValue();
-
     }
 
     private void OnDestroy()
