@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -195,6 +196,9 @@ public class MapManager : MonoBehaviour
                 //add tile actions here
                 GameManager.instance.NextTurnPhase();
 
+
+                Debug.Log(tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentSection[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type.ToString());
+
                 //if (GameManager.instance.SelectedGamer > 0)
                 //{
                 GameManager.instance.NextTurnPhase();
@@ -324,7 +328,7 @@ public class MapManager : MonoBehaviour
 
     public Vector3 MoveTo(int section, int tile)
     {
-        Debug.Log(tileSections[section].tiles[tile]);
+        //Debug.Log(tileSections[section].tiles[tile]);
 
         return tileSections[section].tiles[tile].transform.position;
     }
