@@ -1,13 +1,28 @@
 using System;
 using UnityEngine;
 
+[System.Serializable]
+public struct Player
+{
+    public GameObject model;
+
+    //public int tile;
+    //public int section;
+
+    //ITEMS
+
+    public int seeds;
+    public int treasure;
+}
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance {  get; private set; }
     
 
-    [Tooltip("Set the GameObjects that are the gamers.")] 
-    public GameObject[] gamers;
+    [Tooltip("Set the Structs that are the gamers.")] 
+    public Player[] gamers;
 
 
     [SerializeField]
@@ -18,6 +33,8 @@ public class GameManager : MonoBehaviour
 
 
     public static event Action<int> AdvanceTurnPhase;
+
+    public static event Action<int> UpdateUI;
 
 
     public int SelectedGamer
@@ -40,6 +57,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         Screen.orientation = ScreenOrientation.Portrait;
+
+        ChangeUIValue();
+
     }
 
     private void OnDestroy()
@@ -85,6 +105,11 @@ public class GameManager : MonoBehaviour
 
             break;
         }
+    }
+
+    public void ChangeUIValue()
+    {
+        UpdateUI?.Invoke(0);
     }
 
 }
