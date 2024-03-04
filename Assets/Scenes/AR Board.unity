@@ -17473,10 +17473,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '*DICE'
       objectReference: {fileID: 0}
-    - target: {fileID: 5648976015734670967, guid: 5cbfbe1af332c4d43a82a1fd687e59ce, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cbfbe1af332c4d43a82a1fd687e59ce, type: 3}
 --- !u!114 &1847763076 stripped
