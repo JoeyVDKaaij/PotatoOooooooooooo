@@ -18,16 +18,30 @@ public class UIScript : MonoBehaviour
     [SerializeField]
     private GameObject Scoreboard;
 
+    [SerializeField]
+    private GameObject[] toggleableUI;
 
 
-    private void OnEnable() { GameManager.AdvanceTurnPhase += SwitchingTurn;
-                              GameManager.UpdateUI += UpdateUI; }
+    private void OnEnable()
+    {
+        GameManager.AdvanceTurnPhase += SwitchingTurn;
+        GameManager.UpdateUI += UpdateUI;
+        GameManager.toggleUI += ToggleUI;
+    }
 
-    private void OnDisable() { GameManager.AdvanceTurnPhase -= SwitchingTurn;
-                               GameManager.UpdateUI += UpdateUI; }
+    private void OnDisable()
+    {
+        GameManager.AdvanceTurnPhase -= SwitchingTurn;
+        GameManager.UpdateUI -= UpdateUI;
+        GameManager.toggleUI -= ToggleUI;
+    }
 
-    private void OnDestroy() { GameManager.AdvanceTurnPhase -= SwitchingTurn;
-                               GameManager.UpdateUI += UpdateUI; }
+    private void OnDestroy()
+    {
+        GameManager.AdvanceTurnPhase -= SwitchingTurn;
+        GameManager.UpdateUI -= UpdateUI;
+        GameManager.toggleUI -= ToggleUI;
+    }
 
     private void Start()
     {
@@ -54,11 +68,29 @@ public class UIScript : MonoBehaviour
 
     public void UpdateUI(int input)
     {
-        for(int i = 0; i < 4;i++)
+        for (int i = 0; i < 4; i++)
         {
             seedText[i].text = GameManager.instance.gamers[i].seeds.ToString();
 
             treasureText[i].text = GameManager.instance.gamers[i].treasure.ToString();
         }
+    }
+
+    public void ToggleUI(int uiToToggle)
+    {
+        foreach (GameObject uiElement in toggleableUI)
+        {
+            uiElement.SetActive(false);
+        }
+
+        if (uiToToggle >= 0)
+        {
+            toggleableUI[uiToToggle].SetActive(true);
+        }
+
+        //if(uiToToggle == 0)
+        //{
+        //    if (GameManager.instance.gamers[GameManager.instance.SelectedGamer].seeds < 20)
+        //}
     }
 }

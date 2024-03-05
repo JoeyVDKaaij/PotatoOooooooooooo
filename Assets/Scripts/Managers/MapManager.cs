@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -94,11 +95,13 @@ public class MapManager : MonoBehaviour
     void Update()
     {
 
+        //Debug.Log((TileScript.TileType)Random.Range(0, 3));
+
         //Debug.Log(Camera.main);
 
         //deciding path check
 
-        if(GameManager.instance.TurnPhase == 1 && !decidingPath)
+        if (GameManager.instance.TurnPhase == 1 && !decidingPath)
         {
 
             movedDistance += Time.deltaTime / 0.2f;
@@ -196,12 +199,15 @@ public class MapManager : MonoBehaviour
                 //add tile actions here
                 GameManager.instance.NextTurnPhase();
 
+                TileScript.TileType type = tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentTile[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type;
 
-                Debug.Log(tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentTile[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type.ToString());
+                Debug.Log(type.ToString());
+
+                GameManager.instance.TileAction(type);
 
                 //if (GameManager.instance.SelectedGamer > 0)
                 //{
-                GameManager.instance.NextTurnPhase();
+                //GameManager.instance.NextTurnPhase();
                 //}
 
                 movedDistance = 0;
@@ -332,4 +338,18 @@ public class MapManager : MonoBehaviour
 
         return tileSections[section].tiles[tile].transform.position;
     }
+
+    //public int[] FindPlayerBehind()
+    //{
+        
+
+
+    //}
+
+    //public int[] FindPlayerInFront()
+    //{
+
+
+
+    //}
 }
