@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -83,8 +85,8 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (GameObject gamer in GameManager.instance.gamers)
-            gamer.transform.position = MoveTo(0, 0);
+        foreach (Player gamer in GameManager.instance.gamers)
+            gamer.model.transform.position = MoveTo(0, 0);
 
         movingFrom = MoveTo(0, 0);
     }
@@ -93,16 +95,18 @@ public class MapManager : MonoBehaviour
     void Update()
     {
 
+        //Debug.Log((TileScript.TileType)Random.Range(0, 3));
+
         //Debug.Log(Camera.main);
 
         //deciding path check
 
-        if(GameManager.instance.TurnPhase == 1 && !decidingPath)
+        if (GameManager.instance.TurnPhase == 1 && !decidingPath)
         {
 
             movedDistance += Time.deltaTime / 0.2f;
 
-            GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingFrom + moveAlong.normalized * movedDistance;
+            GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingFrom + moveAlong.normalized * movedDistance;
 
             //Debug.Log(stepsLeft);
 
@@ -189,15 +193,21 @@ public class MapManager : MonoBehaviour
             if (stepsLeft <= 0 && movedDistance >= totalDistance)
             {
 
-                GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = movingTo;
+                GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingTo;
 
                 Debug.Log("anyways, moving on");
                 //add tile actions here
                 GameManager.instance.NextTurnPhase();
 
+                TileScript.TileType type = tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentTile[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type;
+
+                Debug.Log(type.ToString());
+
+                GameManager.instance.TileAction(type);
+
                 //if (GameManager.instance.SelectedGamer > 0)
                 //{
-                GameManager.instance.NextTurnPhase();
+                //GameManager.instance.NextTurnPhase();
                 //}
 
                 movedDistance = 0;
@@ -267,7 +277,7 @@ public class MapManager : MonoBehaviour
         {
             dice.gameObject.SetActive(true);
             dice.transform.position =
-                GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
+                GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
             dice.RollTheDice(result =>
             {
                 stepsLeft = result;
@@ -300,7 +310,7 @@ public class MapManager : MonoBehaviour
 
                 dice.gameObject.SetActive(true);
                 dice.transform.position =
-                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position + Vector3.up;
+                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
                 dice.RollTheDice(result =>
                 {
                     stepsLeft = result;
@@ -324,8 +334,22 @@ public class MapManager : MonoBehaviour
 
     public Vector3 MoveTo(int section, int tile)
     {
-        Debug.Log(tileSections[section].tiles[tile]);
+        //Debug.Log(tileSections[section].tiles[tile]);
 
         return tileSections[section].tiles[tile].transform.position;
     }
+
+    //public int[] FindPlayerBehind()
+    //{
+        
+
+
+    //}
+
+    //public int[] FindPlayerInFront()
+    //{
+
+
+
+    //}
 }
