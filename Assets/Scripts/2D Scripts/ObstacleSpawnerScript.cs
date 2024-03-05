@@ -10,12 +10,24 @@ public class ObstacleSpawnerScript : MonoBehaviour
     private float spawnCooldown = 5;
 
     private float timer = 0;
+
+    private bool endMinigame = false;
+    
+    private void Start()
+    {
+        MinigameManager.EndMinigame += EndMinigame;
+    }
+
+    private void OnDestroy()
+    {
+        MinigameManager.EndMinigame -= EndMinigame;
+    }
     
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer >= spawnCooldown)
+        if (timer >= spawnCooldown && !endMinigame)
         {
             int random = Random.Range(0,6);
 
@@ -46,5 +58,10 @@ public class ObstacleSpawnerScript : MonoBehaviour
 
             timer = 0;
         }
+    }
+
+    private void EndMinigame()
+    {
+        endMinigame = true;
     }
 }

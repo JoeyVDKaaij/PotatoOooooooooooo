@@ -33,12 +33,18 @@ public class TargetScript : MonoBehaviour
         }
     }
 
-    public void TargetHit()
+    public void TargetHit(int pPlayer = 0)
     {
         if (!targetDown)
         {
             targetDown = true;
             sr.color = Color.clear;
+            MinigameManager.instance.ShotTarget();
         }
+    }
+
+    public bool TargetDown
+    {
+        get { return targetDown; }
     }
 }

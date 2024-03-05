@@ -15,6 +15,8 @@ public class GyroScopeMovementScript : MonoBehaviour
     private Vector3 oldPosition;
 
     private Rigidbody2D rb;
+
+    private bool endMinigame = false;
     
     private void Start()
     {
@@ -31,36 +33,27 @@ public class GyroScopeMovementScript : MonoBehaviour
         oldPosition = transform.position;
 
         rb = GetComponent<Rigidbody2D>();
+        
+        MinigameManager.EndMinigame += EndMinigame;
+    }
+
+    private void OnDestroy()
+    {
+        MinigameManager.EndMinigame -= EndMinigame;
     }
 
     private void Update()
     {
-        if (_gyroscope != null)
+        if (_gyroscope != null && !endMinigame)
         {
-            // Get the rotation rate from the gyroscope
-            Quaternion gyroRotation = _gyroscope.attitude;
+            // Get the orientation of gravity
+            Vector3 gravityDirection = -Input.gyro.gravity;
 
-            // Extract the Euler angles for easier manipulation
-            Vector3 euler = gyroRotation.eulerAngles;
+            // Adjust for orientation differences between device and Unity's coordinate system
+            Vector3 movementVector = new Vector3(-gravityDirection.x, 0, 0);
 
-            if (oldPosition.x > transform.position.x)
-            {
-                oldPosition = transform.position;
-                driftSpeed += driftSpeedMultiplier;
-            }
-            else driftSpeed = 0;
-            
-            // Detect leftward leaning
-            if (euler.z > 30f && euler.z < 135f)
-            {
-                rb.velocity = new Vector3(-(movementSpeed + driftSpeed), 0);
-            }
-            // Detect rightward leaning
-            else if (euler.z > 225f && euler.z < 330f)
-            {
-                rb.velocity = new Vector3((movementSpeed + driftSpeed), 0);
-            }
-            else rb.velocity = Vector2.zero; 
+            // Apply the movement to the object
+            transform.Translate(movementVector * Time.deltaTime * 5f);
         }
     }
 
@@ -70,5 +63,10 @@ public class GyroScopeMovementScript : MonoBehaviour
         {
             Debug.Log("You died!");
         }
+    }
+
+    private void EndMinigame()
+    {
+        endMinigame = true;
     }
 }

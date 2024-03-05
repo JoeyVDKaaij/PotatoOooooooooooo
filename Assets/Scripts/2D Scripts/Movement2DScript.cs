@@ -18,13 +18,25 @@ public class Movement2DScript : MonoBehaviour
     private bool stopMoving = false;
     private CheckPhase _checkPhase = CheckPhase.sleep;
 
+    private bool endMinigame = false;
+    
+    private void Start()
+    {
+        MinigameManager.EndMinigame += EndMinigame;
+    }
+
+    private void OnDestroy()
+    {
+        MinigameManager.EndMinigame -= EndMinigame;
+    }
+    
     void Update()
     {
-        if (Input.touchCount > 0 && !stopMoving && !controlledByAI)
+        if (Input.touchCount > 0 && !stopMoving && !controlledByAI && !endMinigame)
         {
             transform.position += new Vector3(0, movementSpeed * Time.deltaTime);
         }
-        else if (!stopMoving && controlledByAI)
+        else if (!stopMoving && controlledByAI && !endMinigame)
         {
             int random = Random.Range(1, 101);
             switch (_checkPhase)
@@ -54,5 +66,10 @@ public class Movement2DScript : MonoBehaviour
     {
         Debug.Log("Hit the finish line!!!");
         stopMoving = true;
+    }
+
+    private void EndMinigame()
+    {
+        endMinigame = true;
     }
 }
