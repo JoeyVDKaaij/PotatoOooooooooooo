@@ -15,6 +15,8 @@ public class GyroScopeMovementScript : MonoBehaviour
     private Vector3 oldPosition;
 
     private Rigidbody2D rb;
+
+    private bool endMinigame = false;
     
     private void Start()
     {
@@ -31,11 +33,18 @@ public class GyroScopeMovementScript : MonoBehaviour
         oldPosition = transform.position;
 
         rb = GetComponent<Rigidbody2D>();
+        
+        MinigameManager.EndMinigame += EndMinigame;
+    }
+
+    private void OnDestroy()
+    {
+        MinigameManager.EndMinigame -= EndMinigame;
     }
 
     private void Update()
     {
-        if (_gyroscope != null)
+        if (_gyroscope != null && endMinigame)
         {
             // Get the rotation rate from the gyroscope
             Quaternion gyroRotation = _gyroscope.attitude;
@@ -70,5 +79,10 @@ public class GyroScopeMovementScript : MonoBehaviour
         {
             Debug.Log("You died!");
         }
+    }
+
+    private void EndMinigame()
+    {
+        endMinigame = true;
     }
 }

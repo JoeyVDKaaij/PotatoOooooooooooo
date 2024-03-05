@@ -1,8 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class TouchIdentifierScript : MonoBehaviour
 {
     Vector3 touchPosWorld;
+
+    private bool endMinigame;
+    
+    private void Start()
+    {
+        MinigameManager.EndMinigame += EndMinigame;
+    }
+
+    private void OnDestroy()
+    {
+        MinigameManager.EndMinigame -= EndMinigame;
+    }
 
     void Update() {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -18,5 +31,10 @@ public class TouchIdentifierScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void EndMinigame()
+    {
+        endMinigame = true;
     }
 }
