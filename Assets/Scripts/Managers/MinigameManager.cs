@@ -8,7 +8,11 @@ public class MinigameManager : MonoBehaviour
     [SerializeField, Tooltip("Set the current MiniGame that the player is playing.")]
     private Minigame _minigame;
 
-    private float[] playerScores = {0,0,0,0};
+    private float[] playerScoresSBTW = {0,0,0,0};
+    private float[] playerScoresSYS = {0,0,0,0};
+    private float[] playerScoresHC = {0,0,0,0};
+    private float[] playerScoresETM = {0,0,0,0};
+    private float[] playerScoresKYE = {0,0,0,0};
 
     public static event Action EndMinigame;
 
@@ -46,49 +50,51 @@ public class MinigameManager : MonoBehaviour
     {
         switch (_minigame)
         {
-            case Minigame.dodge:
-                Dodge();
+            case Minigame.sweptbythewind:
+                SweptByTheWind();
                 break;
-            case Minigame.cuttherope:
+            case Minigame.spreadthesails:
+                SpreadYourSails();
                 break;
-            case Minigame.shoot:
-                Shoot();
+            case Minigame.hungrycrew:
+                HungryCrew();
                 break;
-            case Minigame.redlightgreenlight:
-                RedLightGreenLight();
+            case Minigame.escapethemonster:
+                EscapeTheMonster();
                 break;
-            case Minigame.memory:
+            case Minigame.knowyourenemies:
+                KnowYourEnemies();
                 break;
         }
     }
     # endregion
 
-    private void RedLightGreenLight()
+    private void EscapeTheMonster()
     {
         bool endingMinigame = true;
-        for (int i = 0; i < playerScores.Length; i++)
+        for (int i = 0; i < playerScoresETM.Length; i++)
         {
-            if (playerScores[i] == 0)
+            if (playerScoresETM[i] == 0)
                 endingMinigame = false;
         }
     }
 
-    private void Dodge()
+    private void SweptByTheWind()
     {
-        playerScores[0]++;
+        playerScoresSBTW[0]++;
         
         float firstScore = 0;
         bool winning = true;
-        for (int i = 0; i < playerScores.Length; i++)
+        for (int i = 0; i < playerScoresSBTW.Length; i++)
         {
             if (i == 0)
-                firstScore = playerScores[i];
-            else if (playerScores[i] >= firstScore) winning = false;
+                firstScore = playerScoresSBTW[i];
+            else if (playerScoresSBTW[i] >= firstScore) winning = false;
         }
         if (winning) EndMinigame?.Invoke();
     }
 
-    private void Shoot()
+    private void HungryCrew()
     {
         // Minigame stops when player got most points
         //
@@ -108,10 +114,39 @@ public class MinigameManager : MonoBehaviour
         if (timer >= timeUntilShootingEnds) EndMinigame?.Invoke();
     }
 
+    private void KnowYourEnemies()
+    {
+        // Minigame stops when player got most points
+        //
+        // float firstScore = 0;
+        // bool winning = true;
+        // for (int i = 0; i < playerScores.Length; i++)
+        // {
+        //     if (i == 0)
+        //         firstScore = playerScores[i];
+        //     else if (playerScores[i] >= firstScore) winning = false;
+        // }
+        // if (winning) EndMinigame?.Invoke();
+        
+        // Minigame ends when timer runs out.
+        timer += Time.deltaTime;
+        
+        if (timer >= timeUntilShootingEnds) EndMinigame?.Invoke();
+    }
+
+    private void SpreadYourSails()
+    {
+        timer += Time.deltaTime;
+    }
+
     public void ChangeMinigame(Minigame pMinigame)
     {
         _minigame = pMinigame;
-        for (int i = 0; i < playerScores.Length; i++) playerScores[i] = 0;
+        for (int i = 0; i < playerScoresETM.Length; i++) playerScoresETM[i] = 0;
+        for (int i = 0; i < playerScoresSBTW.Length; i++) playerScoresSBTW[i] = 0;
+        for (int i = 0; i < playerScoresHC.Length; i++) playerScoresHC[i] = 0;
+        for (int i = 0; i < playerScoresKYE.Length; i++) playerScoresKYE[i] = 0;
+        for (int i = 0; i < playerScoresSYS.Length; i++) playerScoresSYS[i] = 0;
     }
 
     public Minigame _Minigame
@@ -121,17 +156,21 @@ public class MinigameManager : MonoBehaviour
 
     public void ShotTarget(int pPlayer = 0)
     {
-        playerScores[pPlayer]++;
+        playerScoresHC[pPlayer]++;
+    }
+
+    public void CutRope()
+    {
+        playerScoresSYS[0] = timer;
+        EndMinigame?.Invoke();
     }
 }
 
-    
-
 public enum Minigame
 {
-    dodge,
-    cuttherope,
-    shoot,
-    redlightgreenlight,
-    memory
+    sweptbythewind,
+    spreadthesails,
+    hungrycrew,
+    escapethemonster,
+    knowyourenemies
 }

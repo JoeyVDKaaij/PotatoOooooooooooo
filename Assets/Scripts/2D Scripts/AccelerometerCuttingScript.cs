@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class AccelerometerCuttingScript : MonoBehaviour
 {
     // Sensitivity of the movement detection
@@ -11,8 +13,15 @@ public class AccelerometerCuttingScript : MonoBehaviour
 
     private float timer;
 
-    private float delayCheck = 0.5f; 
-    
+    private float delayCheck = 0.5f;
+
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
         // Get the acceleration vector
@@ -24,12 +33,16 @@ public class AccelerometerCuttingScript : MonoBehaviour
         timer += Time.deltaTime;
         
         // Check if the z-component of acceleration exceeds the sensitivity threshold
-        if (yAcceleration > sensitivity && timer >= delayCheck)
+        if (yAcceleration > sensitivity)
         {
-            Debug.Log("Phone is moving forwards");
-            // Your if statement or method call here
-            currentCuts++;
-            timer = 0;
+            _animator.SetBool("MoveDown", !_animator.GetBool("MoveDown"));
+            if (timer >= delayCheck)
+            {
+                Debug.Log("Phone is moving forwards");
+                // Your if statement or method call here
+                currentCuts++;
+                timer = 0;
+            }
         }
         
         if (currentCuts >= cutsNeeded) Debug.Log("You win!!");
