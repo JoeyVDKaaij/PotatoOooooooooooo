@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public struct Player
@@ -18,6 +19,7 @@ public struct Player
 
 public class GameManager : MonoBehaviour
 {
+
     public static GameManager instance {  get; private set; }
     
 
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
     public static event Action<int> AdvanceTurnPhase;
 
     public static event Action<int> UpdateUI;
+
+    public static event Action<int> toggleUI;
 
 
     public int SelectedGamer
@@ -105,9 +109,101 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TileAction(TileScript.TileType type)
+    {
+        switch(type)
+        {
+            case(TileScript.TileType.PlusSeeds):
+                gamers[selectedGamer].seeds += 3;
+                NextTurnPhase();
+                break;
+            case (TileScript.TileType.MinusSeeds):
+                gamers[selectedGamer].seeds -= 3;
+                NextTurnPhase();
+                break;
+            case (TileScript.TileType.Minigame):
+                //Minigame
+                NextTurnPhase();
+                break;
+            case (TileScript.TileType.Action):
+                //Action
+                NextTurnPhase();
+                break;
+            case (TileScript.TileType.Random):
+                TileAction((TileScript.TileType)Random.Range(0, 3));
+                break;
+            case (TileScript.TileType.Treasure):
+
+                if (selectedGamer == 0)
+                {
+                    if (gamers[selectedGamer].seeds >= 20)
+                    {
+                        toggleUI?.Invoke(0);
+                    }
+                    else
+                    {
+                        toggleUI?.Invoke(1);
+                        Invoke("CancelBuyTreasure", 3);
+                    }
+                }
+                else
+                {
+                    if (gamers[selectedGamer].seeds >= 20)
+                    {
+                        BuyTreasure();
+                    }
+                    else
+                    {
+                        toggleUI?.Invoke(1);
+                        Invoke("CancelBuyTreasure", 3);
+                    }
+                }
+                break;
+        }
+
+        UpdateUI?.Invoke(0);
+
+    }
+
     public void ChangeUIValue()
     {
         UpdateUI?.Invoke(0);
     }
+
+    //public void ToggleUI()
+    //{
+    //    invoke?.toggleUI
+    //}
+
+    public void BuyTreasure()
+    {
+        //also add moving treasure!
+        gamers[selectedGamer].seeds -= 20;
+        gamers[selectedGamer].treasure += 1;
+        UpdateUI?.Invoke(0);
+        toggleUI?.Invoke(-1);
+        NextTurnPhase();
+    }
+    public void CancelBuyTreasure()
+    {
+        toggleUI?.Invoke(-1);
+        NextTurnPhase();
+    }
+
+    public void Action(int action)
+    {
+        switch(action)
+        {
+            //surprise!
+            case (0):
+
+                break;
+            //
+            case (1):
+
+                break;
+        }
+    }
+
 
 }
