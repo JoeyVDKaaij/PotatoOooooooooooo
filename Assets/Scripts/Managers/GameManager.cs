@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Progress;
+using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour
     public static event Action<int> UpdateUI;
 
     public static event Action<int> toggleUI;
+
+    public static event Action<string, int> displayPopup;
 
 
     public int turnTimer = 0;
@@ -196,6 +199,9 @@ public class GameManager : MonoBehaviour
                     if (gamers[selectedGamer].seeds >= 20)
                     {
                         BuyTreasure();
+
+                        displayPopup?.Invoke("Player " + selectedGamer + " dug up a treasure chest!", 3);
+
                     }
                     else
                     {
@@ -281,6 +287,8 @@ public class GameManager : MonoBehaviour
             BuyShopItem(NPCBuyableItems[itemToBuy]);
 
             Debug.Log("NPC bought item " + items[NPCBuyableItems[itemToBuy]].name);
+            displayPopup?.Invoke("Player " + selectedGamer + " bought " + items[NPCBuyableItems[itemToBuy]].name + " from the store!", 2);
+
         }
         else
         {
@@ -361,7 +369,10 @@ public class GameManager : MonoBehaviour
 
                 gamers[target].treasure--;
                 gamers[selectedGamer].treasure++;
-                for(int i = 0; i < 3; i++)
+
+                displayPopup?.Invoke("You stole player " + target + "'s treasure! Shiver me timbers!", 3);
+
+                for (int i = 0; i < 3; i++)
                 {
                     if (gamers[selectedGamer].items[i].id == 0)
                     {
@@ -379,6 +390,7 @@ public class GameManager : MonoBehaviour
                 int coinsStolen = Random.Range(minStolenCoins, stealableCoins);
 
                 Debug.Log(" max: " + stealableCoins + " min: " + minStolenCoins + " result: " + coinsStolen);
+                displayPopup?.Invoke("You stole " + coinsStolen + " coins from player " + target + "!", 3);
 
                 gamers[target].seeds -= coinsStolen;
                 gamers[selectedGamer].seeds += coinsStolen;
@@ -400,6 +412,7 @@ public class GameManager : MonoBehaviour
                 int itemDestroyed = Random.Range(0, gamers[target].numItems);
 
                 Debug.Log(" destroyed item: " + gamers[target].items[itemDestroyed].name);
+                displayPopup?.Invoke("You destroyed player " + target + "'s " + gamers[target].items[itemDestroyed].name + "!", 3);
 
                 gamers[target].items.RemoveAt(itemDestroyed);
 
