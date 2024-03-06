@@ -4,14 +4,6 @@ public class SwapSprites : MonoBehaviour
 {
     private int childId = 0;
 
-    private void Start()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(i == 0);
-        }
-    }
-
     public void NextSprite()
     {
         transform.GetChild(childId).gameObject.SetActive(false);

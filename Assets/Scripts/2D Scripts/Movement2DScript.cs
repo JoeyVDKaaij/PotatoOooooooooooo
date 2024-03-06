@@ -14,29 +14,19 @@ public class Movement2DScript : MonoBehaviour
     private int chanceOfMovementAwakening = 50;
     [SerializeField, Tooltip("Set how much chance the ai has to move while CheckPhase is asleep."), Range(0,100)]
     private int chanceOfMovementSleep = 100;
+    [SerializeField, Tooltip("Set how much chance the ai has to move while CheckPhase is asleep."), Range(0,3)]
+    private int playerNumber = 0;
 
     private bool stopMoving = false;
     private CheckPhase _checkPhase = CheckPhase.sleep;
-
-    private bool endMinigame = false;
-    
-    private void Start()
-    {
-        MinigameManager.EndMinigame += EndMinigame;
-    }
-
-    private void OnDestroy()
-    {
-        MinigameManager.EndMinigame -= EndMinigame;
-    }
     
     void Update()
     {
-        if (Input.touchCount > 0 && !stopMoving && !controlledByAI && !endMinigame)
+        if (Input.touchCount > 0 && !stopMoving && !controlledByAI  && !MinigameManager.instance.StopMinigame)
         {
             transform.position += new Vector3(0, movementSpeed * Time.deltaTime);
         }
-        else if (!stopMoving && controlledByAI && !endMinigame)
+        else if (!stopMoving && controlledByAI  && !MinigameManager.instance.StopMinigame)
         {
             int random = Random.Range(1, 101);
             switch (_checkPhase)
@@ -64,12 +54,6 @@ public class Movement2DScript : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hit the finish line!!!");
-        stopMoving = true;
-    }
-
-    private void EndMinigame()
-    {
-        endMinigame = true;
+        MinigameManager.instance.ReachedTheEnd(playerNumber);
     }
 }

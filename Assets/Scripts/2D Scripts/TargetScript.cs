@@ -39,7 +39,7 @@ public class TargetScript : MonoBehaviour
         {
             targetDown = true;
             sr.color = Color.clear;
-            MinigameManager.instance.ShotTarget();
+            MinigameManager.instance.ShotTarget(pPlayer);
         }
     }
 

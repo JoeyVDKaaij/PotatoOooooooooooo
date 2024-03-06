@@ -17,6 +17,8 @@ public class AccelerometerCuttingScript : MonoBehaviour
 
     private Animator _animator;
 
+    private bool _stopMinigame;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -24,27 +26,30 @@ public class AccelerometerCuttingScript : MonoBehaviour
 
     void Update()
     {
-        // Get the acceleration vector
-        Vector3 acceleration = Input.acceleration;
-
-        // Check the z-component of the acceleration vector
-        float yAcceleration = acceleration.y;
-
-        timer += Time.deltaTime;
-        
-        // Check if the z-component of acceleration exceeds the sensitivity threshold
-        if (yAcceleration > sensitivity)
+        if (!MinigameManager.instance.StopMinigame)
         {
-            _animator.SetBool("MoveDown", !_animator.GetBool("MoveDown"));
-            if (timer >= delayCheck)
+            // Get the acceleration vector
+            Vector3 acceleration = Input.acceleration;
+
+            // Check the z-component of the acceleration vector
+            float yAcceleration = acceleration.y;
+
+            timer += Time.deltaTime;
+
+            // Check if the z-component of acceleration exceeds the sensitivity threshold
+            if (yAcceleration > sensitivity)
             {
-                Debug.Log("Phone is moving forwards");
-                // Your if statement or method call here
-                currentCuts++;
-                timer = 0;
+                _animator.SetBool("MoveDown", !_animator.GetBool("MoveDown"));
+                if (timer >= delayCheck)
+                {
+                    Debug.Log("Phone is moving forwards");
+                    // Your if statement or method call here
+                    currentCuts++;
+                    timer = 0;
+                }
             }
+
+            if (currentCuts >= cutsNeeded) MinigameManager.instance.EndMinigameTimer();
         }
-        
-        if (currentCuts >= cutsNeeded) Debug.Log("You win!!");
     }
 }
