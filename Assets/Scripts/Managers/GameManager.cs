@@ -28,6 +28,8 @@ public struct Item
     public string description;
     public Sprite picture;
     public int price;
+
+    public int id;
 }
 
 
@@ -284,6 +286,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
     public void Action(int action)
     {
         switch(action)
@@ -299,36 +303,65 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UseItem(int item)
+
+
+    public void UseItem(int slot)
     {
+
+        int item = gamers[selectedGamer].items[slot].id;
+
         switch (item)
         {
             //Grappling Hook
             case (0):
-                toggleUI?.Invoke(4);
                 targetingItem = 0;
+                toggleUI?.Invoke(4);
+                break;
+            //Spyglass
+            case (1):
+                
+                break;
+            //Magic Pouch
+            case (2):
+                targetingItem = 2;
+                toggleUI?.Invoke(4);
+                break;
+            //Bottle of juice
+            case (3):
+
+                break;
+            //Golden Dice
+            case (4):
+
+                break;
+            //Old Mysterious Map
+            case (5):
+
+                break;
+            //Cannon
+            case (6):
+                toggleUI?.Invoke(4);
+                targetingItem = 6;
                 break;
         }
     }
 
     public void UseTargetedItem(int target)
     {
-        Debug.Log("SHOOTING");
-        Debug.Log(target);
-        Debug.Log(targetingItem);
+        //Debug.Log("SHOOTING");
+        //Debug.Log(target);
+        //Debug.Log(targetingItem);
 
         switch (targetingItem)
         {
             //Grappling Hook
             case (0):
 
-                Debug.Log("UUUGHN");
-
                 gamers[target].treasure--;
                 gamers[selectedGamer].treasure++;
                 for(int i = 0; i < 3; i++)
                 {
-                    if (gamers[selectedGamer].items[i].name == items[0].name)
+                    if (gamers[selectedGamer].items[i].id == items[0].id)
                     {
                         gamers[selectedGamer].items.RemoveAt(i);
                         break;
@@ -336,6 +369,33 @@ public class GameManager : MonoBehaviour
                 }
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
+                break;
+                //Magic Pouch
+            case (2):
+                int stealableCoins = Math.Min(15, gamers[target].seeds);
+                int minStolenCoins = Math.Max(1, (stealableCoins / 2));
+                int coinsStolen = Random.Range(minStolenCoins, stealableCoins);
+
+                Debug.Log(" max: " + stealableCoins + " min: " + minStolenCoins + " result: " + coinsStolen);
+
+                gamers[target].seeds -= coinsStolen;
+                gamers[selectedGamer].seeds += coinsStolen;
+
+                for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
+                {
+                    if (gamers[selectedGamer].items[i].id == items[2].id)
+                    {
+                        gamers[selectedGamer].items.RemoveAt(i);
+                        break;
+                    }
+                }
+
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+                //Cannon
+            case (6):
+
                 break;
         }
     }

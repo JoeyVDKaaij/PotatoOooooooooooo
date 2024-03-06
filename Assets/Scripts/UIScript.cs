@@ -155,6 +155,20 @@ public class UIScript : MonoBehaviour
                     }
                 }
             }
+            else if (GameManager.instance.targetingItem == 2)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (GameManager.instance.gamers[i + 1].seeds > 0)
+                    {
+                        TargetingSlots[i].interactable = true;
+                    }
+                    else
+                    {
+                        TargetingSlots[i].interactable = false;
+                    }
+                }
+            }
         }
     }
 
@@ -218,6 +232,10 @@ public class UIScript : MonoBehaviour
             {
                 InventorySlots[i].sprite = GameManager.instance.gamers[GameManager.instance.SelectedGamer].items[i].picture;
             }
+            else
+            {
+                InventorySlots[i].sprite = null;
+            }
         }
 
         inventoryUseButton.interactable = false;
@@ -234,7 +252,7 @@ public class UIScript : MonoBehaviour
 
     public void UseSelectedItem()
     {
-        GameManager.instance.UseItem(selectedItem);
+        GameManager.instance.UseItem(inventorySlotSelected);
     }
 
 
