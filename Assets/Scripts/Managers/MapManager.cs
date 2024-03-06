@@ -45,6 +45,7 @@ public class MapManager : MonoBehaviour
     Vector3 moveAlong;
 
     bool decidingPath;
+    public bool lookingAtShop;
 
     [SerializeField, Tooltip("Set the camera.")]
     private Camera mainCamera;
@@ -101,7 +102,7 @@ public class MapManager : MonoBehaviour
 
         //deciding path check
 
-        if (GameManager.instance.TurnPhase == 1 && !decidingPath)
+        if (GameManager.instance.TurnPhase == 1 && !decidingPath && !lookingAtShop)
         {
 
             movedDistance += Time.deltaTime / 0.2f;
@@ -118,6 +119,8 @@ public class MapManager : MonoBehaviour
             //Debug.Log(movedDistance);
 
             //if it is time to step
+
+
             if (stepsLeft > 0 && movedDistance >= totalDistance)
             {
 
@@ -130,8 +133,25 @@ public class MapManager : MonoBehaviour
                 //if the tile is just a tile in the middle of a section (no intersection)
                 if (currentTile[gamerI] < tileSections[currentSection[gamerI]].tiles.Length - 1)
                 {
+
                     currentTile[gamerI]++;
-                    //GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                    //if the player passes a shop
+                    if (tileSections[currentSection[gamerI]].tiles[currentTile[gamerI]].GetComponent<TileScript>().type == TileScript.TileType.Shop)
+                    {
+                        if (gamerI == 0)
+                        {
+                            lookingAtShop = true;
+                            GameManager.instance.OpenShop();
+                        }
+                        else
+                        {
+                            GameManager.instance.NPCBuyItem();
+                        }
+
+                        currentTile[gamerI]++;
+                    }
+
 
                     movingTo = MoveTo(currentSection[gamerI], currentTile[gamerI]);
 

@@ -2,6 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Image = UnityEngine.UI.Image;
+using UnityEngine.SceneManagement;
+using static UnityEditor.Progress;
+
+[System.Serializable]
+public struct ImageList
+{
+    public Image[] images;
+}
 
 public class UIScript : MonoBehaviour
 {
@@ -13,6 +22,9 @@ public class UIScript : MonoBehaviour
     private TMP_Text[] treasureText;
 
     [SerializeField]
+    private ImageList[] playerItemImages;
+
+    [SerializeField]
     private GameObject turnUI;
 
     [SerializeField]
@@ -21,6 +33,17 @@ public class UIScript : MonoBehaviour
     [SerializeField]
     private GameObject[] toggleableUI;
 
+
+    [SerializeField]
+    private GameObject[] ShopSlots;
+    [SerializeField]
+    private TMP_Text ShopText;
+    [SerializeField]
+    private Image ShopImage;
+    [SerializeField]
+    private Button ShopButton;
+
+    int selectedItem;
 
     private void OnEnable()
     {
@@ -46,6 +69,7 @@ public class UIScript : MonoBehaviour
     private void Start()
     {
         UpdateUI(0);
+        InitializeShop();
     }
 
     public void MovePlayer()
@@ -73,6 +97,14 @@ public class UIScript : MonoBehaviour
             seedText[i].text = GameManager.instance.gamers[i].seeds.ToString();
 
             treasureText[i].text = GameManager.instance.gamers[i].treasure.ToString();
+
+            for (int j = 0; j < 3; j++) 
+            {
+                if (GameManager.instance.gamers[i].items.Count > j)
+                {
+                    playerItemImages[i].images[j].sprite = GameManager.instance.gamers[i].items[j].picture;
+                }
+            }
         }
     }
 
@@ -88,9 +120,49 @@ public class UIScript : MonoBehaviour
             toggleableUI[uiToToggle].SetActive(true);
         }
 
+        ShowShopInfo(0);
+
         //if(uiToToggle == 0)
         //{
         //    if (GameManager.instance.gamers[GameManager.instance.SelectedGamer].seeds < 20)
         //}
+    }
+
+    public void InitializeShop()
+    {
+        for(int i = 0; i < ShopSlots.Length; i++)
+        {
+            ShopSlots[i].transform.GetChild(0).GetComponent<TMP_Text>().text = GameManager.instance.items[i].name + "\nPrice:" + GameManager.instance.items[i].price;
+
+            ShopSlots[i].transform.GetChild(1).GetComponent<Image>().sprite = GameManager.instance.items[i].picture;
+        }
+    }
+
+    public void CloseShop()
+    {
+        GameManager.instance.CancelBuyShopItem();
+    }
+
+    public void ShowShopInfo(int item)
+    {
+        ShopImage.sprite = GameManager.instance.items[item].picture;
+        ShopText.text = GameManager.instance.items[item].description;
+
+        if(GameManager.instance.gamers[GameManager.instance.SelectedGamer].seeds < GameManager.instance.items[item].price)
+        {
+            ShopButton.interactable = false;
+        }
+        else
+        {
+            ShopButton.interactable = true;
+        }
+
+        selectedItem = item;
+
+    }
+
+    public void BuySelectedItem()
+    {
+        GameManager.instance.BuyShopItem(selectedItem);
     }
 }

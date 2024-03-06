@@ -12,7 +12,9 @@ public class TileScript : MonoBehaviour
         Minigame,
         Action,
         Random,
-        Treasure
+        Treasure,
+        Shop,
+        Shop1
     }
 
     public TileType type;

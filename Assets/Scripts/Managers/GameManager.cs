@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -12,9 +14,20 @@ public struct Player
     //public int section;
 
     //ITEMS
+    public List<Item> items;
+    public int numItems;
 
     public int seeds;
     public int treasure;
+}
+
+[System.Serializable]
+public struct Item
+{
+    public string name;
+    public string description;
+    public Sprite picture;
+    public int price;
 }
 
 
@@ -26,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("Set the Structs that are the gamers.")] 
     public Player[] gamers;
+
+    public Item[] items = new Item[3];
 
 
     [SerializeField]
@@ -40,6 +55,22 @@ public class GameManager : MonoBehaviour
     public static event Action<int> UpdateUI;
 
     public static event Action<int> toggleUI;
+
+
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
 
 
     public int SelectedGamer
@@ -190,6 +221,59 @@ public class GameManager : MonoBehaviour
     {
         toggleUI?.Invoke(-1);
         NextTurnPhase();
+    }
+
+    public void OpenShop()
+    {
+        toggleUI?.Invoke(2);
+    }
+
+    public void BuyShopItem(int item)
+    {
+        gamers[selectedGamer].seeds -= items[item].price;
+
+        gamers[selectedGamer].items.Add(items[item]);
+
+        gamers[selectedGamer].numItems++;
+
+        UpdateUI?.Invoke(0);
+        toggleUI?.Invoke(-1);
+
+        MapManager.instance.lookingAtShop = false;
+        
+        //NextTurnPhase();
+    }
+    public void CancelBuyShopItem()
+    {
+        toggleUI?.Invoke(-1);
+        MapManager.instance.lookingAtShop = false;
+        //NextTurnPhase();
+    }
+
+    public void NPCBuyItem()
+    {
+        List<int> NPCBuyableItems = new List<int>();
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (gamers[selectedGamer].seeds >= items[i].price * 1.15f)
+            {
+                NPCBuyableItems.Add(i);
+            }
+        }
+
+        if(NPCBuyableItems.Count > 0)
+        {
+            int itemToBuy = Random.Range(0, NPCBuyableItems.Count);
+
+            BuyShopItem(NPCBuyableItems[itemToBuy]);
+
+            Debug.Log("NPC bought item " + items[NPCBuyableItems[itemToBuy]].name);
+        }
+        else
+        {
+            Debug.Log("NPC too poor LOL");
+        }
     }
 
     public void Action(int action)
