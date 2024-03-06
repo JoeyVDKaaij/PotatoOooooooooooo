@@ -169,6 +169,20 @@ public class UIScript : MonoBehaviour
                     }
                 }
             }
+            else if (GameManager.instance.targetingItem == 6)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (GameManager.instance.gamers[i + 1].numItems > 0)
+                    {
+                        TargetingSlots[i].interactable = true;
+                    }
+                    else
+                    {
+                        TargetingSlots[i].interactable = false;
+                    }
+                }
+            }
         }
     }
 
@@ -268,4 +282,8 @@ public class UIScript : MonoBehaviour
     {
         GameManager.instance.UseTargetedItem(selectedTarget + 1);
     }
+
+
+
+    //public void
 }

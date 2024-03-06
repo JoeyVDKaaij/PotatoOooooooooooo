@@ -8006,7 +8006,7 @@ MonoBehaviour:
   - model: {fileID: 30460179}
     items: []
     numItems: 0
-    seeds: 30
+    seeds: 10
     treasure: 0
   - model: {fileID: 95000721}
     items: []
@@ -8016,41 +8016,47 @@ MonoBehaviour:
   - model: {fileID: 124310214}
     items: []
     numItems: 0
-    seeds: 25
+    seeds: 1
     treasure: 0
   items:
   - name: Grappling Hook
     description: "With the help of the grappling hook, you can steal someone\u2019s
-      treasure. "
+      treasure!"
     picture: {fileID: 21300000, guid: 6cd93d2559ec7b64c940a6346ef769ea, type: 3}
     price: 50
+    id: 0
   - name: Spyglass
-    description: 'Randomly changes the location of the treasure on the map. '
+    description: Changes the location of the treasure on the map!
     picture: {fileID: 21300000, guid: aa49716e5ffac96449d96704b95743da, type: 3}
     price: 20
+    id: 1
   - name: Magic Pouch
-    description: 'Steal random number of seeds from the selected player. '
+    description: Steal a maximum of 15 seeds from one player!
     picture: {fileID: 21300000, guid: 582889998c1fce5489cdd8fb6718af13, type: 3}
     price: 10
+    id: 2
   - name: Bottle of Juice
-    description: "Drink it and gain protection from other players\u2019 items. Lasts
-      x turns. "
+    description: "Drink it and gain protection from other players\u2019 items! Lasts
+      x turns."
     picture: {fileID: 21300000, guid: 2f875ad49f91b204fb69bb43f95d1333, type: 3}
     price: 20
+    id: 3
   - name: Golden dice
-    description: 'Next turn after using the item, you will be able to roll 2 dice
-      at the same time. '
+    description: Next turn after using the item, you will be able to roll 2 dice
+      at the same time!
     picture: {fileID: 21300000, guid: acee816b4d13c7b4a940a46c41031e28, type: 3}
     price: 15
+    id: 4
   - name: Old Mysterious Map
-    description: 'You and the selected player are going to swap positions. '
+    description: You and the selected player will swap places on the board!
     picture: {fileID: 21300000, guid: 2cfc101e83128294780353e4b6485d80, type: 3}
     price: 30
+    id: 5
   - name: Cannon
-    description: "Selected player loses 1 randomly selected item in their inventory.
-      (Grappling Hook \tcannot be selected and lost) "
+    description: 'Selected player loses 1 random item in their inventory! '
     picture: {fileID: 21300000, guid: cbcd1888ba893d349bdd675e672be2e7, type: 3}
     price: 30
+    id: 6
   selectedGamer: 0
   turnPhase: 0
   targetingItem: 0
