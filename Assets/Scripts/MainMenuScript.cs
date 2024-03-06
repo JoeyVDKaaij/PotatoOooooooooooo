@@ -30,12 +30,12 @@ public class MainMenuScript : MonoBehaviour
 
     public void ToggleMusic(bool isOn)
     {
-        Debug.Log("Music is " + isOn);
+        AudioManager.instance.ToggleMusic(isOn);
     }
 
     public void ToggleSFX(bool isOn)
     {
-        Debug.Log("SFX is " + isOn);
+        AudioManager.instance.ToggleSFX(isOn);
     }
 
     public void ToggleVibration(bool isOn)

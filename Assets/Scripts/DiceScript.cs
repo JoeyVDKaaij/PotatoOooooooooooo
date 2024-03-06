@@ -98,7 +98,7 @@ public class DiceScript : MonoBehaviour
             rb.AddForce(RandomizeVector(pARCamera) * rollSpeed, ForceMode.Impulse);
         else 
             rb.AddForce(RandomizeVector() * rollSpeed, ForceMode.Impulse);
-        rb.AddTorque(new Vector3(1,1,1));
+        rb.AddTorque(new Vector3(10,10,10));
         
         yield return new WaitForSeconds(checkDelay);
 
