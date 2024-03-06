@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int turnPhase = 0;
 
+    public int targetingItem = 0;
+
 
     public static event Action<int> AdvanceTurnPhase;
 
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
 
     public static event Action<int> toggleUI;
 
+
+    public int turnTimer = 0;
 
 
     public void Update()
@@ -133,7 +138,12 @@ public class GameManager : MonoBehaviour
             case (3):
                 turnPhase = 0;
                 selectedGamer++;
-                if(selectedGamer >= gamers.Length) selectedGamer = 0;
+                if (selectedGamer >= gamers.Length)
+                {
+                    selectedGamer = 0;
+                    turnTimer++;
+                    Debug.Log("Starting round " + turnTimer);
+                }
 
                 AdvanceTurnPhase?.Invoke(turnPhase);
 
@@ -225,7 +235,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenShop()
     {
-        toggleUI?.Invoke(2);
+        toggleUI?.Invoke(5);
     }
 
     public void BuyShopItem(int item)
@@ -287,6 +297,47 @@ public class GameManager : MonoBehaviour
             //
             case (1):
 
+                break;
+        }
+    }
+
+    public void UseItem(int item)
+    {
+        switch (item)
+        {
+            //Grappling Hook
+            case (0):
+                toggleUI?.Invoke(4);
+                targetingItem = 0;
+                break;
+        }
+    }
+
+    public void UseTargetedItem(int target)
+    {
+        Debug.Log("SHOOTING");
+        Debug.Log(target);
+        Debug.Log(targetingItem);
+
+        switch (targetingItem)
+        {
+            //Grappling Hook
+            case (0):
+
+                Debug.Log("UUUGHN");
+
+                gamers[target].treasure--;
+                gamers[selectedGamer].treasure++;
+                for(int i = 0; i < 3; i++)
+                {
+                    if (gamers[selectedGamer].items[i].name == items[0].name)
+                    {
+                        gamers[selectedGamer].items.RemoveAt(i);
+                        break;
+                    }
+                }
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
                 break;
         }
     }
