@@ -46,6 +46,7 @@ public class MapManager : MonoBehaviour
 
     bool decidingPath;
     public bool lookingAtShop;
+    public bool doubleDice;
 
     [SerializeField, Tooltip("Set the camera.")]
     private Camera mainCamera;
@@ -298,16 +299,49 @@ public class MapManager : MonoBehaviour
             dice.gameObject.SetActive(true);
             dice.transform.position =
                 GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
-            dice.RollTheDice(result =>
+
+            //during a normal roll
+            if (!doubleDice)
             {
-                stepsLeft = result;
-                dice.gameObject.SetActive(false);
-                GameManager.instance.NextTurnPhase();
+                dice.RollTheDice(result =>
+                {
+                    stepsLeft = result;
+                    dice.gameObject.SetActive(false);
+                    GameManager.instance.NextTurnPhase();
 
-                movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
-                movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                    movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                    movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
-            }, mainCamera.transform);
+                }, mainCamera.transform);
+            }
+            //during a double roll
+            else
+            {
+
+                doubleDice = false;
+
+                int totalResult = 0;
+
+                dice.RollTheDice(result =>
+                {
+                    totalResult += result;
+
+                    dice.transform.position =
+                        GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
+
+                    dice.RollTheDice(result =>
+                    {
+                        totalResult += result;
+                        stepsLeft = totalResult;
+                        dice.gameObject.SetActive(false);
+                        GameManager.instance.NextTurnPhase();
+
+                        movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                        movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                    }, mainCamera.transform);
+                }, mainCamera.transform);
+            }
             
 
 
