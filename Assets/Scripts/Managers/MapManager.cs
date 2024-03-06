@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -48,8 +49,21 @@ public class MapManager : MonoBehaviour
     public bool lookingAtShop;
     public bool doubleDice;
 
+    [SerializeField]
+    private TileScript[] possibleTreasureTiles;
+
+    [SerializeField]
+    private Material plusSeedsMat;
+    [SerializeField]
+    private Material treasureMat;
+
     [SerializeField, Tooltip("Set the camera.")]
     private Camera mainCamera;
+
+
+    public static event Action<int> ShowSteps;
+
+
 
     private void OnEnable() { GameManager.AdvanceTurnPhase += MoveNPC; }
 
@@ -199,6 +213,9 @@ public class MapManager : MonoBehaviour
 
                 }
 
+
+                ShowSteps(stepsLeft);
+
                 //prepare for next step
                 stepsLeft--;
 
@@ -219,6 +236,8 @@ public class MapManager : MonoBehaviour
                 Debug.Log("anyways, moving on");
                 //add tile actions here
                 GameManager.instance.NextTurnPhase();
+
+                ShowSteps(0);
 
                 TileScript.TileType type = tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentTile[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type;
 
@@ -312,6 +331,8 @@ public class MapManager : MonoBehaviour
                     movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
                     movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
+                    ShowSteps(result);
+
                 }, mainCamera.transform);
             }
             //during a double roll
@@ -338,6 +359,8 @@ public class MapManager : MonoBehaviour
 
                         movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
                         movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                        ShowSteps(totalResult);
 
                     }, mainCamera.transform);
                 }, mainCamera.transform);
@@ -410,6 +433,32 @@ public class MapManager : MonoBehaviour
 
         GameManager.instance.gamers[player1].model.transform.position = MoveTo(currentSection[player1], currentTile[player1]);
         GameManager.instance.gamers[player2].model.transform.position = MoveTo(currentSection[player2], currentTile[player2]);
+    }
+
+
+    public void SwapTreasureTile()
+    {
+        List<TileScript> tilesAvailable = new List<TileScript>(possibleTreasureTiles);
+
+        TileScript currentTreasureTile = null;
+
+        foreach (TileScript tile in tilesAvailable)
+        {
+            if (tile.type == TileScript.TileType.Treasure)
+            {
+                currentTreasureTile = tile;
+                tilesAvailable.Remove(tile);
+                break;
+            }
+        }
+
+        int chosenTile = Random.Range(0, tilesAvailable.Count);
+
+        currentTreasureTile.type = TileScript.TileType.PlusSeeds;
+        tilesAvailable[chosenTile].type = TileScript.TileType.Treasure;
+
+        currentTreasureTile.transform.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial = plusSeedsMat;
+        tilesAvailable[chosenTile].transform.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial = treasureMat;
     }
 
 
