@@ -8036,8 +8036,8 @@ MonoBehaviour:
     price: 10
     id: 2
   - name: Bottle of Juice
-    description: "Drink it and gain protection from other players\u2019 items! Lasts
-      x turns."
+    description: "Drink it and gain protection from other players\u2019 items turns
+      for 3 turns!"
     picture: {fileID: 21300000, guid: 2f875ad49f91b204fb69bb43f95d1333, type: 3}
     price: 20
     id: 3
@@ -14898,6 +14898,8 @@ MonoBehaviour:
   ShopText: {fileID: 724076971}
   ShopImage: {fileID: 1798416657}
   ShopButton: {fileID: 1617071702}
+  popup: {fileID: 1970340549}
+  popupText: {fileID: 1718963294}
 --- !u!114 &880647834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26264,7 +26266,7 @@ GameObject:
   - component: {fileID: 1650990721}
   - component: {fileID: 1650990720}
   m_Layer: 5
-  m_Name: RollDice
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
