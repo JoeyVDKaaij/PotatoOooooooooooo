@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3592718789945874826, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3592718790154745492, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
       propertyPath: m_Name
       value: MinigameManager
@@ -182,6 +186,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3592718790279866709, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e7119bbb46f9ef4c944cb6058f9aed6, type: 2}
+    - target: {fileID: 3592718790279866709, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6445922202532561734, guid: 4e7119bbb46f9ef4c944cb6058f9aed6, type: 2}
+    - target: {fileID: 3592718790298022580, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 789.5867
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718790298022580, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718790298022580, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718790298022581, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e7119bbb46f9ef4c944cb6058f9aed6, type: 2}
+    - target: {fileID: 3592718790298022581, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6445922202532561734, guid: 4e7119bbb46f9ef4c944cb6058f9aed6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
 --- !u!1 &264753988
@@ -197,6 +229,7 @@ GameObject:
   - component: {fileID: 264753992}
   - component: {fileID: 264753993}
   - component: {fileID: 264753994}
+  - component: {fileID: 264753995}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -245,7 +278,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -982544082, guid: b83b1e697a1a6094bbf1c1c7f412225c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -264,8 +297,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264753988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.17, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0904, y: -3.2505, z: 0}
+  m_LocalScale: {x: 0.18128476, y: 0.18128476, z: 0.18128476}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -288,7 +321,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 9.66, y: 19.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -330,6 +363,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76957d1ac5843f8907a02d7beff31d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &264753995
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264753988}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32fe3f9386b1f8f46b85e98792da0f21, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &415530442
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,8 +775,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2715082, g: 0.6563528, b: 0.8301887, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1c430fd4523cd2148a7577a59695d6d1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -741,8 +794,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780301292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 6.12, y: 10.7, z: 1}
+  m_LocalPosition: {x: -0.0039, y: -0.0247, z: 1}
+  m_LocalScale: {x: 0.295985, y: 0.28683743, z: 0.035464}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
