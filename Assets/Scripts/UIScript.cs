@@ -54,6 +54,13 @@ public class UIScript : MonoBehaviour
     [SerializeField]
     private Button ShopButton;
 
+
+    [SerializeField]
+    private GameObject popup;
+    [SerializeField]
+    private TMP_Text popupText;
+
+
     int selectedItem;
     int selectedTarget;
 
@@ -62,6 +69,7 @@ public class UIScript : MonoBehaviour
         GameManager.AdvanceTurnPhase += SwitchingTurn;
         GameManager.UpdateUI += UpdateUI;
         GameManager.toggleUI += ToggleUI;
+        GameManager.displayPopup += DisplayPopup;
     }
 
     private void OnDisable()
@@ -69,6 +77,7 @@ public class UIScript : MonoBehaviour
         GameManager.AdvanceTurnPhase -= SwitchingTurn;
         GameManager.UpdateUI -= UpdateUI;
         GameManager.toggleUI -= ToggleUI;
+        GameManager.displayPopup -= DisplayPopup;
     }
 
     private void OnDestroy()
@@ -76,6 +85,7 @@ public class UIScript : MonoBehaviour
         GameManager.AdvanceTurnPhase -= SwitchingTurn;
         GameManager.UpdateUI -= UpdateUI;
         GameManager.toggleUI -= ToggleUI;
+        GameManager.displayPopup -= DisplayPopup;
     }
 
     private void Start()
@@ -284,6 +294,19 @@ public class UIScript : MonoBehaviour
     }
 
 
+
+
+    public void DisplayPopup(string text, int timeToDisplay)
+    {
+        popup.SetActive(true);
+        popupText.text = text;
+        Invoke("HidePopup", timeToDisplay);
+    }
+
+    public void HidePopup()
+    {
+        popup.SetActive(false);
+    }
 
     //public void
 }
