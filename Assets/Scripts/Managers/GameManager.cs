@@ -340,8 +340,8 @@ public class GameManager : MonoBehaviour
                 break;
             //Cannon
             case (6):
-                toggleUI?.Invoke(4);
                 targetingItem = 6;
+                toggleUI?.Invoke(4);
                 break;
         }
     }
@@ -361,7 +361,7 @@ public class GameManager : MonoBehaviour
                 gamers[selectedGamer].treasure++;
                 for(int i = 0; i < 3; i++)
                 {
-                    if (gamers[selectedGamer].items[i].id == items[0].id)
+                    if (gamers[selectedGamer].items[i].id == 0)
                     {
                         gamers[selectedGamer].items.RemoveAt(i);
                         break;
@@ -383,7 +383,7 @@ public class GameManager : MonoBehaviour
 
                 for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
                 {
-                    if (gamers[selectedGamer].items[i].id == items[2].id)
+                    if (gamers[selectedGamer].items[i].id == 2)
                     {
                         gamers[selectedGamer].items.RemoveAt(i);
                         break;
@@ -395,7 +395,23 @@ public class GameManager : MonoBehaviour
                 break;
                 //Cannon
             case (6):
+                int itemDestroyed = Random.Range(0, gamers[target].numItems);
 
+                Debug.Log(" destroyed item: " + gamers[target].items[itemDestroyed].name);
+
+                gamers[target].items.RemoveAt(itemDestroyed);
+
+                for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
+                {
+                    if (gamers[selectedGamer].items[i].id == 6)
+                    {
+                        gamers[selectedGamer].items.RemoveAt(i);
+                        break;
+                    }
+                }
+
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
                 break;
         }
     }
