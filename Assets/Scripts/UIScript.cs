@@ -158,7 +158,7 @@ public class UIScript : MonoBehaviour
 
                 for(int i = 0; i < 3; i++)
                 {
-                    if (GameManager.instance.gamers[i + 1].treasure > 0) 
+                    if (GameManager.instance.gamers[i + 1].treasure > 0 && GameManager.instance.gamers[i + 1].protection < 1) 
                         TargetingSlots[i].interactable = true;
 
                     else 
@@ -169,8 +169,8 @@ public class UIScript : MonoBehaviour
             
                 for (int i = 0; i < 3; i++)
                 {
-                    if (GameManager.instance.gamers[i + 1].seeds > 0) 
-                        TargetingSlots[i].interactable = true;
+                    if (GameManager.instance.gamers[i + 1].seeds > 0 && GameManager.instance.gamers[i + 1].protection < 1)
+                            TargetingSlots[i].interactable = true;
 
                     else 
                         TargetingSlots[i].interactable = false;
@@ -187,7 +187,7 @@ public class UIScript : MonoBehaviour
 
                 for (int i = 0; i < 3; i++)
                 {
-                    if (GameManager.instance.gamers[i + 1].numItems > 0) 
+                    if (GameManager.instance.gamers[i + 1].numItems > 0 && GameManager.instance.gamers[i + 1].protection < 1) 
                         TargetingSlots[i].interactable = true;
 
                     else 

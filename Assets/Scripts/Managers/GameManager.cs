@@ -20,6 +20,8 @@ public struct Player
 
     public int seeds;
     public int treasure;
+
+    public int protection;
 }
 
 [System.Serializable]
@@ -147,6 +149,15 @@ public class GameManager : MonoBehaviour
                     selectedGamer = 0;
                     turnTimer++;
                     Debug.Log("Starting round " + turnTimer);
+
+                    for(int i = 0; i < gamers.Length; i++)
+                    {
+                        if (gamers[i].protection > 0)
+                        {
+                            gamers[i].protection--;
+                        }
+                    }
+
                 }
 
                 AdvanceTurnPhase?.Invoke(turnPhase);
@@ -336,7 +347,11 @@ public class GameManager : MonoBehaviour
                 break;
             //Bottle of juice
             case (3):
-
+                gamers[selectedGamer].protection = 4;
+                Debug.Log("BAZINGA");
+                RemoveItem(3);
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
                 break;
             //Golden Dice
             case (4):
@@ -371,14 +386,8 @@ public class GameManager : MonoBehaviour
 
                 displayPopup?.Invoke("You stole player " + target + "'s treasure! Shiver me timbers!", 3);
 
-                for (int i = 0; i < 3; i++)
-                {
-                    if (gamers[selectedGamer].items[i].id == 0)
-                    {
-                        gamers[selectedGamer].items.RemoveAt(i);
-                        break;
-                    }
-                }
+                RemoveItem(0);
+
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
                 break;
@@ -394,14 +403,7 @@ public class GameManager : MonoBehaviour
                 gamers[target].seeds -= coinsStolen;
                 gamers[selectedGamer].seeds += coinsStolen;
 
-                for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
-                {
-                    if (gamers[selectedGamer].items[i].id == 2)
-                    {
-                        gamers[selectedGamer].items.RemoveAt(i);
-                        break;
-                    }
-                }
+                RemoveItem(2);
 
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
@@ -412,14 +414,7 @@ public class GameManager : MonoBehaviour
 
                 displayPopup?.Invoke("You swapped positions with player " + target + "!", 3);
 
-                for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
-                {
-                    if (gamers[selectedGamer].items[i].id == 5)
-                    {
-                        gamers[selectedGamer].items.RemoveAt(i);
-                        break;
-                    }
-                }
+                RemoveItem(5);
 
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
@@ -433,18 +428,23 @@ public class GameManager : MonoBehaviour
 
                 gamers[target].items.RemoveAt(itemDestroyed);
 
-                for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
-                {
-                    if (gamers[selectedGamer].items[i].id == 6)
-                    {
-                        gamers[selectedGamer].items.RemoveAt(i);
-                        break;
-                    }
-                }
+                RemoveItem(6);
 
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
                 break;
+        }
+    }
+
+    void RemoveItem(int itemID)
+    {
+        for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
+        {
+            if (gamers[selectedGamer].items[i].id == itemID)
+            {
+                gamers[selectedGamer].items.RemoveAt(i);
+                break;
+            }
         }
     }
 }
