@@ -61,6 +61,10 @@ public class UIScript : MonoBehaviour
     private TMP_Text popupText;
 
 
+    [SerializeField]
+    private TMP_Text stepText;
+
+
     int selectedItem;
     int selectedTarget;
 
@@ -70,6 +74,7 @@ public class UIScript : MonoBehaviour
         GameManager.UpdateUI += UpdateUI;
         GameManager.toggleUI += ToggleUI;
         GameManager.displayPopup += DisplayPopup;
+        MapManager.ShowSteps += ShowSteps;
     }
 
     private void OnDisable()
@@ -78,6 +83,7 @@ public class UIScript : MonoBehaviour
         GameManager.UpdateUI -= UpdateUI;
         GameManager.toggleUI -= ToggleUI;
         GameManager.displayPopup -= DisplayPopup;
+        MapManager.ShowSteps -= ShowSteps;
     }
 
     private void OnDestroy()
@@ -86,6 +92,7 @@ public class UIScript : MonoBehaviour
         GameManager.UpdateUI -= UpdateUI;
         GameManager.toggleUI -= ToggleUI;
         GameManager.displayPopup -= DisplayPopup;
+        MapManager.ShowSteps -= ShowSteps;
     }
 
     private void Start()
@@ -312,4 +319,18 @@ public class UIScript : MonoBehaviour
     }
 
     //public void
+
+
+    public void ShowSteps(int step)
+    {
+        if(step > 0)
+        {
+            stepText.gameObject.SetActive(true);
+            stepText.text = step.ToString();
+        }
+        else
+        {
+            stepText.gameObject.SetActive(false);
+        }
+    }
 }
