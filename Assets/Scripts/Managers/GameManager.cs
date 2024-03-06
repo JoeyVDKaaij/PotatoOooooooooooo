@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
                     {
                         BuyTreasure();
 
-                        displayPopup?.Invoke("Player " + selectedGamer + " dug up a treasure chest!", 3);
+                        displayPopup?.Invoke("Player " + selectedGamer + " dug up a treasure chest! The treasure has moved to a different spot.", 3);
 
                     }
                     else
@@ -240,6 +240,11 @@ public class GameManager : MonoBehaviour
         //also add moving treasure!
         gamers[selectedGamer].seeds -= 20;
         gamers[selectedGamer].treasure += 1;
+        MapManager.instance.SwapTreasureTile();
+        if (selectedGamer == 0)
+        {
+            displayPopup?.Invoke("You dug up a treasure chest! The treasure has moved to a different spot.", 3);
+        }
         UpdateUI?.Invoke(0);
         toggleUI?.Invoke(-1);
         NextTurnPhase();
@@ -338,7 +343,9 @@ public class GameManager : MonoBehaviour
                 break;
             //Spyglass
             case (1):
-                
+                MapManager.instance.SwapTreasureTile();
+                displayPopup?.Invoke("Shiver me timbers, the treasure is in a different spot!", 2);
+                RemoveItem(1);
                 break;
             //Magic Pouch
             case (2):
@@ -348,6 +355,7 @@ public class GameManager : MonoBehaviour
             //Bottle of juice
             case (3):
                 gamers[selectedGamer].protection = 4;
+                displayPopup?.Invoke("You are now protected from the other player's item's effects!", 2);
                 RemoveItem(3);
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
