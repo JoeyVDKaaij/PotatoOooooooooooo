@@ -63,27 +63,27 @@ public class DiceScript : MonoBehaviour
                 float dotDown = Vector3.Dot(normal, down);
 
                 // Determine the side of collision
-                if (dotFront > 0.9f)
+                if (dotFront > 0.8f)
                 {
                     diceRoll = 4;
                 }
-                else if (dotBack > 0.9f)
+                else if (dotBack > 0.8f)
                 {
                     diceRoll = 3;
                 }
-                else if (dotRight > 0.9f)
+                else if (dotRight > 0.8f)
                 {
                     diceRoll = 5;
                 }
-                else if (dotLeft > 0.9f)
+                else if (dotLeft > 0.8f)
                 {
                     diceRoll = 2;
                 }
-                else if (dotUp > 0.9f)
+                else if (dotUp > 0.8f)
                 {
                     diceRoll = 1;
                 }
-                else if (dotDown > 0.9f)
+                else if (dotDown > 0.8f)
                 {
                     diceRoll = 6;
                 }

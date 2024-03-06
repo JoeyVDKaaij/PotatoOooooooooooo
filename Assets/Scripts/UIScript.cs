@@ -33,6 +33,17 @@ public class UIScript : MonoBehaviour
     [SerializeField]
     private GameObject[] toggleableUI;
 
+    [SerializeField]
+    private Image[] InventorySlots;
+    int inventorySlotSelected;
+
+    [SerializeField]
+    private Button inventoryUseButton;
+
+
+    [SerializeField]
+    private Button[] TargetingSlots;
+
 
     [SerializeField]
     private GameObject[] ShopSlots;
@@ -44,6 +55,7 @@ public class UIScript : MonoBehaviour
     private Button ShopButton;
 
     int selectedItem;
+    int selectedTarget;
 
     private void OnEnable()
     {
@@ -104,6 +116,10 @@ public class UIScript : MonoBehaviour
                 {
                     playerItemImages[i].images[j].sprite = GameManager.instance.gamers[i].items[j].picture;
                 }
+                else
+                {
+                    playerItemImages[i].images[j].sprite = null;
+                }
             }
         }
     }
@@ -122,11 +138,31 @@ public class UIScript : MonoBehaviour
 
         ShowShopInfo(0);
 
-        //if(uiToToggle == 0)
-        //{
-        //    if (GameManager.instance.gamers[GameManager.instance.SelectedGamer].seeds < 20)
-        //}
+        //if its the targeting UI, we need to see what players we can target.
+        if(uiToToggle == 4)
+        {
+            if (GameManager.instance.targetingItem == 0)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    if (GameManager.instance.gamers[i + 1].treasure > 0)
+                    {
+                        TargetingSlots[i].interactable = true;
+                    }
+                    else
+                    {
+                        TargetingSlots[i].interactable = false;
+                    }
+                }
+            }
+        }
     }
+
+
+
+
+
+
 
     public void InitializeShop()
     {
@@ -164,5 +200,54 @@ public class UIScript : MonoBehaviour
     public void BuySelectedItem()
     {
         GameManager.instance.BuyShopItem(selectedItem);
+    }
+
+
+
+
+
+
+
+    public void OpenInventory()
+    {
+        ToggleUI(3);
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (GameManager.instance.gamers[GameManager.instance.SelectedGamer].items.Count > i)
+            {
+                InventorySlots[i].sprite = GameManager.instance.gamers[GameManager.instance.SelectedGamer].items[i].picture;
+            }
+        }
+
+        inventoryUseButton.interactable = false;
+    }
+
+    public void SelectInventoryItem(int slot)
+    {
+        if (GameManager.instance.gamers[GameManager.instance.SelectedGamer].items.Count > slot)
+        {
+            inventoryUseButton.interactable = true;
+            inventorySlotSelected = slot;
+        }
+    }
+
+    public void UseSelectedItem()
+    {
+        GameManager.instance.UseItem(selectedItem);
+    }
+
+
+
+
+
+    public void SelectTarget(int slot)
+    {
+        selectedTarget = slot;
+    }
+
+    public void UseTargetedItem()
+    {
+        GameManager.instance.UseTargetedItem(selectedTarget + 1);
     }
 }
