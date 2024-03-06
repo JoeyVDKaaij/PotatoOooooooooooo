@@ -12,12 +12,6 @@ public class GyroScopeMovementScript : MonoBehaviour
 
     private float driftSpeedMultiplier = 0.1f;
     
-    private Vector3 oldPosition;
-
-    private Rigidbody2D rb;
-
-    private bool endMinigame = false;
-    
     private void Start()
     {
         if (SystemInfo.supportsGyroscope)
@@ -29,22 +23,11 @@ public class GyroScopeMovementScript : MonoBehaviour
         {
             Debug.Log("Gyroscope not supported on this device.");
         }
-
-        oldPosition = transform.position;
-
-        rb = GetComponent<Rigidbody2D>();
-        
-        MinigameManager.EndMinigame += EndMinigame;
-    }
-
-    private void OnDestroy()
-    {
-        MinigameManager.EndMinigame -= EndMinigame;
     }
 
     private void Update()
     {
-        if (_gyroscope != null && !endMinigame)
+        if (_gyroscope != null  && !MinigameManager.instance.StopMinigame)
         {
             // Get the orientation of gravity
             Vector3 gravityDirection = -Input.gyro.gravity;
@@ -61,12 +44,7 @@ public class GyroScopeMovementScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("You died!");
+            MinigameManager.instance.EndMinigameTimer();
         }
-    }
-
-    private void EndMinigame()
-    {
-        endMinigame = true;
     }
 }

@@ -5,20 +5,8 @@ public class TouchIdentifierScript : MonoBehaviour
 {
     Vector3 touchPosWorld;
 
-    private bool endMinigame;
-    
-    private void Start()
-    {
-        MinigameManager.EndMinigame += EndMinigame;
-    }
-
-    private void OnDestroy()
-    {
-        MinigameManager.EndMinigame -= EndMinigame;
-    }
-
     void Update() {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !MinigameManager.instance.StopMinigame)
         {
 
             Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);
@@ -31,10 +19,5 @@ public class TouchIdentifierScript : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void EndMinigame()
-    {
-        endMinigame = true;
     }
 }

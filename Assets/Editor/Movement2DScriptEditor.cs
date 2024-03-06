@@ -9,6 +9,7 @@ public class Movement2DScriptEditor : Editor
     private SerializedProperty chanceOfMovementAwakeProp;
     private SerializedProperty chanceOfMovementAwakeningProp;
     private SerializedProperty chanceOfMovementSleepProp;
+    private SerializedProperty playerNumberProp;
 
     private void OnEnable()
     {
@@ -17,6 +18,7 @@ public class Movement2DScriptEditor : Editor
         chanceOfMovementAwakeProp = serializedObject.FindProperty("chanceOfMovementAwake");
         chanceOfMovementAwakeningProp = serializedObject.FindProperty("chanceOfMovementAwakening");
         chanceOfMovementSleepProp = serializedObject.FindProperty("chanceOfMovementSleep");
+        playerNumberProp = serializedObject.FindProperty("playerNumber");
     }
 
     public override void OnInspectorGUI()
@@ -32,6 +34,7 @@ public class Movement2DScriptEditor : Editor
             EditorGUILayout.PropertyField(chanceOfMovementAwakeningProp);
             EditorGUILayout.PropertyField(chanceOfMovementSleepProp);
         } 
+        EditorGUILayout.PropertyField(playerNumberProp);
 
         serializedObject.ApplyModifiedProperties();
     }

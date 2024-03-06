@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Assertions.Must;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class MovementCheckerScript : MonoBehaviour
 {
     private CheckPhase checkPhase;
@@ -17,10 +18,16 @@ public class MovementCheckerScript : MonoBehaviour
     [SerializeField, Tooltip("Set the boats")]
     private GameObject[] boats = null;
 
+    [SerializeField, Tooltip("Set the dragon sprites (from sleep, then awakening and then awake)")]
+    private Sprite[] dragonSprites = null;
+
     private List<Vector3> boatOldPositions = new List<Vector3>();
+
+    private SpriteRenderer sr;
 
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         if (boats[0] != null)
         {
             foreach (var boat in boats)
@@ -36,20 +43,22 @@ public class MovementCheckerScript : MonoBehaviour
 
     void Update()
     {
-        if (boats[0] != null)
+        if (boats[0] != null && !MinigameManager.instance.StopMinigame)
         {
             timer += Time.deltaTime;
 
             if (timer >= coolDown && checkPhase == CheckPhase.sleep)
             {
-                Debug.Log("ABOUT TO CHECK");
+                if (dragonSprites != null)
+                    sr.sprite = dragonSprites[0];
                 checkPhase = CheckPhase.awakening;
                 MentionPhaseChange();
                 timer = 0;
             }
             else if (timer >= headsupCount && checkPhase == CheckPhase.awakening)
             {
-                Debug.Log("CHECKING MOVEMENT");
+                if (dragonSprites != null)
+                    sr.sprite = dragonSprites[2];
                 checkPhase = CheckPhase.awake;
                 MentionPhaseChange();
                 for (int i = 0; i < boats.Length; i++)
@@ -60,7 +69,8 @@ public class MovementCheckerScript : MonoBehaviour
             }
             else if (timer >= coolDown && checkPhase == CheckPhase.awake)
             {
-                Debug.Log("NOT CHECKING ANYMORE");
+                if (dragonSprites != null)
+                    sr.sprite = dragonSprites[3];
                 checkPhase = CheckPhase.sleep;
                 MentionPhaseChange();
                 timer = 0;
@@ -72,7 +82,7 @@ public class MovementCheckerScript : MonoBehaviour
                 {
                     if (boatOldPositions[i] != boats[i].transform.position)
                     {
-                        Debug.Log("YOU MOVED DURING CHECK WTF BRO?!?!?!??!??!?");
+                        MinigameManager.instance.GotDetected(i);
                     }
                 }
             }
