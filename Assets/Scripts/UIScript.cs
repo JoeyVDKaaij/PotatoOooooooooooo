@@ -151,47 +151,50 @@ public class UIScript : MonoBehaviour
         //if its the targeting UI, we need to see what players we can target.
         if(uiToToggle == 4)
         {
-            if (GameManager.instance.targetingItem == 0)
-            {
+
+            switch (GameManager.instance.targetingItem) {
+
+                case (0):
+
                 for(int i = 0; i < 3; i++)
                 {
-                    if (GameManager.instance.gamers[i + 1].treasure > 0)
-                    {
+                    if (GameManager.instance.gamers[i + 1].treasure > 0) 
                         TargetingSlots[i].interactable = true;
-                    }
-                    else
-                    {
+
+                    else 
                         TargetingSlots[i].interactable = false;
-                    }
                 }
-            }
-            else if (GameManager.instance.targetingItem == 2)
-            {
+                break;
+                case (2):
+            
                 for (int i = 0; i < 3; i++)
                 {
-                    if (GameManager.instance.gamers[i + 1].seeds > 0)
+                    if (GameManager.instance.gamers[i + 1].seeds > 0) 
+                        TargetingSlots[i].interactable = true;
+
+                    else 
+                        TargetingSlots[i].interactable = false;
+                }
+                break;
+                case (5):
+
+                    for (int i = 0; i < 3; i++)
                     {
                         TargetingSlots[i].interactable = true;
                     }
-                    else
-                    {
-                        TargetingSlots[i].interactable = false;
-                    }
-                }
-            }
-            else if (GameManager.instance.targetingItem == 6)
-            {
+                break;
+                case (6):
+
                 for (int i = 0; i < 3; i++)
                 {
-                    if (GameManager.instance.gamers[i + 1].numItems > 0)
-                    {
+                    if (GameManager.instance.gamers[i + 1].numItems > 0) 
                         TargetingSlots[i].interactable = true;
-                    }
-                    else
-                    {
+
+                    else 
                         TargetingSlots[i].interactable = false;
-                    }
                 }
+                break;
+
             }
         }
     }

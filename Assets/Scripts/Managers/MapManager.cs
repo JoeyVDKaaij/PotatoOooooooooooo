@@ -359,6 +359,26 @@ public class MapManager : MonoBehaviour
         return tileSections[section].tiles[tile].transform.position;
     }
 
+
+    public void swapPlayers(int player1, int player2)
+    {
+        int sec1 = currentSection[player1];
+        int sec2 = currentSection[player2];
+
+        int tile1 = currentTile[player1];
+        int tile2 = currentTile[player2];
+
+        currentSection[player1] = sec2;
+        currentSection[player2] = sec1;
+
+        currentTile[player1] = tile2;
+        currentTile[player2] = tile1;
+
+        GameManager.instance.gamers[player1].model.transform.position = MoveTo(currentSection[player1], currentTile[player1]);
+        GameManager.instance.gamers[player2].model.transform.position = MoveTo(currentSection[player2], currentTile[player2]);
+    }
+
+
     //public int[] FindPlayerBehind()
     //{
         

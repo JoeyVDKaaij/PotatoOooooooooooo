@@ -344,7 +344,8 @@ public class GameManager : MonoBehaviour
                 break;
             //Old Mysterious Map
             case (5):
-
+                targetingItem = 5; 
+                toggleUI?.Invoke(4);
                 break;
             //Cannon
             case (6):
@@ -405,7 +406,25 @@ public class GameManager : MonoBehaviour
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
                 break;
-                //Cannon
+            //Map
+            case (5):
+                MapManager.instance.swapPlayers(selectedGamer, target);
+
+                displayPopup?.Invoke("You swapped positions with player " + target + "!", 3);
+
+                for (int i = 0; i < gamers[selectedGamer].items.Count; i++)
+                {
+                    if (gamers[selectedGamer].items[i].id == 5)
+                    {
+                        gamers[selectedGamer].items.RemoveAt(i);
+                        break;
+                    }
+                }
+
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+            //Cannon
             case (6):
                 int itemDestroyed = Random.Range(0, gamers[target].numItems);
 
