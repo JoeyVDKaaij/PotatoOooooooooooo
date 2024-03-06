@@ -31,9 +31,9 @@ public class MinigameManager : MonoBehaviour
     // Scores from Know Your Enemies
     private float[] playerScoresKYE = {0,1,2,3};
 
-    private bool stopMinigame = false;
+    private bool stopMinigame = true;
 
-    private bool beginMinigame = true;
+    private bool beginMinigame = false;
 
     private float timer = 0;
 

@@ -15,8 +15,6 @@ public class MemoryCheckerScript : MonoBehaviour
     private Button[] buttons = null;
     
     private int[] solution = { 0, 0, 0, 0 };
-
-    private bool checking = false;
     
     void Start()
     {

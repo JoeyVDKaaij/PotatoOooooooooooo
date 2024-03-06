@@ -7,10 +7,6 @@ public class GyroScopeMovementScript : MonoBehaviour
     private Gyroscope _gyroscope;
 
     private float movementSpeed = 5;
-
-    private float driftSpeed = 0;
-
-    private float driftSpeedMultiplier = 0.1f;
     
     private void Start()
     {
@@ -36,7 +32,7 @@ public class GyroScopeMovementScript : MonoBehaviour
             Vector3 movementVector = new Vector3(-gravityDirection.x, 0, 0);
 
             // Apply the movement to the object
-            transform.Translate(movementVector * Time.deltaTime * 5f);
+            transform.Translate(movementVector * Time.deltaTime * movementSpeed);
         }
     }
 
