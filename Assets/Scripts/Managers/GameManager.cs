@@ -348,14 +348,16 @@ public class GameManager : MonoBehaviour
             //Bottle of juice
             case (3):
                 gamers[selectedGamer].protection = 4;
-                Debug.Log("BAZINGA");
                 RemoveItem(3);
                 toggleUI?.Invoke(-1);
                 UpdateUI?.Invoke(0);
                 break;
             //Golden Dice
             case (4):
-
+                MapManager.instance.doubleDice = true;
+                RemoveItem(4);
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
                 break;
             //Old Mysterious Map
             case (5):
