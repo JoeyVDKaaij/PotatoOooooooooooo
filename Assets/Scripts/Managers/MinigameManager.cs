@@ -330,6 +330,26 @@ public class MinigameManager : MonoBehaviour
                     gaveSeeds = false;
                     ScenesManager.instance.ChangeScene(1);
                 }
+                else if (Input.GetKeyDown(KeyCode.Space) && continueFromWinning)
+                {
+                    beginMinigame = false;
+                    playingStartAnimation = false;
+                    playingFinishAnimation = false;
+                    timer = 0;
+                    audioPlayed = false;
+                    winningScreen.SetActive(false);
+                    continueFromWinningText.SetActive(false);
+                    playerScoresKYE[0] = 0;
+                    for (int i = 0; i < playerScoresHC.Length; i++)
+                        playerScoresHC[i] = 0;
+                    playerScoresSYS[0] = 0;
+                    for (int i = 0; i < playerScoresETM.Length; i++)
+                        playerScoresETM[i] = 4;
+                    playerScoresSBTW[0] = 0;
+                    gaveSeeds = false;
+                    ScenesManager.instance.ChangeScene(1);
+                }
+
             }
         }
         else if (!playingFinishAnimation)

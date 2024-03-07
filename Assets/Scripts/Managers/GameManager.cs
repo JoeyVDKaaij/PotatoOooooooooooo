@@ -339,7 +339,7 @@ public class GameManager : MonoBehaviour
 
                 for(int i = 0; i < gamers.Length; i++)
                 {
-                    gamers[i].seeds += 15;
+                    gamers[i].seeds += seedsGained;
                 }
 
                 Invoke("NextTurnPhase", 2);
@@ -352,7 +352,7 @@ public class GameManager : MonoBehaviour
 
                 for (int i = 0; i < gamers.Length; i++)
                 {
-                    gamers[i].seeds -= Math.Min(gamers[i].seeds, 5);
+                    gamers[i].seeds -= Math.Min(gamers[i].seeds, seedsLost);
                 }
 
                 Invoke("NextTurnPhase", 2);
@@ -447,7 +447,7 @@ public class GameManager : MonoBehaviour
                 gamers[target].treasure--;
                 gamers[selectedGamer].treasure++;
 
-                displayPopup?.Invoke("You stole player " + target + "'s treasure! Shiver me timbers!", 3);
+                displayPopup?.Invoke("You stole player " + (target + 1) + "'s treasure! Shiver me timbers!", 3);
 
                 RemoveItem(0);
 
@@ -461,7 +461,7 @@ public class GameManager : MonoBehaviour
                 int coinsStolen = Random.Range(minStolenCoins, stealableCoins);
 
                 Debug.Log(" max: " + stealableCoins + " min: " + minStolenCoins + " result: " + coinsStolen);
-                displayPopup?.Invoke("You stole " + coinsStolen + " coins from player " + target + "!", 3);
+                displayPopup?.Invoke("You stole " + coinsStolen + " coins from player " + (target + 1) + "!", 3);
 
                 gamers[target].seeds -= coinsStolen;
                 gamers[selectedGamer].seeds += coinsStolen;
@@ -475,7 +475,7 @@ public class GameManager : MonoBehaviour
             case (5):
                 MapManager.instance.swapPlayers(selectedGamer, target);
 
-                displayPopup?.Invoke("You swapped positions with player " + target + "!", 3);
+                displayPopup?.Invoke("You swapped positions with player " + (target + 1) + "!", 3);
 
                 RemoveItem(5);
 
@@ -487,9 +487,10 @@ public class GameManager : MonoBehaviour
                 int itemDestroyed = Random.Range(0, gamers[target].numItems);
 
                 Debug.Log(" destroyed item: " + gamers[target].items[itemDestroyed].name);
-                displayPopup?.Invoke("You destroyed player " + target + "'s " + gamers[target].items[itemDestroyed].name + "!", 3);
+                displayPopup?.Invoke("You destroyed player " + (target + 1) + "'s " + gamers[target].items[itemDestroyed].name + "!", 3);
 
                 gamers[target].items.RemoveAt(itemDestroyed);
+                gamers[target].numItems--;
 
                 RemoveItem(6);
 
@@ -512,6 +513,7 @@ public class GameManager : MonoBehaviour
             if (gamers[selectedGamer].items[i].id == itemID)
             {
                 gamers[selectedGamer].items.RemoveAt(i);
+                gamers[selectedGamer].numItems--;
                 break;
             }
         }
@@ -614,7 +616,7 @@ public class GameManager : MonoBehaviour
 
                     if (target != 0)
                     {
-                        displayPopup?.Invoke("Player" + selectedGamer + " stole player " + target + "'s treasure! Shiver me timbers!", 3);
+                        displayPopup?.Invoke("Player" + selectedGamer + " stole player " + (target + 1) + "'s treasure! Shiver me timbers!", 3);
                     }
                     else
                     {
@@ -644,7 +646,7 @@ public class GameManager : MonoBehaviour
 
                     if (target != 0)
                     {
-                        displayPopup?.Invoke("Player " + selectedGamer + " stole " + coinsStolen + " coins from player " + target + "!", 3);
+                        displayPopup?.Invoke("Player " + selectedGamer + " stole " + coinsStolen + " coins from player " + (target + 1) + "!", 3);
                     }
                     else
                     {
@@ -677,7 +679,7 @@ public class GameManager : MonoBehaviour
 
                     if (target != 0)
                     {
-                        displayPopup?.Invoke("Player " + selectedGamer + " swapped positions with player " + target + "!", 3);
+                        displayPopup?.Invoke("Player " + selectedGamer + " swapped positions with player " + (target + 1) + "!", 3);
                     }
                     else
                     {
@@ -708,7 +710,7 @@ public class GameManager : MonoBehaviour
 
                     if (target != 0)
                     {
-                        displayPopup?.Invoke("Player " + selectedGamer + " destroyed player " + target + "'s " + gamers[target].items[itemDestroyed].name + " using a cannon!", 4);
+                        displayPopup?.Invoke("Player " + selectedGamer + " destroyed player " + (target + 1) + "'s " + gamers[target].items[itemDestroyed].name + " using a cannon!", 4);
                     }
                     else
                     {
@@ -729,6 +731,18 @@ public class GameManager : MonoBehaviour
     void NPCRollDice()
     {
         MapManager.instance.MoveNPC(turnPhase);
+    }
+
+    public void Hide(bool input)
+    {
+        if (input)
+        {
+            transform.position = new Vector3(0, -400, 0);
+        }
+        else
+        {
+            transform.position = new Vector3(0, 0, 0);
+        }
     }
 
 }

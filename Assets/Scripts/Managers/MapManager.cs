@@ -114,10 +114,12 @@ public class MapManager : MonoBehaviour
         if(ScenesManager.instance.CurrentScene == 1)
         {
             Hide(false);
+            GameManager.instance.Hide(false);
         }
         else
         {
             Hide(true);
+            GameManager.instance.Hide(true);
         }
 
         //Debug.Log((TileScript.TileType)Random.Range(0, 3));
