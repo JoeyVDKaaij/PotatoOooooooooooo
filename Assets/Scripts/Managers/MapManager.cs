@@ -124,7 +124,7 @@ public class MapManager : MonoBehaviour
 
             GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingFrom + moveAlong.normalized * movedDistance;
             GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.rotation = 
-                Quaternion.Slerp(Quaternion.LookRotation(moveAlong, Vector3.up), GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.rotation, 0.5f);
+                Quaternion.Slerp(Quaternion.LookRotation(moveAlong, Vector3.up), GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.rotation, 0.95f);
 
             //Debug.Log(stepsLeft);
 
