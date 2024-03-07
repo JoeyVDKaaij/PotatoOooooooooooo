@@ -31,8 +31,10 @@ public class MinigameManager : MonoBehaviour
     // Scores from Know Your Enemies
     private float[] playerScoresKYE = {0,1,2,3};
 
+    [SerializeField]
     private bool stopMinigame = true;
 
+    [SerializeField]
     private bool beginMinigame = false;
 
     private float timer = 0;
@@ -48,6 +50,12 @@ public class MinigameManager : MonoBehaviour
     private bool continueFromWinning = false;
 
     private float continueTextToggleTimer = 1;
+
+    private bool audioPlayed = false;
+
+    [SerializeField] private AudioClip winSoundEffect;
+
+    [SerializeField] private AudioClip loseSoundEffect;
     
     # region UnityFunctions
     
@@ -218,6 +226,7 @@ public class MinigameManager : MonoBehaviour
 
     private void WinningScreen()
     {
+        
         int winningPLayerId = 0;
         switch (_minigame)
         {
@@ -238,6 +247,14 @@ public class MinigameManager : MonoBehaviour
                 break;
         }
         GameManager.instance.gamers[winningPLayerId].seeds += 10;
+        if (!audioPlayed)
+        {
+            audioPlayed = true;
+            if (winningPLayerId == 0)
+                AudioManager.instance.PlaySound(winSoundEffect);
+            else
+                AudioManager.instance.PlaySound(loseSoundEffect);
+        }
 
         if (winningScreen != null)
         {
@@ -261,6 +278,7 @@ public class MinigameManager : MonoBehaviour
             {
                 beginMinigame = false;
                 timer = 0;
+                audioPlayed = false;
                 winningScreen.SetActive(false);
                 continueFromWinningText.SetActive(false);
                 ScenesManager.instance.ChangeScene(0);

@@ -14,6 +14,12 @@ public class MovementCheckerScript : MonoBehaviour
     private float coolDown = 4; 
     [SerializeField, Tooltip("How long before the checking actually starts")]
     private float headsupCount = 1;
+    [SerializeField, Tooltip("How long before the checking actually starts")]
+    private AudioClip awakeningSound = null;
+    [SerializeField, Tooltip("How long before the checking actually starts")]
+    private AudioClip awakeSound = null;
+    [SerializeField, Tooltip("How long before the checking actually starts")]
+    private AudioClip sleepSound = null;
 
     [SerializeField, Tooltip("Set the boats")]
     private GameObject[] boats = null;
@@ -49,6 +55,7 @@ public class MovementCheckerScript : MonoBehaviour
 
             if (timer >= coolDown && checkPhase == CheckPhase.sleep)
             {
+                if (awakeningSound != null) AudioManager.instance.PlaySound(awakeningSound);
                 if (dragonSprites != null)
                     sr.sprite = dragonSprites[0];
                 checkPhase = CheckPhase.awakening;
@@ -57,6 +64,7 @@ public class MovementCheckerScript : MonoBehaviour
             }
             else if (timer >= headsupCount && checkPhase == CheckPhase.awakening)
             {
+                if (awakeSound != null) AudioManager.instance.PlaySound(awakeSound);
                 if (dragonSprites != null)
                     sr.sprite = dragonSprites[2];
                 checkPhase = CheckPhase.awake;
@@ -69,6 +77,7 @@ public class MovementCheckerScript : MonoBehaviour
             }
             else if (timer >= coolDown && checkPhase == CheckPhase.awake)
             {
+                if (sleepSound != null) AudioManager.instance.PlaySound(sleepSound);
                 if (dragonSprites != null)
                     sr.sprite = dragonSprites[3];
                 checkPhase = CheckPhase.sleep;

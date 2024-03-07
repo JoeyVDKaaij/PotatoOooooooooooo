@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement2DScript : MonoBehaviour
@@ -16,6 +15,8 @@ public class Movement2DScript : MonoBehaviour
     private int chanceOfMovementSleep = 100;
     [SerializeField, Tooltip("Set how much chance the ai has to move while CheckPhase is asleep."), Range(0,3)]
     private int playerNumber = 0;
+    [SerializeField, Tooltip("Set the sound effect for sailing.")]
+    private AudioClip soundEffect = null;
 
     private bool stopMoving = false;
     private CheckPhase _checkPhase = CheckPhase.sleep;
@@ -24,6 +25,7 @@ public class Movement2DScript : MonoBehaviour
     {
         if (Input.touchCount > 0 && !stopMoving && !controlledByAI  && !MinigameManager.instance.StopMinigame)
         {
+            AudioManager.instance.PlaySound(soundEffect);
             transform.position += new Vector3(0, movementSpeed * Time.deltaTime);
         }
         else if (!stopMoving && controlledByAI  && !MinigameManager.instance.StopMinigame)

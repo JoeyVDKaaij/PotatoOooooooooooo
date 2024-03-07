@@ -219,6 +219,7 @@ MonoBehaviour:
   chanceOfMovementAwakening: 50
   chanceOfMovementSleep: 100
   playerNumber: 0
+  soundEffect: {fileID: 8300000, guid: 3e680aeb314ea3644b4396f3cdc3c227, type: 3}
 --- !u!212 &264753990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -815,6 +816,7 @@ MonoBehaviour:
   chanceOfMovementAwakening: 20
   chanceOfMovementSleep: 60
   playerNumber: 1
+  soundEffect: {fileID: 0}
 --- !u!212 &1235588222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1009,6 +1011,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDown: 3
   headsupCount: 1
+  awakeningSound: {fileID: 8300000, guid: 3315bbe3284641a44b29c7b62efcafab, type: 3}
+  awakeSound: {fileID: 8300000, guid: bd6c2d6e8b0de0247891a4a2d969a5e4, type: 3}
+  sleepSound: {fileID: 8300000, guid: 13736b30cd5436743a993e9f93f4cf7e, type: 3}
   boats:
   - {fileID: 264753988}
   - {fileID: 1235588218}
@@ -1235,6 +1240,7 @@ MonoBehaviour:
   chanceOfMovementAwakening: 20
   chanceOfMovementSleep: 60
   playerNumber: 2
+  soundEffect: {fileID: 0}
 --- !u!212 &1804770613
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1505,6 +1511,7 @@ MonoBehaviour:
   chanceOfMovementAwakening: 20
   chanceOfMovementSleep: 60
   playerNumber: 3
+  soundEffect: {fileID: 0}
 --- !u!212 &2126614955
 SpriteRenderer:
   m_ObjectHideFlags: 0

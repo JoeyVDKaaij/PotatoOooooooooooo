@@ -19,8 +19,17 @@ public class AccelerometerCuttingScript : MonoBehaviour
 
     private bool _stopMinigame;
 
+    [SerializeField] private Sprite[] spritesphases = null;
+
+    private int currentSprite = 0;
+    
+    private SpriteRenderer SR = null;
+    
     private void Start()
     {
+        SR = GetComponent<SpriteRenderer>();
+        if (SR != null && spritesphases != null)
+            SR.sprite = spritesphases[currentSprite];
         _animator = GetComponent<Animator>();
     }
 
@@ -49,6 +58,15 @@ public class AccelerometerCuttingScript : MonoBehaviour
                 }
             }
 
+            if (SR != null && spritesphases != null)
+            {
+                if (currentCuts / cutsNeeded * 100 >= (currentSprite + 1) / spritesphases.Length * 100 && currentSprite + 1 != spritesphases.Length)
+                {
+                    currentSprite++;
+                    SR.sprite = spritesphases[currentSprite];
+                }
+            }
+            
             if (currentCuts >= cutsNeeded) MinigameManager.instance.EndMinigameTimer();
         }
     }
