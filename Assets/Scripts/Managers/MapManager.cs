@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -45,13 +46,28 @@ public class MapManager : MonoBehaviour
     Vector3 moveAlong;
 
     bool decidingPath;
+    public bool lookingAtShop;
+    public bool doubleDice;
+
+    [SerializeField]
+    private TileScript[] possibleTreasureTiles;
+
+    [SerializeField]
+    private Material plusSeedsMat;
+    [SerializeField]
+    private Material treasureMat;
 
     [SerializeField, Tooltip("Set the camera.")]
     private Camera mainCamera;
 
-    private void OnEnable() { GameManager.AdvanceTurnPhase += MoveNPC; }
 
-    private void OnDisable() { GameManager.AdvanceTurnPhase -= MoveNPC; }
+    public static event Action<int> ShowSteps;
+
+
+
+    private void OnEnable() { } //GameManager.AdvanceTurnPhase += MoveNPC; }
+
+    private void OnDisable() { } //GameManager.AdvanceTurnPhase -= MoveNPC; }
 
 
     private void Awake()
@@ -101,10 +117,10 @@ public class MapManager : MonoBehaviour
 
         //deciding path check
 
-        if (GameManager.instance.TurnPhase == 1 && !decidingPath)
+        if (GameManager.instance.TurnPhase == 1 && !decidingPath && !lookingAtShop)
         {
 
-            movedDistance += Time.deltaTime / 0.2f;
+            movedDistance += Time.deltaTime / 0.4f;
 
             GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingFrom + moveAlong.normalized * movedDistance;
 
@@ -118,6 +134,8 @@ public class MapManager : MonoBehaviour
             //Debug.Log(movedDistance);
 
             //if it is time to step
+
+
             if (stepsLeft > 0 && movedDistance >= totalDistance)
             {
 
@@ -130,8 +148,25 @@ public class MapManager : MonoBehaviour
                 //if the tile is just a tile in the middle of a section (no intersection)
                 if (currentTile[gamerI] < tileSections[currentSection[gamerI]].tiles.Length - 1)
                 {
+
                     currentTile[gamerI]++;
-                    //GameManager.instance.gamers[GameManager.instance.SelectedGamer].transform.position = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                    //if the player passes a shop
+                    if (tileSections[currentSection[gamerI]].tiles[currentTile[gamerI]].GetComponent<TileScript>().type == TileScript.TileType.Shop)
+                    {
+                        if (gamerI == 0)
+                        {
+                            lookingAtShop = true;
+                            GameManager.instance.OpenShop();
+                        }
+                        else
+                        {
+                            GameManager.instance.NPCBuyItem();
+                        }
+
+                        currentTile[gamerI]++;
+                    }
+
 
                     movingTo = MoveTo(currentSection[gamerI], currentTile[gamerI]);
 
@@ -178,6 +213,9 @@ public class MapManager : MonoBehaviour
 
                 }
 
+
+                ShowSteps(stepsLeft);
+
                 //prepare for next step
                 stepsLeft--;
 
@@ -198,6 +236,8 @@ public class MapManager : MonoBehaviour
                 Debug.Log("anyways, moving on");
                 //add tile actions here
                 GameManager.instance.NextTurnPhase();
+
+                ShowSteps(0);
 
                 TileScript.TileType type = tileSections[currentSection[GameManager.instance.SelectedGamer]].tiles[currentTile[GameManager.instance.SelectedGamer]].GetComponent<TileScript>().type;
 
@@ -278,16 +318,53 @@ public class MapManager : MonoBehaviour
             dice.gameObject.SetActive(true);
             dice.transform.position =
                 GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
-            dice.RollTheDice(result =>
+
+            //during a normal roll
+            if (!doubleDice)
             {
-                stepsLeft = result;
-                dice.gameObject.SetActive(false);
-                GameManager.instance.NextTurnPhase();
+                dice.RollTheDice(result =>
+                {
+                    stepsLeft = result;
+                    dice.gameObject.SetActive(false);
+                    GameManager.instance.NextTurnPhase();
 
-                movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
-                movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                    movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                    movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
-            }, mainCamera.transform);
+                    ShowSteps(result);
+
+                }, mainCamera.transform);
+            }
+            //during a double roll
+            else
+            {
+
+                doubleDice = false;
+
+                int totalResult = 0;
+
+                dice.RollTheDice(result =>
+                {
+                    totalResult += result;
+
+                    dice.transform.position =
+                        GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position + Vector3.up;
+
+                    dice.RollTheDice(result =>
+                    {
+                        totalResult += result;
+                        stepsLeft = totalResult;
+                        dice.gameObject.SetActive(false);
+                        GameManager.instance.NextTurnPhase();
+
+                        movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+                        movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                        ShowSteps(totalResult);
+
+                    }, mainCamera.transform);
+                }, mainCamera.transform);
+            }
             
 
 
@@ -301,7 +378,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    private void MoveNPC(int pCurrentPhase)
+    public void MoveNPC(int pCurrentPhase)
     {
         if (GameManager.instance.gamers.Length > 0)
         {
@@ -339,17 +416,87 @@ public class MapManager : MonoBehaviour
         return tileSections[section].tiles[tile].transform.position;
     }
 
-    //public int[] FindPlayerBehind()
-    //{
-        
+
+    public void swapPlayers(int player1, int player2)
+    {
+        int sec1 = currentSection[player1];
+        int sec2 = currentSection[player2];
+
+        int tile1 = currentTile[player1];
+        int tile2 = currentTile[player2];
+
+        currentSection[player1] = sec2;
+        currentSection[player2] = sec1;
+
+        currentTile[player1] = tile2;
+        currentTile[player2] = tile1;
+
+        GameManager.instance.gamers[player1].model.transform.position = MoveTo(currentSection[player1], currentTile[player1]);
+        GameManager.instance.gamers[player2].model.transform.position = MoveTo(currentSection[player2], currentTile[player2]);
+    }
 
 
-    //}
+    public void SwapTreasureTile()
+    {
+        List<TileScript> tilesAvailable = new List<TileScript>(possibleTreasureTiles);
 
-    //public int[] FindPlayerInFront()
-    //{
+        TileScript currentTreasureTile = null;
+
+        foreach (TileScript tile in tilesAvailable)
+        {
+            if (tile.type == TileScript.TileType.Treasure)
+            {
+                currentTreasureTile = tile;
+                tilesAvailable.Remove(tile);
+                break;
+            }
+        }
+
+        int chosenTile = Random.Range(0, tilesAvailable.Count);
+
+        currentTreasureTile.type = TileScript.TileType.PlusSeeds;
+        tilesAvailable[chosenTile].type = TileScript.TileType.Treasure;
+
+        currentTreasureTile.transform.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial = plusSeedsMat;
+        tilesAvailable[chosenTile].transform.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial = treasureMat;
+    }
 
 
+    public int FindClosestPlayer(int originPlayer)
+    {
 
-    //}
+        int shortestDistance = 10000;
+        int closestI = 0;
+
+        for(int i = 0; i < 4; i++)
+        {
+            if (i != originPlayer)
+            {
+                if (currentSection[i] == currentSection[originPlayer])
+                {
+                    if (Math.Abs(currentTile[originPlayer] - currentTile[i]) < shortestDistance)
+                    {
+                        shortestDistance = currentTile[originPlayer] - currentTile[i];
+                        closestI = i;
+                    }
+                }
+            }
+        }
+
+        return closestI;
+
+    }
+
+    public bool IsPlayerClose(int originPlayer)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (i != originPlayer && currentSection[i] == currentSection[originPlayer])
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
