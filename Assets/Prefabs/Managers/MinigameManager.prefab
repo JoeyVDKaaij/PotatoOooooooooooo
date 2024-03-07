@@ -929,6 +929,7 @@ MonoBehaviour:
   _minigame: 1
   winningScreen: {fileID: 3592718789945874826}
   winnerText: {fileID: 3592718790298022581}
+  winnerImage: {fileID: 3592718790075852333}
   continueFromWinningText: {fileID: 3592718788720363476}
   stopMinigame: 1
   beginMinigame: 0

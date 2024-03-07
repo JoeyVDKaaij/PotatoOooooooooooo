@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MinigameManager : MonoBehaviour
@@ -12,11 +13,14 @@ public class MinigameManager : MonoBehaviour
     [SerializeField, Tooltip("Set the current MiniGame that the player is playing.")]
     private Minigame _minigame;
 
-    [SerializeField, Tooltip("Set the GameObject that is being used as a scoreboard.")]
+    [SerializeField, Tooltip("Set the GameObject that is being used as a Winning Screen.")]
     private GameObject winningScreen = null;
 
     [SerializeField, Tooltip("Set the Text GameObject that is being used to show who wins.")]
     private TMP_Text winnerText;
+
+    [SerializeField, Tooltip("Set the Image GameObject that is being used to show who wins.")]
+    private Image winnerImage;
 
     [SerializeField, Tooltip("Set the Text GameObject that is being used to show who wins.")]
     private GameObject continueFromWinningText;
@@ -278,7 +282,9 @@ public class MinigameManager : MonoBehaviour
             {
                 if (!winningScreen.activeSelf) winningScreen.SetActive(true);
                 if (winnerText != null) winnerText.SetText("Player " + (winningPLayerId + 1) + " WINS!!");
-
+                if (winnerImage != null) winnerImage.sprite = GameManager.instance.gamers[winningPLayerId].icon;
+                
+                
                 timer += Time.deltaTime;
 
                 if (timer >= winningScreenTime && !continueFromWinning)
