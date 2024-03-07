@@ -65,6 +65,10 @@ public class UIScript : MonoBehaviour
     private TMP_Text stepText;
 
 
+    [SerializeField]
+    private GameObject[] halos;
+
+
     int selectedItem;
     int selectedTarget;
 
@@ -115,6 +119,13 @@ public class UIScript : MonoBehaviour
 
         turnUI.SetActive(GameManager.instance.SelectedGamer == 0 && turnPhase == 0);
 
+
+        foreach(GameObject halo in halos)
+        {
+            halo.SetActive(false);
+        }
+        halos[GameManager.instance.SelectedGamer].SetActive(true);
+
         //    }
         //}
     }
@@ -132,10 +143,12 @@ public class UIScript : MonoBehaviour
                 if (GameManager.instance.gamers[i].items.Count > j)
                 {
                     playerItemImages[i].images[j].sprite = GameManager.instance.gamers[i].items[j].picture;
+                    playerItemImages[i].images[j].color = new Color(1, 1, 1, 1);
                 }
                 else
                 {
                     playerItemImages[i].images[j].sprite = null;
+                    playerItemImages[i].images[j].color = new Color(0, 0, 0, 0.5f);
                 }
             }
         }
@@ -265,10 +278,12 @@ public class UIScript : MonoBehaviour
             if (GameManager.instance.gamers[GameManager.instance.SelectedGamer].items.Count > i)
             {
                 InventorySlots[i].sprite = GameManager.instance.gamers[GameManager.instance.SelectedGamer].items[i].picture;
+                InventorySlots[i].color = new Color(1, 1, 1, 1);
             }
             else
             {
                 InventorySlots[i].sprite = null;
+                InventorySlots[i].color = new Color(0, 0, 0, 0.5f);
             }
         }
 
