@@ -18,6 +18,7 @@ public class Movement2DScript : MonoBehaviour
     [SerializeField, Tooltip("Set the sound effect for sailing.")]
     private AudioClip soundEffect = null;
 
+    private float timer;
     private bool stopMoving = false;
     private CheckPhase _checkPhase = CheckPhase.sleep;
     
@@ -25,8 +26,11 @@ public class Movement2DScript : MonoBehaviour
     {
         if (Input.touchCount > 0 && !stopMoving && !controlledByAI  && !MinigameManager.instance.StopMinigame)
         {
-            AudioManager.instance.PlaySound(soundEffect);
             transform.position += new Vector3(0, movementSpeed * Time.deltaTime);
+            if (soundEffect != null && AudioManager.instance != null && timer >= soundEffect.length)
+            {
+                AudioManager.instance.PlaySound(soundEffect);
+            }
         }
         else if (!stopMoving && controlledByAI  && !MinigameManager.instance.StopMinigame)
         {

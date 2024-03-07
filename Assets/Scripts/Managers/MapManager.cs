@@ -276,14 +276,12 @@ public class MapManager : MonoBehaviour
         }
         else if (decidingPath)
         {
-
-            //Debug.Log("NUH UHHHH");
             PlayAnimation(false);
-
-            if (Input.GetMouseButtonDown(0))
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);
                 RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                
                 if (Physics.Raycast(ray, out hit, 100.0f))
                 {
 
