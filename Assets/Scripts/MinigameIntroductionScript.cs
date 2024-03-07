@@ -40,19 +40,24 @@ public class MinigameIntroductionScript : MonoBehaviour
         switch (MinigameManager.instance._Minigame)
         {
             case Minigame.sweptbythewind:
-                ScenesManager.instance.ChangeScene(0);
+                MinigameManager.instance.StartAnimation();
+                ScenesManager.instance.ChangeScene(7);
                 break;
             case Minigame.spreadyoursails:
-                ScenesManager.instance.ChangeScene(0);
+                MinigameManager.instance.StartAnimation();
+                ScenesManager.instance.ChangeScene(6);
                 break;
             case Minigame.hungrycrew:
-                ScenesManager.instance.ChangeScene(0);
+                MinigameManager.instance.StartAnimation();
+                ScenesManager.instance.ChangeScene(4);
                 break;
             case Minigame.escapethemonster:
-                ScenesManager.instance.ChangeScene(0);
+                MinigameManager.instance.StartAnimation();
+                ScenesManager.instance.ChangeScene(3);
                 break;
             case Minigame.knowyourenemies:
-                ScenesManager.instance.ChangeScene(0);
+                MinigameManager.instance.StartAnimation();
+                ScenesManager.instance.ChangeScene(5);
                 break;
         }
     }

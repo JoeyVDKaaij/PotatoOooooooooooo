@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
@@ -14,6 +13,29 @@ public class AudioManager : MonoBehaviour
 
     private bool muteMusic = false;
     private bool muteSFX = false;
+    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            // if (transform.parent.gameObject != null) DontDestroyOnLoad(transform.parent.gameObject);
+            // else 
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
     
     private void Start()
     {

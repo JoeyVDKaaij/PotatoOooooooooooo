@@ -10,6 +10,8 @@ public class GyroScopeMovementScript : MonoBehaviour
 
     [SerializeField] private AudioClip movementSoundEffect = null;
     [SerializeField] private AudioClip crashSoundEffect = null;
+
+    private float timer = 10000;
     
     private void Start()
     {
@@ -37,7 +39,14 @@ public class GyroScopeMovementScript : MonoBehaviour
             // Apply the movement to the object
             transform.Translate(movementVector * Time.deltaTime * movementSpeed);
         }
-        if (movementSoundEffect != null) AudioManager.instance.PlaySound(movementSoundEffect);
+
+        timer += Time.deltaTime;
+        
+        if (movementSoundEffect != null && AudioManager.instance != null && timer >= movementSoundEffect.length)
+        {
+            timer = 0;
+            AudioManager.instance.PlaySound(movementSoundEffect);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

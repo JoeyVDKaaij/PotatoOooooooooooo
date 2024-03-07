@@ -299,7 +299,7 @@ public class MinigameManager : MonoBehaviour
                     audioPlayed = false;
                     winningScreen.SetActive(false);
                     continueFromWinningText.SetActive(false);
-                    ScenesManager.instance.ChangeScene(0);
+                    ScenesManager.instance.ChangeScene(1);
                 }
             }
         }

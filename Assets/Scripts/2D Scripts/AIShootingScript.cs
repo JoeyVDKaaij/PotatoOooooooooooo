@@ -6,6 +6,7 @@ public class AIShootingScript : MonoBehaviour
 
     private float timer;
 
+    [SerializeField]
     private float shootingDelay = 2;
 
     // Update is called once per frame
