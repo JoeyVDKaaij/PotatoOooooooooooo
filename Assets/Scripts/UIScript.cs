@@ -76,6 +76,7 @@ public class UIScript : MonoBehaviour
         GameManager.toggleUI += ToggleUI;
         GameManager.displayPopup += DisplayPopup;
         MapManager.ShowSteps += ShowSteps;
+        MapManager.toggleUI += ToggleUI;
     }
 
     private void OnDisable()
@@ -85,6 +86,7 @@ public class UIScript : MonoBehaviour
         GameManager.toggleUI -= ToggleUI;
         GameManager.displayPopup -= DisplayPopup;
         MapManager.ShowSteps -= ShowSteps;
+        MapManager.toggleUI -= ToggleUI;
     }
 
     private void OnDestroy()
@@ -94,6 +96,7 @@ public class UIScript : MonoBehaviour
         GameManager.toggleUI -= ToggleUI;
         GameManager.displayPopup -= DisplayPopup;
         MapManager.ShowSteps -= ShowSteps;
+        MapManager.toggleUI -= ToggleUI;
     }
 
     private void Start()
@@ -355,5 +358,12 @@ public class UIScript : MonoBehaviour
         {
             stepText.gameObject.SetActive(false);
         }
+    }
+
+
+    public void IntersectionDecide(int dir)
+    {
+        MapManager.instance.pathChosen = dir;
+        ToggleUI(-1);
     }
 }
