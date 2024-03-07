@@ -329,6 +329,7 @@ public class MinigameManager : MonoBehaviour
                     playerScoresSBTW[0] = 0;
                     gaveSeeds = false;
                     ScenesManager.instance.ChangeScene(1);
+                    GameManager.instance.NextTurnPhase();
                 }
                 else if (Input.GetKeyDown(KeyCode.Space) && continueFromWinning)
                 {
@@ -348,6 +349,7 @@ public class MinigameManager : MonoBehaviour
                     playerScoresSBTW[0] = 0;
                     gaveSeeds = false;
                     ScenesManager.instance.ChangeScene(1);
+                    GameManager.instance.NextTurnPhase();
                 }
 
             }

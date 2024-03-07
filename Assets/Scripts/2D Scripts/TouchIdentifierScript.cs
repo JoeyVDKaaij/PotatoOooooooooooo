@@ -10,7 +10,7 @@ public class TouchIdentifierScript : MonoBehaviour
     private AudioClip missSoundEffect = null;
 
     void Update() {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !MinigameManager.instance.StopMinigame)
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began && !MinigameManager.instance.StopMinigame)
         {
 
             Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);

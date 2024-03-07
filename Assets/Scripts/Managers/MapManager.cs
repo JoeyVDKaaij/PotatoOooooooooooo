@@ -282,6 +282,8 @@ public class MapManager : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);
                 RaycastHit hit;
                 
+                GameManager.instance.DebugPopup("Touch detected");
+                
                 if (Physics.Raycast(ray, out hit, 100.0f))
                 {
 
@@ -360,7 +362,7 @@ public class MapManager : MonoBehaviour
 
                     PlayAnimation(true);
 
-                }, mainCamera.transform);
+                }, Camera.main.transform);
             }
             //during a double roll
             else
@@ -391,8 +393,8 @@ public class MapManager : MonoBehaviour
 
                         PlayAnimation(true);
 
-                    }, mainCamera.transform);
-                }, mainCamera.transform);
+                    }, Camera.main.transform);
+                }, Camera.main.transform);
             }
             
 

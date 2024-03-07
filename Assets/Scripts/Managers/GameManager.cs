@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -130,13 +129,13 @@ public class GameManager : MonoBehaviour
 
                 AdvanceTurnPhase?.Invoke(turnPhase);
 
-            break;
+                break;
             //TILE PHASE
             case (2):
 
                 AdvanceTurnPhase?.Invoke(turnPhase);
 
-            break;
+                break;
             //MENU PHASE
             case (3):
                 turnPhase = 0;
@@ -166,7 +165,7 @@ public class GameManager : MonoBehaviour
                 }
                
 
-            break;
+                break;
         }
     }
 
@@ -185,7 +184,6 @@ public class GameManager : MonoBehaviour
             case (TileScript.TileType.Minigame):
                 //Minigame
                 StartMinigame();
-                NextTurnPhase();
                 break;
             case (TileScript.TileType.Action):
                 StartAction();
@@ -528,7 +526,7 @@ public class GameManager : MonoBehaviour
 
         if (gamers[selectedGamer].numItems > 0)
         {
-            bool willUseItem = Random.Range(0, 1) == 0;
+            bool willUseItem = Random.Range(0, 3) == 0;
 
             int itemToUse = Random.Range(0, gamers[selectedGamer].numItems);
 
@@ -747,4 +745,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void DebugPopup(string text)
+    {
+        displayPopup?.Invoke(text, 1);
+    }
 }

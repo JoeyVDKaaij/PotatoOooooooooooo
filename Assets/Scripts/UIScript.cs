@@ -100,6 +100,13 @@ public class UIScript : MonoBehaviour
     {
         UpdateUI(0);
         InitializeShop();
+        turnUI.SetActive(GameManager.instance.SelectedGamer == 0);
+        
+        foreach(GameObject halo in halos)
+        {
+            halo.SetActive(false);
+        }
+        halos[GameManager.instance.SelectedGamer].SetActive(true);
     }
 
     public void MovePlayer()

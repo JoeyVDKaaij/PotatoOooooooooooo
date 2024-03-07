@@ -5,7 +5,10 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
     
-    private AudioSource AS = null;
+    [SerializeField]
+    private AudioSource ASMusic = null;
+    [SerializeField]
+    private AudioSource ASSFX = null;
     
     [Header("Audio Settings")]
     [SerializeField, Tooltip("Volume of the game."), Range(0,100)]
@@ -16,9 +19,11 @@ public class AudioManager : MonoBehaviour
     
     private void Awake()
     {
-        AS = GetComponent<AudioSource>();
-        AS.volume = _volume / 100;
-        AS.Play();
+        if (ASMusic != null)
+            ASMusic = GetComponent<AudioSource>();
+        ASMusic.volume = _volume / 100;
+        ASSFX.volume = _volume / 100;
+        ASSFX.Play();
         if (instance == null)
         {
             instance = this;
@@ -42,17 +47,21 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (_volume / 100 != AS.volume)
-            AS.volume = _volume / 100;
+        if (_volume / 100 != ASMusic.volume)
+            ASMusic.volume = _volume / 100;
+        if (_volume / 100 != ASSFX.volume)
+            ASSFX.volume = _volume / 100;
         
-        if (muteMusic) AS.Stop();
-        else if (!muteMusic && !AS.isPlaying) AS.Play();
+        if (muteMusic) ASMusic.Stop();
+        else if (!muteMusic && !ASMusic.isPlaying) ASMusic.Play();
+        
+        if (muteSFX) ASSFX.Stop();
     }
 
     public void PlaySound(AudioClip pClip)
     {
         if (!muteSFX)
-            AS.PlayOneShot(pClip);
+            ASSFX.PlayOneShot(pClip);
     }
 
     public void ToggleMusic(bool pMute)
