@@ -738,6 +738,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3592718788720363482, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718789945874826, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3592718790154745492, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
       propertyPath: m_Name
       value: MinigameManager
@@ -784,6 +792,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3592718790154745498, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718790279866709, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718790298022581, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4199424392970567708, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}

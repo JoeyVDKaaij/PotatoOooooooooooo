@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.WSA;
-using static UnityEditor.Progress;
-using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -83,6 +79,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene(0);
+        }
+
+        if (turnTimer >= 20)
+        {
+            ScenesManager.instance.ChangeScene(8);
         }
     }
 

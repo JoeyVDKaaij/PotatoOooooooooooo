@@ -99,6 +99,7 @@ public class MemoryCheckerScript : MonoBehaviour
             {
                 spriteChanges[i].transform.GetChild(j).gameObject.SetActive(j == randomizeParts[i]);
             }
+            spriteChanges[i].GetComponent<SwapSprites>().UpdateChildId(randomizeParts[i]);
         }
         
         foreach (var button in buttons)

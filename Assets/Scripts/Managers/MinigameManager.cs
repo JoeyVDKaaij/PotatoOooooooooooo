@@ -48,7 +48,7 @@ public class MinigameManager : MonoBehaviour
     private float timeUntilShootingEnds = 30;
 
     [SerializeField, Tooltip("Set the time how long the Know Your Enemies minigame goes on for.")] 
-    private float timeUntilMemoryEnds = 30;
+    private float timeUntilMemoryEnds = 60;
 
     private float winningScreenTime = 3;
 
@@ -69,6 +69,8 @@ public class MinigameManager : MonoBehaviour
     private bool playingFinishAnimation = false;
 
     private bool playingStartAnimation = false;
+
+    private bool gaveSeeds = false;
     
     # region UnityFunctions
     
@@ -149,6 +151,8 @@ public class MinigameManager : MonoBehaviour
     private void KnowYourEnemies()
     {
         timer += Time.deltaTime;
+        
+        Debug.Log(playerScoresKYE[0]);
         
         if (timer >= timeUntilMemoryEnds) stopMinigame = true;
     }
@@ -271,7 +275,13 @@ public class MinigameManager : MonoBehaviour
                     winningPLayerId = playerScoresKYE.ToList().IndexOf(playerScoresKYE.Max());
                     break;
             }
-            GameManager.instance.gamers[winningPLayerId].seeds += 10;
+            
+            if (!gaveSeeds)
+            {
+                gaveSeeds = true;
+                GameManager.instance.gamers[winningPLayerId].seeds += 10;
+            }
+            
             if (!audioPlayed)
             {
                 audioPlayed = true;
@@ -310,6 +320,14 @@ public class MinigameManager : MonoBehaviour
                     audioPlayed = false;
                     winningScreen.SetActive(false);
                     continueFromWinningText.SetActive(false);
+                    playerScoresKYE[0] = 0;
+                    for (int i = 0; i < playerScoresHC.Length; i++)
+                        playerScoresHC[i] = 0;
+                    playerScoresSYS[0] = 0;
+                    for (int i = 0; i < playerScoresETM.Length; i++)
+                        playerScoresETM[i] = 4;
+                    playerScoresSBTW[0] = 0;
+                    gaveSeeds = false;
                     ScenesManager.instance.ChangeScene(1);
                 }
             }

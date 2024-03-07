@@ -632,7 +632,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Touch anywhere to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -934,7 +934,7 @@ MonoBehaviour:
   stopMinigame: 1
   beginMinigame: 0
   timeUntilShootingEnds: 30
-  timeUntilMemoryEnds: 30
+  timeUntilMemoryEnds: 60
   winSoundEffect: {fileID: 8300000, guid: dae1f8a44692556449951e3d240f7ad9, type: 3}
   loseSoundEffect: {fileID: 8300000, guid: f89fce46a4e04834583d8e17c6666077, type: 3}
   startAnimation: {fileID: 2427562536151110874}
@@ -1007,8 +1007,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Reward: 10 seeds'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
+  m_sharedMaterial: {fileID: -3246821648419776911, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1142,8 +1142,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Player [NULL] WINS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
+  m_sharedMaterial: {fileID: -3246821648419776911, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

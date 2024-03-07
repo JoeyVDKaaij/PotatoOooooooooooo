@@ -20,6 +20,11 @@ public class SwapSprites : MonoBehaviour
         transform.GetChild(childId).gameObject.SetActive(true);
     }
 
+    public void UpdateChildId(int pChildId)
+    {
+        childId = pChildId;
+    }
+
     public int ChildInt
     {
         get { return childId; }

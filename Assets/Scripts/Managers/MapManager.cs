@@ -110,7 +110,7 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         //Debug.Log((TileScript.TileType)Random.Range(0, 3));
 
         //Debug.Log(Camera.main);

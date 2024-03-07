@@ -1396,7 +1396,7 @@ MonoBehaviour:
     sea. Control your ship carefully to avoid all the obstacles on the way, tilt
     the phone left and right to move.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_sharedMaterial: {fileID: -5891012905791160242, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_margin: {x: 25, y: 0, z: 25, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &503251018
@@ -2744,7 +2744,7 @@ MonoBehaviour:
     To escape, make sure the monster does not see you moving. Tap and hold the screen
     to move your boat.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_sharedMaterial: {fileID: -5891012905791160242, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2808,7 +2808,7 @@ MonoBehaviour:
   m_margin: {x: 25, y: 0, z: 25, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1176431403
@@ -2881,7 +2881,7 @@ MonoBehaviour:
     sea! Take your swords out and cut the rope as fast as you can, by moving the
     phone up and down.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_sharedMaterial: {fileID: -5891012905791160242, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2945,7 +2945,7 @@ MonoBehaviour:
   m_margin: {x: 25, y: 0, z: 25, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1225862220
@@ -3921,8 +3921,8 @@ MonoBehaviour:
     the sea is full of food! Catch as many fish and other sea creatures as you can
     by tapping the screen, to feed your team and be ready to face new challenges.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
-  m_sharedMaterial: {fileID: -5891012905791160242, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
+  m_sharedMaterial: {fileID: -3246821648419776911, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4523,7 +4523,7 @@ MonoBehaviour:
     identify ships of your enemies. Make sure you remember all the details of the
     ship. Click the buttons to recreate the ship.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6eb283c91f38e4840a35a62071934b7a, type: 2}
   m_sharedMaterial: {fileID: -5891012905791160242, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4587,7 +4587,7 @@ MonoBehaviour:
   m_margin: {x: 25, y: 0, z: 25, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1944120154
