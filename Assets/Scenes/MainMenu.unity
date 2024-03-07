@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &22045651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2570,7 +2570,7 @@ MonoBehaviour:
   m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
-  m_sharedMaterial: {fileID: -5891012905791160242, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
+  m_sharedMaterial: {fileID: -7614770935905674694, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3271,7 +3271,7 @@ MonoBehaviour:
   m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
-  m_sharedMaterial: {fileID: -5891012905791160242, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
+  m_sharedMaterial: {fileID: -7614770935905674694, guid: c1ba0cf57e3f6f248a8a0189546a86e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
