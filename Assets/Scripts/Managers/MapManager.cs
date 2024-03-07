@@ -65,9 +65,9 @@ public class MapManager : MonoBehaviour
 
 
 
-    private void OnEnable() { GameManager.AdvanceTurnPhase += MoveNPC; }
+    private void OnEnable() { } //GameManager.AdvanceTurnPhase += MoveNPC; }
 
-    private void OnDisable() { GameManager.AdvanceTurnPhase -= MoveNPC; }
+    private void OnDisable() { } //GameManager.AdvanceTurnPhase -= MoveNPC; }
 
 
     private void Awake()
@@ -120,7 +120,7 @@ public class MapManager : MonoBehaviour
         if (GameManager.instance.TurnPhase == 1 && !decidingPath && !lookingAtShop)
         {
 
-            movedDistance += Time.deltaTime / 0.2f;
+            movedDistance += Time.deltaTime / 0.4f;
 
             GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingFrom + moveAlong.normalized * movedDistance;
 
@@ -378,7 +378,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    private void MoveNPC(int pCurrentPhase)
+    public void MoveNPC(int pCurrentPhase)
     {
         if (GameManager.instance.gamers.Length > 0)
         {

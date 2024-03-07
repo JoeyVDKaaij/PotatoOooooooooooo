@@ -8149,13 +8149,13 @@ MonoBehaviour:
   - model: {fileID: 72750604}
     items: []
     numItems: 0
-    seeds: 25
+    seeds: 40
     treasure: 0
     protection: 0
   - model: {fileID: 30460179}
     items: []
     numItems: 0
-    seeds: 10
+    seeds: 40
     treasure: 0
     protection: 0
   - model: {fileID: 95000721}
@@ -8167,46 +8167,46 @@ MonoBehaviour:
   - model: {fileID: 124310214}
     items: []
     numItems: 0
-    seeds: 1
+    seeds: 40
     treasure: 0
     protection: 0
   items:
   - name: Grappling Hook
     description: "With the help of the grappling hook, you can steal someone\u2019s
       treasure!"
-    picture: {fileID: 21300000, guid: 602373ac445afc945a41026751e31091, type: 3}
+    picture: {fileID: 21300000, guid: 005a1027d732e204a99df9e4754d348e, type: 3}
     price: 50
     id: 0
   - name: Spyglass
     description: Changes the location of the treasure on the map!
-    picture: {fileID: 21300000, guid: a6e664fa12ce9854d9ce6c9725354559, type: 3}
+    picture: {fileID: 21300000, guid: 45977d65ad5229a45a558ef288153bdf, type: 3}
     price: 20
     id: 1
   - name: Magic Pouch
     description: Steal a maximum of 15 seeds from one player!
-    picture: {fileID: 21300000, guid: 9c59c0037e23f57419870e2309daa149, type: 3}
+    picture: {fileID: 21300000, guid: f135f74af9ef66a4ea8a32cdf01751b6, type: 3}
     price: 10
     id: 2
   - name: Bottle of Juice
     description: "Drink it and gain protection from other players\u2019 items turns
       for 3 turns!"
-    picture: {fileID: 21300000, guid: 64a2ef3e285a9bb47ab11f37352b0690, type: 3}
+    picture: {fileID: 21300000, guid: 54fac13d7d1fc85409c384af45228730, type: 3}
     price: 20
     id: 3
   - name: Golden dice
     description: Next turn after using the item, you will be able to roll 2 dice
       at the same time!
-    picture: {fileID: 21300000, guid: ae36a62e6b5107a4f9203b103c9b75da, type: 3}
+    picture: {fileID: 21300000, guid: 9308524b3bee8934eb45bdeb5927975a, type: 3}
     price: 15
     id: 4
   - name: Old Mysterious Map
     description: You and the selected player will swap places on the board!
-    picture: {fileID: 21300000, guid: 9ac93a88127443d438152381911b2f2a, type: 3}
+    picture: {fileID: 21300000, guid: b0ffb321b28cdd64684869a0fa8ae3c4, type: 3}
     price: 30
     id: 5
   - name: Cannon
     description: 'Selected player loses 1 random item in their inventory! '
-    picture: {fileID: 21300000, guid: dfd5408be3a95ce46b5dd9a53a546246, type: 3}
+    picture: {fileID: 21300000, guid: 395caff21e9d23343bb63ff99ba42cbc, type: 3}
     price: 30
     id: 6
   selectedGamer: 0
@@ -20510,7 +20510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 12
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89339bfc993ee5046a89f0aff3b2cdd9, type: 2}
   m_sharedMaterial: {fileID: 6406940887154676933, guid: 89339bfc993ee5046a89f0aff3b2cdd9, type: 2}
@@ -23672,7 +23672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1457163212
 RectTransform:
   m_ObjectHideFlags: 0
