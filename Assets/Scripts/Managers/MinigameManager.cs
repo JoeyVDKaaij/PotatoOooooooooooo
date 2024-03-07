@@ -67,6 +67,8 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private PlayableDirector finishAnimation;
 
     private bool playingFinishAnimation = false;
+
+    private bool playingStartAnimation = false;
     
     # region UnityFunctions
     
@@ -117,7 +119,7 @@ public class MinigameManager : MonoBehaviour
         {
             WinningScreen();
         }
-        else if (startAnimation.state != PlayState.Playing)
+        else if (startAnimation.state != PlayState.Playing && playingStartAnimation)
         {
             stopMinigame = false;
             beginMinigame = true;
@@ -243,6 +245,7 @@ public class MinigameManager : MonoBehaviour
     public void StartAnimation()
     {
         startAnimation.Play();
+        playingStartAnimation = true;
     }
     
     private void WinningScreen()
@@ -301,6 +304,8 @@ public class MinigameManager : MonoBehaviour
                 if (Input.touchCount > 0 && continueFromWinning)
                 {
                     beginMinigame = false;
+                    playingStartAnimation = false;
+                    playingFinishAnimation = false;
                     timer = 0;
                     audioPlayed = false;
                     winningScreen.SetActive(false);
