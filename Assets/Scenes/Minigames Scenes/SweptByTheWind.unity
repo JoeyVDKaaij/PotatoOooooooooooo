@@ -330,6 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76957d1ac5843f8907a02d7beff31d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSoundEffect: {fileID: 8300000, guid: 3adfecc1c66151a4a927272e9cc0fe2b, type: 3}
+  crashSoundEffect: {fileID: 8300000, guid: fa623c06e757bcf4e9738bf4da5a3241, type: 3}
 --- !u!1 &415530442
 GameObject:
   m_ObjectHideFlags: 0

@@ -888,8 +888,8 @@ Transform:
   m_Children:
   - {fileID: 277430626}
   - {fileID: 2103997049}
-  - {fileID: 198227319}
-  - {fileID: 1333075316}
+  - {fileID: 1576908901}
+  - {fileID: 1987760856}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13767,6 +13767,7 @@ GameObject:
   - component: {fileID: 1163463295}
   - component: {fileID: 1163463294}
   - component: {fileID: 1163463293}
+  - component: {fileID: 1163463296}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -13889,6 +13890,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163463291}
   m_CullTransparentMesh: 1
+--- !u!114 &1163463296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163463291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e98e88f0bc438eb49715ff4a95f0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 4ba606b85d59dc147a050814fc24e921, type: 3}
 --- !u!1001 &1166156317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17878,6 +17892,7 @@ GameObject:
   - component: {fileID: 1482731008}
   - component: {fileID: 1482731007}
   - component: {fileID: 1482731006}
+  - component: {fileID: 1482731009}
   m_Layer: 5
   m_Name: Fake dropdown button
   m_TagString: Untagged
@@ -18011,6 +18026,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482731004}
   m_CullTransparentMesh: 1
+--- !u!114 &1482731009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482731004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e98e88f0bc438eb49715ff4a95f0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 4ba606b85d59dc147a050814fc24e921, type: 3}
 --- !u!1 &1497607909
 GameObject:
   m_ObjectHideFlags: 0
@@ -19430,6 +19458,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca7465ff6c857ae4086e967abbb15457, type: 3}
+--- !u!4 &1576908901 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ca7465ff6c857ae4086e967abbb15457, type: 3}
+  m_PrefabInstance: {fileID: 1576908900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1578242568
 GameObject:
   m_ObjectHideFlags: 0
@@ -19885,6 +19918,7 @@ GameObject:
   - component: {fileID: 1636540503}
   - component: {fileID: 1636540502}
   - component: {fileID: 1636540501}
+  - component: {fileID: 1636540504}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -20007,6 +20041,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636540499}
   m_CullTransparentMesh: 1
+--- !u!114 &1636540504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636540499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e98e88f0bc438eb49715ff4a95f0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 4ba606b85d59dc147a050814fc24e921, type: 3}
 --- !u!1 &1641707860
 GameObject:
   m_ObjectHideFlags: 0
@@ -21098,6 +21145,7 @@ GameObject:
   - component: {fileID: 1716162358}
   - component: {fileID: 1716162356}
   - component: {fileID: 1716162357}
+  - component: {fileID: 1716162360}
   m_Layer: 5
   m_Name: Fake dropdown button
   m_TagString: Untagged
@@ -21231,6 +21279,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1716162360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716162355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e98e88f0bc438eb49715ff4a95f0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 4ba606b85d59dc147a050814fc24e921, type: 3}
 --- !u!1001 &1731206715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24044,7 +24105,6 @@ Transform:
   - {fileID: 889159689}
   - {fileID: 1551680121}
   - {fileID: 369573330}
-  - {fileID: 1739804383}
   - {fileID: 2642074840038522585}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -24310,6 +24370,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0c848067f93939846bb18942da97930a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 883539a446479434e845d27149c47344, type: 3}
+--- !u!4 &1987760856 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 883539a446479434e845d27149c47344, type: 3}
+  m_PrefabInstance: {fileID: 1987760855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2029513750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24723,6 +24788,7 @@ GameObject:
   - component: {fileID: 2042329031}
   - component: {fileID: 2042329030}
   - component: {fileID: 2042329029}
+  - component: {fileID: 2042329032}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -24845,6 +24911,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042329027}
   m_CullTransparentMesh: 1
+--- !u!114 &2042329032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042329027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e98e88f0bc438eb49715ff4a95f0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 78a57184c9d7cac4ab4ecb0aa0513bae, type: 3}
 --- !u!1 &2045279206
 GameObject:
   m_ObjectHideFlags: 0

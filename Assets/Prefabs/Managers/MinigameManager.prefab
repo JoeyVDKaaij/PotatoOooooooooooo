@@ -366,6 +366,9 @@ MonoBehaviour:
   winnerText: {fileID: 3592718790298022581}
   continueFromWinningText: {fileID: 3592718788720363476}
   timeUntilShootingEnds: 30
+  timeUntilMemoryEnds: 30
+  winSoundEffect: {fileID: 8300000, guid: dae1f8a44692556449951e3d240f7ad9, type: 3}
+  loseSoundEffect: {fileID: 8300000, guid: f89fce46a4e04834583d8e17c6666077, type: 3}
 --- !u!1 &3592718790279866711
 GameObject:
   m_ObjectHideFlags: 0
