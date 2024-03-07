@@ -73,18 +73,18 @@ public class GameManager : MonoBehaviour
     public int turnTimer = 0;
 
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene(1);
-        }
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        SceneManager.LoadScene(1);
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene(0);
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        SceneManager.LoadScene(0);
+    //    }
+    //}
 
 
 
@@ -510,10 +510,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void StartMinigame()
+    public void StartMinigame()
     {
         MinigameManager.instance.ChangeMinigame((Minigame)Random.Range(0, Enum.GetValues(typeof(Minigame)).Length));
-        ScenesManager.instance.NextScene();
+        ScenesManager.instance.ChangeScene(2);
     }
 
     void RemoveItem(int itemID)
