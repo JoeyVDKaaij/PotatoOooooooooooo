@@ -69,11 +69,6 @@ public class GameManager : MonoBehaviour
     public int turnTimer = 0;
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene(0);
-        }
-
         if (turnTimer >= 20)
         {
             ScenesManager.instance.ChangeScene(8);
