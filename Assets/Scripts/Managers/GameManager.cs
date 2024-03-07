@@ -24,6 +24,8 @@ public struct Player
     public int treasure;
 
     public int protection;
+
+    public Sprite icon;
 }
 
 [System.Serializable]
