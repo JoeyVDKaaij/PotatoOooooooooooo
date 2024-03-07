@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 AdvanceTurnPhase?.Invoke(turnPhase);
+                toggleUI?.Invoke(-1);
 
             break;
         }
@@ -316,13 +317,24 @@ public class GameManager : MonoBehaviour
     public void StartAction()
     {
 
-        int action = Random.Range(0, 3);
+        int action = 0;
+
+        if (MapManager.instance.IsPlayerClose(selectedGamer))
+        {
+            action = Random.Range(0, 3);
+        }
+        else
+        {
+            action = Random.Range(0, 4);
+        }
+
 
         switch(action)
         {
             //coins rain (rare)
             case (0):
-                displayPopup?.Invoke("Yarr, tonight we feast! Everyone gets 15 seeds!", 4);
+                int seedsGained = Random.Range(12, 20);
+                displayPopup?.Invoke("Yarr, tonight we feast! Everyone gets " + seedsGained + " seeds!", 4);
 
                 for(int i = 0; i < gamers.Length; i++)
                 {
@@ -334,7 +346,8 @@ public class GameManager : MonoBehaviour
                 break;
             //Whirlpool
             case (1):
-                displayPopup?.Invoke("Shiver me timbers, a whirlpool! We lost 5 seeds in the chaos!", 4);
+                int seedsLost = Random.Range(4, 8);
+                displayPopup?.Invoke("Shiver me timbers, a whirlpool! We lost " + seedsLost + " seeds in the chaos!", 4);
 
                 for (int i = 0; i < gamers.Length; i++)
                 {
@@ -350,6 +363,15 @@ public class GameManager : MonoBehaviour
                 MapManager.instance.swapPlayers(0, 3);
                 MapManager.instance.swapPlayers(1, 2);
                 MapManager.instance.swapPlayers(0, Random.Range(1, 3));
+
+                Invoke("NextTurnPhase", 2);
+
+                break;
+            case (3):
+                int seedsStolen = Random.Range(4, 6);
+                int victim = MapManager.instance.FindClosestPlayer(0);
+
+                displayPopup?.Invoke("Well look here, someone dropped something! You took " + seedsStolen + " seeds from player", 4);
 
                 Invoke("NextTurnPhase", 2);
 
@@ -487,4 +509,57 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
+    public void NPCUseItem(int slot)
+    {
+
+        int item = gamers[selectedGamer].items[slot].id;
+
+        switch (item)
+        {
+            //Grappling Hook
+            case (0):
+                targetingItem = 0;
+                toggleUI?.Invoke(4);
+                break;
+            //Spyglass
+            case (1):
+                MapManager.instance.SwapTreasureTile();
+                displayPopup?.Invoke("Shiver me timbers, the treasure is in a different spot!", 2);
+                RemoveItem(1);
+                break;
+            //Magic Pouch
+            case (2):
+                targetingItem = 2;
+                toggleUI?.Invoke(4);
+                break;
+            //Bottle of juice
+            case (3):
+                gamers[selectedGamer].protection = 4;
+                displayPopup?.Invoke("You are now protected from the other player's item's effects!", 2);
+                RemoveItem(3);
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+            //Golden Dice
+            case (4):
+                MapManager.instance.doubleDice = true;
+                RemoveItem(4);
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+            //Old Mysterious Map
+            case (5):
+                targetingItem = 5;
+                toggleUI?.Invoke(4);
+                break;
+            //Cannon
+            case (6):
+                targetingItem = 6;
+                toggleUI?.Invoke(4);
+                break;
+        }
+    }
+
 }

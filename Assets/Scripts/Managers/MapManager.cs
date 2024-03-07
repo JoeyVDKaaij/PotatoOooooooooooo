@@ -462,17 +462,41 @@ public class MapManager : MonoBehaviour
     }
 
 
-    //public int[] FindPlayerBehind()
-    //{
-        
+    public int FindClosestPlayer(int originPlayer)
+    {
 
+        int shortestDistance = 10000;
+        int closestI = 0;
 
-    //}
+        for(int i = 0; i < 4; i++)
+        {
+            if (i != originPlayer)
+            {
+                if (currentSection[i] == currentSection[originPlayer])
+                {
+                    if (Math.Abs(currentTile[originPlayer] - currentTile[i]) < shortestDistance)
+                    {
+                        shortestDistance = currentTile[originPlayer] - currentTile[i];
+                        closestI = i;
+                    }
+                }
+            }
+        }
 
-    //public int[] FindPlayerInFront()
-    //{
+        return closestI;
 
+    }
 
+    public bool IsPlayerClose(int originPlayer)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (i != originPlayer && currentSection[i] == currentSection[originPlayer])
+            {
+                return true;
+            }
+        }
 
-    //}
+        return false;
+    }
 }
