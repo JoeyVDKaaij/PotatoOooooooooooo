@@ -334,6 +334,8 @@ public class MapManager : MonoBehaviour
                     movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
                     ShowSteps(result);
+                    
+                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.GetComponent<Animator>().SetBool(0,true);
 
                 }, mainCamera.transform);
             }
