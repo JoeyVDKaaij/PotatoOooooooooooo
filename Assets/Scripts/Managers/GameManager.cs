@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.WSA;
 using static UnityEditor.Progress;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
@@ -183,8 +184,8 @@ public class GameManager : MonoBehaviour
                 NextTurnPhase();
                 break;
             case (TileScript.TileType.Action):
-                //Action
-                NextTurnPhase();
+                StartAction();
+                //NextTurnPhase();
                 break;
             case (TileScript.TileType.Random):
                 TileAction((TileScript.TileType)Random.Range(0, 3));
@@ -312,16 +313,45 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void Action(int action)
+    public void StartAction()
     {
+
+        int action = Random.Range(0, 3);
+
         switch(action)
         {
-            //surprise!
+            //coins rain (rare)
             case (0):
+                displayPopup?.Invoke("Yarr, tonight we feast! Everyone gets 15 seeds!", 4);
+
+                for(int i = 0; i < gamers.Length; i++)
+                {
+                    gamers[i].seeds += 15;
+                }
+
+                Invoke("NextTurnPhase", 2);
 
                 break;
-            //
+            //Whirlpool
             case (1):
+                displayPopup?.Invoke("Shiver me timbers, a whirlpool! We lost 5 seeds in the chaos!", 4);
+
+                for (int i = 0; i < gamers.Length; i++)
+                {
+                    gamers[i].seeds -= Math.Min(gamers[i].seeds, 5);
+                }
+
+                Invoke("NextTurnPhase", 2);
+
+                break;
+            case (2):
+                displayPopup?.Invoke("A storm hit us, seems we all lost control!", 4);
+
+                MapManager.instance.swapPlayers(0, 3);
+                MapManager.instance.swapPlayers(1, 2);
+                MapManager.instance.swapPlayers(0, Random.Range(1, 3));
+
+                Invoke("NextTurnPhase", 2);
 
                 break;
         }
