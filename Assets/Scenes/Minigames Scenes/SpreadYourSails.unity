@@ -374,6 +374,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 1
+  spritesphases:
+  - {fileID: 21300000, guid: ede4345f74c8f114ca7b621c32394b95, type: 3}
+  - {fileID: 21300000, guid: 5d285bedd321e314ea0265136528b586, type: 3}
+  - {fileID: 21300000, guid: 787aa1144029174479d3dd6e2ea8fb9b, type: 3}
+  - {fileID: 21300000, guid: 83f400cafba11cf48b1cee54c86928ef, type: 3}
+  - {fileID: 21300000, guid: 2a960f0235055b54a999d1a448bc0d1b, type: 3}
 --- !u!95 &737663911
 Animator:
   serializedVersion: 4
@@ -663,6 +669,14 @@ PrefabInstance:
     - target: {fileID: 3592718790154745492, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
       propertyPath: m_Name
       value: MinigameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718790154745493, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: stopMinigame
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3592718790154745493, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
+      propertyPath: beginMinigame
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3592718790154745498, guid: 11a0a1a5236c12a4fa184c12ed82e003, type: 3}
       propertyPath: m_RootOrder

@@ -30,10 +30,12 @@ public class MovementCheckerScript : MonoBehaviour
     private List<Vector3> boatOldPositions = new List<Vector3>();
 
     private SpriteRenderer sr;
+    private Animator _animator;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         if (boats[0] != null)
         {
             foreach (var boat in boats)
@@ -61,6 +63,7 @@ public class MovementCheckerScript : MonoBehaviour
                 checkPhase = CheckPhase.awakening;
                 MentionPhaseChange();
                 timer = 0;
+                _animator.SetInteger(0,1);
             }
             else if (timer >= headsupCount && checkPhase == CheckPhase.awakening)
             {
@@ -74,6 +77,7 @@ public class MovementCheckerScript : MonoBehaviour
                     boatOldPositions[i] = boats[i].transform.position;
                 }
                 timer = 0;
+                _animator.SetInteger(0,2);
             }
             else if (timer >= coolDown && checkPhase == CheckPhase.awake)
             {
@@ -83,6 +87,7 @@ public class MovementCheckerScript : MonoBehaviour
                 checkPhase = CheckPhase.sleep;
                 MentionPhaseChange();
                 timer = 0;
+                _animator.SetInteger(0,0);
             }
 
             if (checkPhase == CheckPhase.awake)

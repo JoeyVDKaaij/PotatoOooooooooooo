@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5982bd45d5229bd41afabb7c999670a9
+guid: 646f47d794feb1c468a3a251775a93d1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,505 +141,505 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpriteAwake_0
+      name: DragonShockNew_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 824
-        width: 409.6
-        height: 206
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37b2cfe5222293b41ba9915c0e3aedd7
-      internalID: 1633932320
+      spriteID: dee0ef959332e4843af3bb5afe1aa691
+      internalID: -276673448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_1
+      name: DragonShockNew_1
       rect:
         serializedVersion: 2
-        x: 409
-        y: 824
-        width: 409.6
-        height: 206
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e88caff6c91d844e94141f44b60159f
-      internalID: 1280376764
+      spriteID: 245c0da7a94366345befb08bf2e1265d
+      internalID: 2013242718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_2
+      name: DragonShockNew_2
       rect:
         serializedVersion: 2
-        x: 818
-        y: 824
-        width: 409.6
-        height: 206
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d88f3fc064b343d4ca29b51e19f1f0c0
-      internalID: -1744021550
+      spriteID: 41930dff292a66845bcba20d57912184
+      internalID: -422461990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_3
+      name: DragonShockNew_3
       rect:
         serializedVersion: 2
-        x: 1227
-        y: 824
-        width: 409.6
-        height: 206
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 123ee5041c63271418cf06edf3cbceae
-      internalID: 146280166
+      spriteID: 229c8fb0d29aa524d959e59212de0ab0
+      internalID: -1871142881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_4
+      name: DragonShockNew_4
       rect:
         serializedVersion: 2
-        x: 1636
-        y: 824
-        width: 409.6
-        height: 206
+        x: 2048
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8acfbd74a47fe8c41b18c4b9c7133791
-      internalID: 2059641491
+      spriteID: f7580a1029d3c004b9bbc1c1e5b0854a
+      internalID: 1694352672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_5
+      name: DragonShockNew_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 618
-        width: 409.6
-        height: 206
+        x: 2560
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed46a79005ca93e46bb07f89072e7a6e
-      internalID: 360102904
+      spriteID: ea3e0586abe5735489f58fc57455200d
+      internalID: 796412627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_6
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff928ca70dbdfde4fba324b9a77a966c
-      internalID: -4595614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_7
-      rect:
-        serializedVersion: 2
-        x: 818
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c22397aebb4e1847a397b06cb10bc60
-      internalID: -30564053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_8
-      rect:
-        serializedVersion: 2
-        x: 1227
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c72da994755f4a84cbadff754aed5052
-      internalID: -781051613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_9
-      rect:
-        serializedVersion: 2
-        x: 1636
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df06c2815cb0a3f449fdf9136d56d23e
-      internalID: -1670262578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_10
+      name: DragonShockNew_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 412
-        width: 409.6
-        height: 206
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5905777d09182274880c9316cb3e447f
-      internalID: -1535901699
+      spriteID: 94c1db66fe1d2de48b51ce1a2412018c
+      internalID: 430925792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_11
+      name: DragonShockNew_7
       rect:
         serializedVersion: 2
-        x: 409
-        y: 412
-        width: 409.6
-        height: 206
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61fd90b969bb2e74090267e098f8648e
-      internalID: -687272559
+      spriteID: 278ebb2235f33bc4eb2fcf5728545b5a
+      internalID: 1547530941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_12
+      name: DragonShockNew_8
       rect:
         serializedVersion: 2
-        x: 818
-        y: 412
-        width: 409.6
-        height: 206
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6772831d1467c4f40955d2367e4278da
-      internalID: 1102003744
+      spriteID: e050b6c69a7046b44bc82a8e040aea15
+      internalID: 224849851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_13
+      name: DragonShockNew_9
       rect:
         serializedVersion: 2
-        x: 1227
-        y: 412
-        width: 409.6
-        height: 206
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cd6b75ae0455a64c828378fbd0e4389
-      internalID: 1531574690
+      spriteID: e9648e9341c904c499f5bf037bb079b5
+      internalID: -1915296544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_14
+      name: DragonShockNew_10
       rect:
         serializedVersion: 2
-        x: 1636
-        y: 412
-        width: 409.6
-        height: 206
+        x: 2048
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad980ace60044448a0aaa9ee58bcaa4
-      internalID: 1819198370
+      spriteID: f835556001bde5b4fad0174c0a7685b1
+      internalID: -1875123944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_15
+      name: DragonShockNew_11
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bdf1a023318a924382e56181b99a60e
+      internalID: -1074087570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonShockNew_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 206
-        width: 409.6
-        height: 206
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59eb999660402ae48834605949ef7bdd
-      internalID: 513289171
+      spriteID: 0710e45e92f5bca44b52e2e92976a69e
+      internalID: -826883281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_16
+      name: DragonShockNew_13
       rect:
         serializedVersion: 2
-        x: 409
-        y: 206
-        width: 409.6
-        height: 206
+        x: 512
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 673a5a2c7d719304185e15e4289f6ad7
-      internalID: -1489409402
+      spriteID: 5ef4bdc2eb18b92478c3eb3427c20ff2
+      internalID: 883025014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_17
+      name: DragonShockNew_14
       rect:
         serializedVersion: 2
-        x: 818
-        y: 206
-        width: 409.6
-        height: 206
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dea48cf35b26f44b98dbc75606da6bb
-      internalID: -840282846
+      spriteID: 6a55e6f04b4a5a242a9d731b2ab0aef9
+      internalID: -1192522158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_18
+      name: DragonShockNew_15
       rect:
         serializedVersion: 2
-        x: 1227
-        y: 206
-        width: 409.6
-        height: 206
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf66ba35486ae8044af41adfbdaafd10
-      internalID: -1332261692
+      spriteID: 7bc64bd1fb5af474fbf1816d15ee2c3f
+      internalID: 2063378766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_19
+      name: DragonShockNew_16
       rect:
         serializedVersion: 2
-        x: 1636
-        y: 206
-        width: 409.6
-        height: 206
+        x: 2048
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 924404610e5a319459a7e75b64554783
-      internalID: -56810542
+      spriteID: 1e2d77476eefc5446979c55a5fb32036
+      internalID: 1698769072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_20
+      name: DragonShockNew_17
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c97b71ed8c27ff4ca1b6a98a8e8d78c
+      internalID: 1802107107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonShockNew_18
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 884a29890322a4741a90b2124457dc2b
-      internalID: 917793857
+      spriteID: f8b7c36595a6b7a4a9274f6e281d75dd
+      internalID: 1498883114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_21
+      name: DragonShockNew_19
       rect:
         serializedVersion: 2
-        x: 409
+        x: 512
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb03c0e6f536afc41879584252bf1444
-      internalID: 1819830641
+      spriteID: 13c55fcbbfaecad43a7b491983c327ec
+      internalID: 876092593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_22
+      name: DragonShockNew_20
       rect:
         serializedVersion: 2
-        x: 818
+        x: 1024
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b051cfd913bf454cb3ccbd8b8242aac
-      internalID: 43977365
+      spriteID: ad11177053bdb9645844aa48e979af21
+      internalID: 1155730040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_23
+      name: DragonShockNew_21
       rect:
         serializedVersion: 2
-        x: 1227
+        x: 1536
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cb4205d342dfb243a442f05ec9f7dcc
-      internalID: 378236535
+      spriteID: fca59ac2a8c8a174a9296a3f2aa8a7ed
+      internalID: -47077119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonShockNew_22
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1421ee9c645f194b89f6968b64bbaaa
+      internalID: 415028743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonShockNew_23
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2edb9392f2b72ea42ac25ba24c4ec914
+      internalID: -49009261
       vertices: []
       indices: 
       edges: []
@@ -647,7 +647,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 724ad9ef9c551af4899edfd5e502a3a8
+    spriteID: 373f88d347891814dabdf8baf3ebe849
     internalID: 0
     vertices: []
     indices: 
@@ -655,30 +655,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteAwake_4: 2059641491
-      SpriteAwake_2: -1744021550
-      SpriteAwake_14: 1819198370
-      SpriteAwake_16: -1489409402
-      SpriteAwake_13: 1531574690
-      SpriteAwake_19: -56810542
-      SpriteAwake_5: 360102904
-      SpriteAwake_6: -4595614
-      SpriteAwake_3: 146280166
-      SpriteAwake_10: -1535901699
-      SpriteAwake_9: -1670262578
-      SpriteAwake_12: 1102003744
-      SpriteAwake_21: 1819830641
-      SpriteAwake_11: -687272559
-      SpriteAwake_17: -840282846
-      SpriteAwake_20: 917793857
-      SpriteAwake_23: 378236535
-      SpriteAwake_0: 1633932320
-      SpriteAwake_22: 43977365
-      SpriteAwake_18: -1332261692
-      SpriteAwake_1: 1280376764
-      SpriteAwake_7: -30564053
-      SpriteAwake_8: -781051613
-      SpriteAwake_15: 513289171
+      DragonShockNew_4: 1694352672
+      DragonShockNew_3: -1871142881
+      DragonShockNew_13: 883025014
+      DragonShockNew_16: 1698769072
+      DragonShockNew_17: 1802107107
+      DragonShockNew_8: 224849851
+      DragonShockNew_23: -49009261
+      DragonShockNew_21: -47077119
+      DragonShockNew_1: 2013242718
+      DragonShockNew_12: -826883281
+      DragonShockNew_20: 1155730040
+      DragonShockNew_10: -1875123944
+      DragonShockNew_7: 1547530941
+      DragonShockNew_11: -1074087570
+      DragonShockNew_14: -1192522158
+      DragonShockNew_22: 415028743
+      DragonShockNew_0: -276673448
+      DragonShockNew_15: 2063378766
+      DragonShockNew_2: -422461990
+      DragonShockNew_6: 430925792
+      DragonShockNew_19: 876092593
+      DragonShockNew_18: 1498883114
+      DragonShockNew_9: -1915296544
+      DragonShockNew_5: 796412627
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

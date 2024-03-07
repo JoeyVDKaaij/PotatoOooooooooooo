@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Playables;
 using Random = UnityEngine.Random;
 
 public class MinigameManager : MonoBehaviour
@@ -56,6 +57,12 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private AudioClip winSoundEffect;
 
     [SerializeField] private AudioClip loseSoundEffect;
+
+    [SerializeField] private PlayableDirector startAnimation;
+
+    [SerializeField] private PlayableDirector finishAnimation;
+
+    private bool playingFinishAnimation = false;
     
     # region UnityFunctions
     
@@ -105,6 +112,11 @@ public class MinigameManager : MonoBehaviour
         else if (beginMinigame)
         {
             WinningScreen();
+        }
+        else if (startAnimation.state != PlayState.Playing)
+        {
+            stopMinigame = false;
+            beginMinigame = true;
         }
     }
     # endregion
@@ -224,65 +236,77 @@ public class MinigameManager : MonoBehaviour
         get { return stopMinigame; }
     }
 
+    public void StartAnimation()
+    {
+        startAnimation.Play();
+    }
+    
     private void WinningScreen()
     {
-        
-        int winningPLayerId = 0;
-        switch (_minigame)
+        if (finishAnimation.state != PlayState.Playing && playingFinishAnimation)
         {
-            case Minigame.sweptbythewind:
-                winningPLayerId = playerScoresSBTW.ToList().IndexOf(playerScoresSBTW.Max());
-                break;
-            case Minigame.spreadyoursails:
-                winningPLayerId = playerScoresSYS.ToList().IndexOf(playerScoresSBTW.Max());
-                break;
-            case Minigame.hungrycrew:
-                winningPLayerId = playerScoresHC.ToList().IndexOf(playerScoresSBTW.Max());
-                break;
-            case Minigame.escapethemonster:
-                winningPLayerId = playerScoresETM.ToList().IndexOf(playerScoresSBTW.Max());
-                break;
-            case Minigame.knowyourenemies:
-                winningPLayerId = playerScoresKYE.ToList().IndexOf(playerScoresSBTW.Max());
-                break;
+            int winningPLayerId = 0;
+            switch (_minigame)
+            {
+                case Minigame.sweptbythewind:
+                    winningPLayerId = playerScoresSBTW.ToList().IndexOf(playerScoresSBTW.Max());
+                    break;
+                case Minigame.spreadyoursails:
+                    winningPLayerId = playerScoresSYS.ToList().IndexOf(playerScoresSYS.Min());
+                    break;
+                case Minigame.hungrycrew:
+                    winningPLayerId = playerScoresHC.ToList().IndexOf(playerScoresHC.Max());
+                    break;
+                case Minigame.escapethemonster:
+                    winningPLayerId = playerScoresETM.ToList().IndexOf(playerScoresETM.Max());
+                    break;
+                case Minigame.knowyourenemies:
+                    winningPLayerId = playerScoresKYE.ToList().IndexOf(playerScoresKYE.Max());
+                    break;
+            }
+            GameManager.instance.gamers[winningPLayerId].seeds += 10;
+            if (!audioPlayed)
+            {
+                audioPlayed = true;
+                if (winningPLayerId == 0)
+                    AudioManager.instance.PlaySound(winSoundEffect);
+                else
+                    AudioManager.instance.PlaySound(loseSoundEffect);
+            }
+
+            if (winningScreen != null)
+            {
+                if (!winningScreen.activeSelf) winningScreen.SetActive(true);
+                if (winnerText != null) winnerText.SetText("Player " + (winningPLayerId + 1) + " WINS!!");
+
+                timer += Time.deltaTime;
+
+                if (timer >= winningScreenTime && !continueFromWinning)
+                {
+                    continueFromWinning = true;
+                    timer = 0;
+                }
+                else if (timer >= continueTextToggleTimer && continueFromWinning && continueFromWinningText != null)
+                {
+                    continueFromWinningText.SetActive(!continueFromWinningText.activeSelf);
+                    timer = 0;
+                }
+
+                if (Input.touchCount > 0 && continueFromWinning)
+                {
+                    beginMinigame = false;
+                    timer = 0;
+                    audioPlayed = false;
+                    winningScreen.SetActive(false);
+                    continueFromWinningText.SetActive(false);
+                    ScenesManager.instance.ChangeScene(0);
+                }
+            }
         }
-        GameManager.instance.gamers[winningPLayerId].seeds += 10;
-        if (!audioPlayed)
+        else if (!playingFinishAnimation)
         {
-            audioPlayed = true;
-            if (winningPLayerId == 0)
-                AudioManager.instance.PlaySound(winSoundEffect);
-            else
-                AudioManager.instance.PlaySound(loseSoundEffect);
-        }
-
-        if (winningScreen != null)
-        {
-            if (!winningScreen.activeSelf) winningScreen.SetActive(true);
-            if (winnerText != null) winnerText.SetText("Player " + (winningPLayerId + 1) + " WINS!!");
-
-            timer += Time.deltaTime;
-
-            if (timer >= winningScreenTime && !continueFromWinning)
-            {
-                continueFromWinning = true;
-                timer = 0;
-            }
-            else if (timer >= continueTextToggleTimer && continueFromWinning && continueFromWinningText != null)
-            {
-                continueFromWinningText.SetActive(!continueFromWinningText.activeSelf);
-                timer = 0;
-            }
-
-            if (Input.touchCount > 0 && continueFromWinning)
-            {
-                beginMinigame = false;
-                timer = 0;
-                audioPlayed = false;
-                winningScreen.SetActive(false);
-                continueFromWinningText.SetActive(false);
-                ScenesManager.instance.ChangeScene(0);
-            }
+            finishAnimation.Play();
+            playingFinishAnimation = true;
         }
     }
 }

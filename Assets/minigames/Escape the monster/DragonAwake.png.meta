@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5982bd45d5229bd41afabb7c999670a9
+guid: ff259385a00a6324abe2321f16aa2787
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpriteAwake_0
+      name: DragonAwake_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 824
+        y: 716.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37b2cfe5222293b41ba9915c0e3aedd7
-      internalID: 1633932320
+      spriteID: 3b4e03959644fe9498afd993292d7aa3
+      internalID: 1832167089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_1
+      name: DragonAwake_1
       rect:
         serializedVersion: 2
         x: 409
-        y: 824
+        y: 716.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e88caff6c91d844e94141f44b60159f
-      internalID: 1280376764
+      spriteID: fb7c13778d2258c4390e8ecd205ef87d
+      internalID: -756904242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_2
+      name: DragonAwake_2
       rect:
         serializedVersion: 2
         x: 818
-        y: 824
+        y: 716.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d88f3fc064b343d4ca29b51e19f1f0c0
-      internalID: -1744021550
+      spriteID: 50c07468352d5954490536689fb61944
+      internalID: -470128865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_3
+      name: DragonAwake_3
       rect:
         serializedVersion: 2
         x: 1227
-        y: 824
+        y: 716.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 123ee5041c63271418cf06edf3cbceae
-      internalID: 146280166
+      spriteID: 1db183989bd3fa34eb3ecb8243162372
+      internalID: -1883355946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_4
+      name: DragonAwake_4
       rect:
         serializedVersion: 2
         x: 1636
-        y: 824
+        y: 716.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8acfbd74a47fe8c41b18c4b9c7133791
-      internalID: 2059641491
+      spriteID: 121f467a593146e4da613e7a335aa75c
+      internalID: -46227262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_5
+      name: DragonAwake_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 618
+        y: 537.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,20 +260,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed46a79005ca93e46bb07f89072e7a6e
-      internalID: 360102904
+      spriteID: b99ecf031bbeeb84d9ad675461ce31a8
+      internalID: 487767193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_6
+      name: DragonAwake_6
       rect:
         serializedVersion: 2
         x: 409
-        y: 618
+        y: 537.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff928ca70dbdfde4fba324b9a77a966c
-      internalID: -4595614
+      spriteID: e81456463a3a6a2438cca6d0629f6ec4
+      internalID: 712260172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_7
+      name: DragonAwake_7
       rect:
         serializedVersion: 2
         x: 818
-        y: 618
+        y: 537.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,20 +302,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c22397aebb4e1847a397b06cb10bc60
-      internalID: -30564053
+      spriteID: 2871ba8a03a61a345b1ec0b8a93e5560
+      internalID: 1582136369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_8
+      name: DragonAwake_8
       rect:
         serializedVersion: 2
         x: 1227
-        y: 618
+        y: 537.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,20 +323,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c72da994755f4a84cbadff754aed5052
-      internalID: -781051613
+      spriteID: c21a52d59ba0dd1418a0e719eade4759
+      internalID: 1256974702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_9
+      name: DragonAwake_9
       rect:
         serializedVersion: 2
         x: 1636
-        y: 618
+        y: 537.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,20 +344,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df06c2815cb0a3f449fdf9136d56d23e
-      internalID: -1670262578
+      spriteID: 3e307954897a1c349a133983e370b461
+      internalID: -1209674804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_10
+      name: DragonAwake_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 412
+        y: 358.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,20 +365,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5905777d09182274880c9316cb3e447f
-      internalID: -1535901699
+      spriteID: 8eff49ebb1c95cf449e74c93e0473806
+      internalID: -675323959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_11
+      name: DragonAwake_11
       rect:
         serializedVersion: 2
         x: 409
-        y: 412
+        y: 358.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,20 +386,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61fd90b969bb2e74090267e098f8648e
-      internalID: -687272559
+      spriteID: 34bce6b358d23fb499f4f88712e5a9c4
+      internalID: 1742577830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_12
+      name: DragonAwake_12
       rect:
         serializedVersion: 2
         x: 818
-        y: 412
+        y: 358.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,20 +407,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6772831d1467c4f40955d2367e4278da
-      internalID: 1102003744
+      spriteID: c8df9997f06ef2b4e92f248d2cfdb67e
+      internalID: 163725207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_13
+      name: DragonAwake_13
       rect:
         serializedVersion: 2
         x: 1227
-        y: 412
+        y: 358.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,20 +428,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cd6b75ae0455a64c828378fbd0e4389
-      internalID: 1531574690
+      spriteID: 15417731596a37f44957d25b85895500
+      internalID: -1339996012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_14
+      name: DragonAwake_14
       rect:
         serializedVersion: 2
         x: 1636
-        y: 412
+        y: 358.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,20 +449,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad980ace60044448a0aaa9ee58bcaa4
-      internalID: 1819198370
+      spriteID: 47672785ddfb64f4fad7a945920dead3
+      internalID: 1020018795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_15
+      name: DragonAwake_15
       rect:
         serializedVersion: 2
         x: 0
-        y: 206
+        y: 179.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,20 +470,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59eb999660402ae48834605949ef7bdd
-      internalID: 513289171
+      spriteID: 3ca9c8ac6c9c6954f8e1d3566641eb2f
+      internalID: 1424109788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_16
+      name: DragonAwake_16
       rect:
         serializedVersion: 2
         x: 409
-        y: 206
+        y: 179.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,20 +491,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 673a5a2c7d719304185e15e4289f6ad7
-      internalID: -1489409402
+      spriteID: 316eef82fe4fb914d8ce90932e125b58
+      internalID: -1491452461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_17
+      name: DragonAwake_17
       rect:
         serializedVersion: 2
         x: 818
-        y: 206
+        y: 179.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -512,20 +512,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dea48cf35b26f44b98dbc75606da6bb
-      internalID: -840282846
+      spriteID: 1f34db70084facb458ca9c11837c829e
+      internalID: -1707398572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_18
+      name: DragonAwake_18
       rect:
         serializedVersion: 2
         x: 1227
-        y: 206
+        y: 179.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,20 +533,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf66ba35486ae8044af41adfbdaafd10
-      internalID: -1332261692
+      spriteID: 47f58299229786b4e9b2b02f78d1ecac
+      internalID: 445388247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_19
+      name: DragonAwake_19
       rect:
         serializedVersion: 2
         x: 1636
-        y: 206
+        y: 179.8
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -554,20 +554,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 924404610e5a319459a7e75b64554783
-      internalID: -56810542
+      spriteID: c0f2aa024e5ae3a489d551467878a004
+      internalID: -2102299129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_20
+      name: DragonAwake_20
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 0.80000305
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -575,20 +575,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 884a29890322a4741a90b2124457dc2b
-      internalID: 917793857
+      spriteID: 8ba2efb7042e2af4e961ea434975d1f0
+      internalID: -727154950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_21
+      name: DragonAwake_21
       rect:
         serializedVersion: 2
         x: 409
-        y: 0
+        y: 0.80000305
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -596,20 +596,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb03c0e6f536afc41879584252bf1444
-      internalID: 1819830641
+      spriteID: 4badbde48a7da2942a3e838dea92b393
+      internalID: 1027275528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_22
+      name: DragonAwake_22
       rect:
         serializedVersion: 2
         x: 818
-        y: 0
+        y: 0.80000305
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -617,20 +617,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b051cfd913bf454cb3ccbd8b8242aac
-      internalID: 43977365
+      spriteID: 81616a4efcfbf3c44bff4205245b7851
+      internalID: -694355599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_23
+      name: DragonAwake_23
       rect:
         serializedVersion: 2
         x: 1227
-        y: 0
+        y: 0.80000305
         width: 409.6
-        height: 206
+        height: 179.2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -638,8 +638,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cb4205d342dfb243a442f05ec9f7dcc
-      internalID: 378236535
+      spriteID: 114cda2163ee58546bce9ce361af8945
+      internalID: 1322132755
       vertices: []
       indices: 
       edges: []
@@ -647,7 +647,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 724ad9ef9c551af4899edfd5e502a3a8
+    spriteID: f816aea7780f8934f8cdde29f3d84f48
     internalID: 0
     vertices: []
     indices: 
@@ -655,30 +655,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteAwake_4: 2059641491
-      SpriteAwake_2: -1744021550
-      SpriteAwake_14: 1819198370
-      SpriteAwake_16: -1489409402
-      SpriteAwake_13: 1531574690
-      SpriteAwake_19: -56810542
-      SpriteAwake_5: 360102904
-      SpriteAwake_6: -4595614
-      SpriteAwake_3: 146280166
-      SpriteAwake_10: -1535901699
-      SpriteAwake_9: -1670262578
-      SpriteAwake_12: 1102003744
-      SpriteAwake_21: 1819830641
-      SpriteAwake_11: -687272559
-      SpriteAwake_17: -840282846
-      SpriteAwake_20: 917793857
-      SpriteAwake_23: 378236535
-      SpriteAwake_0: 1633932320
-      SpriteAwake_22: 43977365
-      SpriteAwake_18: -1332261692
-      SpriteAwake_1: 1280376764
-      SpriteAwake_7: -30564053
-      SpriteAwake_8: -781051613
-      SpriteAwake_15: 513289171
+      DragonAwake_3: -1883355946
+      DragonAwake_4: -46227262
+      DragonAwake_7: 1582136369
+      DragonAwake_20: -727154950
+      DragonAwake_21: 1027275528
+      DragonAwake_9: -1209674804
+      DragonAwake_16: -1491452461
+      DragonAwake_1: -756904242
+      DragonAwake_13: -1339996012
+      DragonAwake_12: 163725207
+      DragonAwake_14: 1020018795
+      DragonAwake_5: 487767193
+      DragonAwake_17: -1707398572
+      DragonAwake_19: -2102299129
+      DragonAwake_10: -675323959
+      DragonAwake_2: -470128865
+      DragonAwake_23: 1322132755
+      DragonAwake_15: 1424109788
+      DragonAwake_11: 1742577830
+      DragonAwake_8: 1256974702
+      DragonAwake_18: 445388247
+      DragonAwake_0: 1832167089
+      DragonAwake_6: 712260172
+      DragonAwake_22: -694355599
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

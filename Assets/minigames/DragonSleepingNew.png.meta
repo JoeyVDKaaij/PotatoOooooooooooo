@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5982bd45d5229bd41afabb7c999670a9
+guid: 89c3554a5a9398b459d94e089b05a9ac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpriteAwake_0
+      name: DragonSleepingNew_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 824
-        width: 409.6
-        height: 206
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37b2cfe5222293b41ba9915c0e3aedd7
-      internalID: 1633932320
+      spriteID: c36365c14d83c6145b73fcd5b9d66e10
+      internalID: -1478238990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_1
+      name: DragonSleepingNew_1
       rect:
         serializedVersion: 2
-        x: 409
-        y: 824
-        width: 409.6
-        height: 206
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e88caff6c91d844e94141f44b60159f
-      internalID: 1280376764
+      spriteID: 8a1aed7319adfc745b9ebcdfad9d5b63
+      internalID: 41197674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_2
+      name: DragonSleepingNew_2
       rect:
         serializedVersion: 2
-        x: 818
-        y: 824
-        width: 409.6
-        height: 206
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d88f3fc064b343d4ca29b51e19f1f0c0
-      internalID: -1744021550
+      spriteID: 3736331422d9f8e4f94edb1801574f3c
+      internalID: -1394831610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_3
+      name: DragonSleepingNew_3
       rect:
         serializedVersion: 2
-        x: 1227
-        y: 824
-        width: 409.6
-        height: 206
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 123ee5041c63271418cf06edf3cbceae
-      internalID: 146280166
+      spriteID: c00cb1a46ea17ad4396f406b3554c2e3
+      internalID: -4508162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_4
+      name: DragonSleepingNew_4
       rect:
         serializedVersion: 2
-        x: 1636
-        y: 824
-        width: 409.6
-        height: 206
+        x: 2048
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8acfbd74a47fe8c41b18c4b9c7133791
-      internalID: 2059641491
+      spriteID: c463c69a95997dc4bae2e3846e5c0769
+      internalID: 943518980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_5
+      name: DragonSleepingNew_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 618
-        width: 409.6
-        height: 206
+        x: 2560
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,104 +260,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed46a79005ca93e46bb07f89072e7a6e
-      internalID: 360102904
+      spriteID: 8a0b1e80835875e4f8107e56a885d1c1
+      internalID: 2033055865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_6
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff928ca70dbdfde4fba324b9a77a966c
-      internalID: -4595614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_7
-      rect:
-        serializedVersion: 2
-        x: 818
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c22397aebb4e1847a397b06cb10bc60
-      internalID: -30564053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_8
-      rect:
-        serializedVersion: 2
-        x: 1227
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c72da994755f4a84cbadff754aed5052
-      internalID: -781051613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_9
-      rect:
-        serializedVersion: 2
-        x: 1636
-        y: 618
-        width: 409.6
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df06c2815cb0a3f449fdf9136d56d23e
-      internalID: -1670262578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteAwake_10
+      name: DragonSleepingNew_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 412
-        width: 409.6
-        height: 206
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5905777d09182274880c9316cb3e447f
-      internalID: -1535901699
+      spriteID: 972794a8e56c03342a7d172be7bfc3fc
+      internalID: -975435513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_11
+      name: DragonSleepingNew_7
       rect:
         serializedVersion: 2
-        x: 409
-        y: 412
-        width: 409.6
-        height: 206
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,20 +302,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61fd90b969bb2e74090267e098f8648e
-      internalID: -687272559
+      spriteID: 0608cf9a16dd6b842a23558779583a38
+      internalID: -1988880396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_12
+      name: DragonSleepingNew_8
       rect:
         serializedVersion: 2
-        x: 818
-        y: 412
-        width: 409.6
-        height: 206
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,20 +323,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6772831d1467c4f40955d2367e4278da
-      internalID: 1102003744
+      spriteID: 50794c74af6b5984c841cf8f003f3b29
+      internalID: 2100864215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_13
+      name: DragonSleepingNew_9
       rect:
         serializedVersion: 2
-        x: 1227
-        y: 412
-        width: 409.6
-        height: 206
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,20 +344,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cd6b75ae0455a64c828378fbd0e4389
-      internalID: 1531574690
+      spriteID: c4620dc374fc63d4b8bb5697ab1c1b07
+      internalID: 1174418046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_14
+      name: DragonSleepingNew_10
       rect:
         serializedVersion: 2
-        x: 1636
-        y: 412
-        width: 409.6
-        height: 206
+        x: 2048
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,20 +365,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad980ace60044448a0aaa9ee58bcaa4
-      internalID: 1819198370
+      spriteID: 5a17d6df75e1b9a469ebe5406a8873b1
+      internalID: 269872686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_15
+      name: DragonSleepingNew_11
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 050f276d9dadd7944bbe8c03d731de2a
+      internalID: -475114256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonSleepingNew_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 206
-        width: 409.6
-        height: 206
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,20 +407,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59eb999660402ae48834605949ef7bdd
-      internalID: 513289171
+      spriteID: 32736d0ef36f0544abc5ad414b597334
+      internalID: -1345432178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_16
+      name: DragonSleepingNew_13
       rect:
         serializedVersion: 2
-        x: 409
-        y: 206
-        width: 409.6
-        height: 206
+        x: 512
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,20 +428,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 673a5a2c7d719304185e15e4289f6ad7
-      internalID: -1489409402
+      spriteID: 909586ab3087cfa4d9398c4577caf45a
+      internalID: 583110768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_17
+      name: DragonSleepingNew_14
       rect:
         serializedVersion: 2
-        x: 818
-        y: 206
-        width: 409.6
-        height: 206
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -512,20 +449,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dea48cf35b26f44b98dbc75606da6bb
-      internalID: -840282846
+      spriteID: ccfb1d8801ae699488139596f6740bf6
+      internalID: 1578932779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_18
+      name: DragonSleepingNew_15
       rect:
         serializedVersion: 2
-        x: 1227
-        y: 206
-        width: 409.6
-        height: 206
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,20 +470,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf66ba35486ae8044af41adfbdaafd10
-      internalID: -1332261692
+      spriteID: 9d1036e67d438a04c9e41dbb942a58f9
+      internalID: -191934857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_19
+      name: DragonSleepingNew_16
       rect:
         serializedVersion: 2
-        x: 1636
-        y: 206
-        width: 409.6
-        height: 206
+        x: 2048
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -554,20 +491,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 924404610e5a319459a7e75b64554783
-      internalID: -56810542
+      spriteID: 26609b9ce893dab40ab0afd693b9445d
+      internalID: -988563891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_20
+      name: DragonSleepingNew_17
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: accd13b9f4b69b84bad70e8d91e9880f
+      internalID: -498136445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonSleepingNew_18
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -575,20 +533,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 884a29890322a4741a90b2124457dc2b
-      internalID: 917793857
+      spriteID: ef738904d42665a479077f68a0c1d40a
+      internalID: 942109778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_21
+      name: DragonSleepingNew_19
       rect:
         serializedVersion: 2
-        x: 409
+        x: 512
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -596,20 +554,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb03c0e6f536afc41879584252bf1444
-      internalID: 1819830641
+      spriteID: e0d4c38c86d00a34c993123dc3e2f4f2
+      internalID: 1355275822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_22
+      name: DragonSleepingNew_20
       rect:
         serializedVersion: 2
-        x: 818
+        x: 1024
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -617,20 +575,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b051cfd913bf454cb3ccbd8b8242aac
-      internalID: 43977365
+      spriteID: 7de2d1b7bfa8fde418722a1322646547
+      internalID: -1673282241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteAwake_23
+      name: DragonSleepingNew_21
       rect:
         serializedVersion: 2
-        x: 1227
+        x: 1536
         y: 0
-        width: 409.6
-        height: 206
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -638,8 +596,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cb4205d342dfb243a442f05ec9f7dcc
-      internalID: 378236535
+      spriteID: 405c38d3b7db8614385777b581b2cd32
+      internalID: 98823704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonSleepingNew_22
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 695def6d8497d6746ace7f4f45be960a
+      internalID: 1672650316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonSleepingNew_23
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1eba987a91d5c45a47a53fa68743a5
+      internalID: -822786908
       vertices: []
       indices: 
       edges: []
@@ -647,7 +647,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 724ad9ef9c551af4899edfd5e502a3a8
+    spriteID: f867311bceacd1d4f81bf756e89f5000
     internalID: 0
     vertices: []
     indices: 
@@ -655,30 +655,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteAwake_4: 2059641491
-      SpriteAwake_2: -1744021550
-      SpriteAwake_14: 1819198370
-      SpriteAwake_16: -1489409402
-      SpriteAwake_13: 1531574690
-      SpriteAwake_19: -56810542
-      SpriteAwake_5: 360102904
-      SpriteAwake_6: -4595614
-      SpriteAwake_3: 146280166
-      SpriteAwake_10: -1535901699
-      SpriteAwake_9: -1670262578
-      SpriteAwake_12: 1102003744
-      SpriteAwake_21: 1819830641
-      SpriteAwake_11: -687272559
-      SpriteAwake_17: -840282846
-      SpriteAwake_20: 917793857
-      SpriteAwake_23: 378236535
-      SpriteAwake_0: 1633932320
-      SpriteAwake_22: 43977365
-      SpriteAwake_18: -1332261692
-      SpriteAwake_1: 1280376764
-      SpriteAwake_7: -30564053
-      SpriteAwake_8: -781051613
-      SpriteAwake_15: 513289171
+      DragonSleepingNew_22: 1672650316
+      DragonSleepingNew_2: -1394831610
+      DragonSleepingNew_14: 1578932779
+      DragonSleepingNew_15: -191934857
+      DragonSleepingNew_6: -975435513
+      DragonSleepingNew_9: 1174418046
+      DragonSleepingNew_20: -1673282241
+      DragonSleepingNew_4: 943518980
+      DragonSleepingNew_8: 2100864215
+      DragonSleepingNew_5: 2033055865
+      DragonSleepingNew_10: 269872686
+      DragonSleepingNew_23: -822786908
+      DragonSleepingNew_1: 41197674
+      DragonSleepingNew_0: -1478238990
+      DragonSleepingNew_19: 1355275822
+      DragonSleepingNew_12: -1345432178
+      DragonSleepingNew_3: -4508162
+      DragonSleepingNew_7: -1988880396
+      DragonSleepingNew_21: 98823704
+      DragonSleepingNew_13: 583110768
+      DragonSleepingNew_16: -988563891
+      DragonSleepingNew_17: -498136445
+      DragonSleepingNew_11: -475114256
+      DragonSleepingNew_18: 942109778
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
