@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     
     private void Awake()
     {
+        AS = GetComponent<AudioSource>();
+        AS.volume = _volume / 100;
+        AS.Play();
         if (instance == null)
         {
             instance = this;
@@ -36,13 +39,6 @@ public class AudioManager : MonoBehaviour
             instance = null;
         }
     }
-    
-    private void Start()
-    {
-        AS = GetComponent<AudioSource>();
-        AS.volume = _volume / 100;
-        // AS.Play();
-    }
 
     private void Update()
     {
@@ -50,7 +46,7 @@ public class AudioManager : MonoBehaviour
             AS.volume = _volume / 100;
         
         if (muteMusic) AS.Stop();
-        // else if (!muteMusic && !AS.isPlaying) AS.Play();
+        else if (!muteMusic && !AS.isPlaying) AS.Play();
     }
 
     public void PlaySound(AudioClip pClip)
