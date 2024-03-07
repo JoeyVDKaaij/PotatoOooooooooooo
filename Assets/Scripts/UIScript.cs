@@ -200,7 +200,11 @@ public class UIScript : MonoBehaviour
 
                     for (int i = 0; i < 3; i++)
                     {
-                        TargetingSlots[i].interactable = true;
+                        if (GameManager.instance.gamers[i + 1].protection < 1)
+                            TargetingSlots[i].interactable = true;
+
+                        else
+                            TargetingSlots[i].interactable = false;
                     }
                 break;
                 case (6):

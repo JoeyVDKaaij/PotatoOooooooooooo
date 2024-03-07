@@ -127,6 +127,8 @@ public class GameManager : MonoBehaviour
 
         turnPhase++;
 
+        Debug.Log(turnPhase);
+
         switch(turnPhase)
         {
             //MOVEMENT PHASE
@@ -163,6 +165,12 @@ public class GameManager : MonoBehaviour
 
                 AdvanceTurnPhase?.Invoke(turnPhase);
                 toggleUI?.Invoke(-1);
+
+                if(selectedGamer > 0)
+                {
+                    NPCTakeTurn();
+                }
+               
 
             break;
         }
@@ -511,7 +519,27 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void NPCUseItem(int slot)
+
+    public void NPCTakeTurn()
+    {
+
+        if (gamers[selectedGamer].numItems > 0)
+        {
+            bool willUseItem = Random.Range(0, 1) == 0;
+
+            int itemToUse = Random.Range(0, gamers[selectedGamer].numItems);
+
+            if (willUseItem)
+            {
+                NPCUseItem(itemToUse);
+            }
+        }
+
+        Invoke("NPCRollDice", 2);
+    }
+
+
+    void NPCUseItem(int slot)
     {
 
         int item = gamers[selectedGamer].items[slot].id;
@@ -520,8 +548,7 @@ public class GameManager : MonoBehaviour
         {
             //Grappling Hook
             case (0):
-                targetingItem = 0;
-                toggleUI?.Invoke(4);
+                NPCUseTargetedItem(0);
                 break;
             //Spyglass
             case (1):
@@ -531,8 +558,8 @@ public class GameManager : MonoBehaviour
                 break;
             //Magic Pouch
             case (2):
-                targetingItem = 2;
-                toggleUI?.Invoke(4);
+                NPCUseTargetedItem(2);
+
                 break;
             //Bottle of juice
             case (3):
@@ -551,15 +578,158 @@ public class GameManager : MonoBehaviour
                 break;
             //Old Mysterious Map
             case (5):
-                targetingItem = 5;
-                toggleUI?.Invoke(4);
+                NPCUseTargetedItem(5);
+
                 break;
             //Cannon
             case (6):
-                targetingItem = 6;
-                toggleUI?.Invoke(4);
+                NPCUseTargetedItem(6);
+
                 break;
         }
+    }
+
+    public void NPCUseTargetedItem(int targetingItem)
+    {
+
+        List<int> playersTargetable = new List<int>();
+        int target = 0;
+
+        switch (targetingItem)
+        {
+            //Grappling Hook
+            case (0):
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if (gamers[i].treasure > 0 && gamers[i].protection < 1 && selectedGamer != i)
+                        playersTargetable.Add(i);
+                }
+
+                if (playersTargetable.Count > 0)
+                {
+                    target = playersTargetable[Random.Range(0, playersTargetable.Count)];
+
+                    gamers[target].treasure--;
+                    gamers[selectedGamer].treasure++;
+
+                    if (target != 0)
+                    {
+                        displayPopup?.Invoke("Player" + selectedGamer + " stole player " + target + "'s treasure! Shiver me timbers!", 3);
+                    }
+                    else
+                    {
+                        displayPopup?.Invoke("Player" + selectedGamer + " stole your treasure! Me timbers have never been shiverin' like this!", 3);
+                    }
+
+                    RemoveItem(0);
+                }
+
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+            //Magic Pouch
+            case (2):
+                for (int i = 0; i < 4; i++)
+                {
+                    if (gamers[i].seeds > 0 && gamers[i].protection < 1 && selectedGamer != i)
+                        playersTargetable.Add(i);
+                }
+
+                if (playersTargetable.Count > 0)
+                {
+                    target = playersTargetable[Random.Range(0, playersTargetable.Count)];
+                    int stealableCoins = Math.Min(15, gamers[target].seeds);
+                    int minStolenCoins = Math.Max(1, (stealableCoins / 2));
+                    int coinsStolen = Random.Range(minStolenCoins, stealableCoins);
+
+                    if (target != 0)
+                    {
+                        displayPopup?.Invoke("Player " + selectedGamer + " stole " + coinsStolen + " coins from player " + target + "!", 3);
+                    }
+                    else
+                    {
+                        displayPopup?.Invoke("Player" + selectedGamer + " stole " + coinsStolen + " from you!", 3);
+                    }
+
+                    gamers[target].seeds -= coinsStolen;
+                    gamers[selectedGamer].seeds += coinsStolen;
+
+                    RemoveItem(2);
+                }
+
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+            //Map
+            case (5):
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if (gamers[i].protection < 1 && selectedGamer != i)
+                        playersTargetable.Add(i);
+                }
+
+                if (playersTargetable.Count > 0)
+                {
+                    target = playersTargetable[Random.Range(0, playersTargetable.Count)];
+
+                    MapManager.instance.swapPlayers(selectedGamer, target);
+
+                    if (target != 0)
+                    {
+                        displayPopup?.Invoke("Player " + selectedGamer + " swapped positions with player " + target + "!", 3);
+                    }
+                    else
+                    {
+                        displayPopup?.Invoke("Player" + selectedGamer + " swapped positions with you!", 3);
+                    }
+
+                    RemoveItem(5);
+                }
+
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+            //Cannon
+            case (6):
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if (gamers[i].numItems > 0 && gamers[i].protection < 1 && selectedGamer != i)
+                        playersTargetable.Add(i);
+                }
+
+                if (playersTargetable.Count > 0)
+                {
+                    target = playersTargetable[Random.Range(0, playersTargetable.Count)];
+
+                    int itemDestroyed = Random.Range(0, gamers[target].numItems);
+
+
+                    if (target != 0)
+                    {
+                        displayPopup?.Invoke("Player " + selectedGamer + " destroyed player " + target + "'s " + gamers[target].items[itemDestroyed].name + " using a cannon!", 4);
+                    }
+                    else
+                    {
+                        displayPopup?.Invoke("Player " + selectedGamer + " destroyed your " + gamers[target].items[itemDestroyed].name + " using a cannon! arrr!", 4);
+                    }
+
+                    gamers[target].items.RemoveAt(itemDestroyed);
+
+                    RemoveItem(6);
+                }
+
+                toggleUI?.Invoke(-1);
+                UpdateUI?.Invoke(0);
+                break;
+        }
+    }
+
+    void NPCRollDice()
+    {
+        MapManager.instance.MoveNPC(turnPhase);
     }
 
 }
