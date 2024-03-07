@@ -12,28 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.91895884, y: 0.9575473, z: 1, w: -0.15004408}
+    m_Value: {x: 1, y: 0.99914664, z: 0.98614776, w: 0.026478428}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.9961599, y: 1, z: 0.9923167, w: 0.044130635}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.9818234, y: 1, z: 0.79715145, w: 0.29126215}
+    m_Value: {x: 1, y: 0.9360927, z: 0.55721736, w: 0.30891442}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
   shadowsEnd:
     m_OverrideState: 1
-    m_Value: 0.12
+    m_Value: 0.48
   highlightsStart:
     m_OverrideState: 1
     m_Value: 0.61
   highlightsEnd:
     m_OverrideState: 1
-    m_Value: 1.53
+    m_Value: 1.32
 --- !u!114 &-4215364689216331009
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -49,13 +49,13 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.68
+    m_Value: 0.74
   intensity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.41
   scatter:
     m_OverrideState: 1
-    m_Value: 0.838
+    m_Value: 0.167
   clamp:
     m_OverrideState: 1
     m_Value: 65474.12
@@ -63,17 +63,17 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   skipIterations:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   dirtTexture:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {fileID: 0}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}

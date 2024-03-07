@@ -23,17 +23,19 @@ public class DiceScript : MonoBehaviour
 
     [SerializeField, Tooltip("Wait until the delay is over before it checks the collisions after roll."), Min(0)]
     private float checkDelay = 1;
-
-    private float timer;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
     
-    public void RollTheDice(Action<int> callback)
+    public void RollTheDice(Action<int> callback, Transform pARCamera = null)
     {
-        StartCoroutine(WaitForValueChange(callback));
+        if (pARCamera != null)
+            StartCoroutine(WaitForValueChange(callback, pARCamera));
+        else 
+            StartCoroutine(WaitForValueChange(callback));
+            
     }
 
     private void OnCollisionStay(Collision other)
@@ -61,27 +63,27 @@ public class DiceScript : MonoBehaviour
                 float dotDown = Vector3.Dot(normal, down);
 
                 // Determine the side of collision
-                if (dotFront > 0.9f)
+                if (dotFront > 0.8f)
                 {
                     diceRoll = 4;
                 }
-                else if (dotBack > 0.9f)
+                else if (dotBack > 0.8f)
                 {
                     diceRoll = 3;
                 }
-                else if (dotRight > 0.9f)
+                else if (dotRight > 0.8f)
                 {
                     diceRoll = 5;
                 }
-                else if (dotLeft > 0.9f)
+                else if (dotLeft > 0.8f)
                 {
                     diceRoll = 2;
                 }
-                else if (dotUp > 0.9f)
+                else if (dotUp > 0.8f)
                 {
                     diceRoll = 1;
                 }
-                else if (dotDown > 0.9f)
+                else if (dotDown > 0.8f)
                 {
                     diceRoll = 6;
                 }
@@ -90,10 +92,13 @@ public class DiceScript : MonoBehaviour
         else diceRoll = 0;
     }
 
-    IEnumerator WaitForValueChange(Action<int> callback)
+    IEnumerator WaitForValueChange(Action<int> callback, Transform pARCamera = null)
     {
-        rb.AddForce(RandomizeVector() * rollSpeed, ForceMode.Impulse);
-        rb.AddTorque(new Vector3(1,1,1));
+        if (pARCamera != null)
+            rb.AddForce(RandomizeVector(pARCamera) * rollSpeed, ForceMode.Impulse);
+        else 
+            rb.AddForce(RandomizeVector() * rollSpeed, ForceMode.Impulse);
+        rb.AddTorque(new Vector3(10,10,10));
         
         yield return new WaitForSeconds(checkDelay);
 
@@ -111,20 +116,24 @@ public class DiceScript : MonoBehaviour
         }
         
         rolling = false;
-        timer = 0;
         
         // Once the value changes, return it via the callback
         callback(diceRoll);
     }
 
-    private Vector3 RandomizeVector()
+    private Vector3 RandomizeVector(Transform pARCamera = null)
     {
         Vector3 vector = new Vector3();
+        if (pARCamera != null)
+            vector = pARCamera.forward * Random.Range(5, 10);
+        else
+        {
+            vector.x = Random.Range(-5,5);
+            vector.y = Random.Range(-1,1);
+            vector.z = Random.Range(-5,5);
+        }
         
-        vector.x = Random.Range(-5,5);
-        vector.y = Random.Range(-1,1);
-        vector.z = Random.Range(-5,5);
-
+        
         if (vector != Vector3.zero)
         {
             vector.y = 1;

@@ -6,6 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: ba293989719d4214789501a5e87007a8
+  - enabled: 1
     path: Assets/Scenes/AR Board.unity
     guid: 716c825c6f62af446be86106b2b9b057
+  - enabled: 1
+    path: Assets/Scenes/MinigameIntroduction.unity
+    guid: 61b126c7c08c85342873acfffc197ef7
+  - enabled: 1
+    path: Assets/Scenes/Minigames Scenes/EscapeTheMonster.unity
+    guid: 521acda6b0eb3d948a8d13b965bbb0d6
+  - enabled: 1
+    path: Assets/Scenes/Minigames Scenes/HungryCrew.unity
+    guid: b723fd8abd1ce9d4cb13490e6624d6d3
+  - enabled: 1
+    path: Assets/Scenes/Minigames Scenes/KnowYourEnemies.unity
+    guid: ba014b30b2ca1b84a969e435e3cbcfd3
+  - enabled: 1
+    path: Assets/Scenes/Minigames Scenes/SpreadYourSails.unity
+    guid: be37d6eb40fd50241838ce90623fbfb9
+  - enabled: 1
+    path: Assets/Scenes/Minigames Scenes/SweptByTheWind.unity
+    guid: abc7de1381fd6ee419e758627c6ec9a4
+  - enabled: 1
+    path: Assets/Scenes/WinnerScene.unity
+    guid: a580eacdd640dba469b1a8c36a5b62a3
   m_configObjects: {}

@@ -14,6 +14,9 @@
         },
         {
             "m_Id": "0eedc4c95453447a9e3581c8f4afc830"
+        },
+        {
+            "m_Id": "b4e13879a2414cf483e134618bb02779"
         }
     ],
     "m_Keywords": [],
@@ -128,6 +131,9 @@
         },
         {
             "m_Id": "63ab7d5f8ed54e43b2c1a270e8853f81"
+        },
+        {
+            "m_Id": "1d8a7c943b3c4aa79aaff2844b0ddd19"
         }
     ],
     "m_GroupDatas": [],
@@ -173,6 +179,20 @@
                     "m_Id": "c2b69a772dc040cd92f1c1aef8752889"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "1d8a7c943b3c4aa79aaff2844b0ddd19"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "fd3fa954983f4246a14d66e7a7649973"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -1175,6 +1195,41 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "1d8a7c943b3c4aa79aaff2844b0ddd19",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1523.0,
+            "y": 2427.0,
+            "width": 158.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "4d6746cbd4094298863ce6dfe6212cf6"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "b4e13879a2414cf483e134618bb02779"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.NormalMaterialSlot",
     "m_ObjectId": "1dad708cb17c4b4bab84563cefb4003e",
     "m_Id": 0,
@@ -1263,6 +1318,9 @@
         },
         {
             "m_Id": "0eedc4c95453447a9e3581c8f4afc830"
+        },
+        {
+            "m_Id": "b4e13879a2414cf483e134618bb02779"
         }
     ]
 }
@@ -1953,6 +2011,19 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
+    "m_ObjectId": "4d6746cbd4094298863ce6dfe6212cf6",
+    "m_Id": 0,
+    "m_DisplayName": "Coast Texture",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_BareResource": false
 }
 
 {
@@ -3404,6 +3475,35 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "b4e13879a2414cf483e134618bb02779",
+    "m_Guid": {
+        "m_GuidSerialized": "2972ede0-c0a5-48d9-af39-51438cb81a44"
+    },
+    "m_Name": "Coast Texture",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Coast Texture",
+    "m_DefaultReferenceName": "_Coast_Texture",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_Guid": ""
+    },
+    "isMainTexture": false,
+    "useTilingAndOffset": false,
+    "m_Modifiable": true,
+    "m_DefaultType": 0
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "b66c0e32a05049199993112354b32cf4",
     "m_Group": {
@@ -4433,9 +4533,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -311.9999694824219,
-            "y": -367.0,
-            "width": 207.99993896484376,
+            "x": -310.0,
+            "y": -429.99993896484377,
+            "width": 207.99996948242188,
             "height": 434.99993896484377
         }
     },
