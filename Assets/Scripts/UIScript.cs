@@ -1,10 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Image = UnityEngine.UI.Image;
-using UnityEngine.SceneManagement;
-using static UnityEditor.Progress;
 
 [System.Serializable]
 public struct ImageList

@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
         {
             ScenesManager.instance.ChangeScene(8);
         }
+
+        // if (Input.GetKey(KeyCode.Space)) ScenesManager.instance.ChangeScene(1);
     }
 
 
