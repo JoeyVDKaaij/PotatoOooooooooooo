@@ -123,6 +123,7 @@ public class MapManager : MonoBehaviour
             movedDistance += Time.deltaTime / 0.4f;
 
             GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingFrom + moveAlong.normalized * movedDistance;
+            GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.rotation = Quaternion.LookRotation(moveAlong, Vector3.up);
 
             //Debug.Log(stepsLeft);
 
