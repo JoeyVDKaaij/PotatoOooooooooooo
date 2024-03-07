@@ -19,6 +19,8 @@ public class ScenesManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _currentScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     private void OnDestroy()

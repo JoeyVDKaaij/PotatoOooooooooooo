@@ -110,7 +110,16 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if(ScenesManager.instance.CurrentScene == 1)
+        {
+            Hide(false);
+        }
+        else
+        {
+            Hide(true);
+        }
+
         //Debug.Log((TileScript.TileType)Random.Range(0, 3));
 
         //Debug.Log(Camera.main);
@@ -119,6 +128,8 @@ public class MapManager : MonoBehaviour
 
         if (GameManager.instance.TurnPhase == 1 && !decidingPath && !lookingAtShop)
         {
+
+            PlayAnimation(true);
 
             movedDistance += Time.deltaTime / 0.4f;
 
@@ -208,6 +219,7 @@ public class MapManager : MonoBehaviour
                             tileSections[currentSection[gamerI]].Intersection.transform.GetChild(0).gameObject.SetActive(true);
                             Debug.Log("found a crossing!");
                             decidingPath = true;
+
                             return;
                         }
                     }
@@ -232,6 +244,8 @@ public class MapManager : MonoBehaviour
             //if the player is out of steps, load the next
             if (stepsLeft <= 0 && movedDistance >= totalDistance)
             {
+
+                PlayAnimation(false);
 
                 GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.transform.position = movingTo;
 
@@ -260,6 +274,10 @@ public class MapManager : MonoBehaviour
         }
         else if (decidingPath)
         {
+
+            //Debug.Log("NUH UHHHH");
+            PlayAnimation(false);
+
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
@@ -308,6 +326,11 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            //Debug.Log("NUH UHHHH");
+            PlayAnimation(false);
+        }
 
 
 
@@ -334,8 +357,8 @@ public class MapManager : MonoBehaviour
                     movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
                     ShowSteps(result);
-                    
-                    GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.GetComponent<Animator>().SetBool(0,true);
+
+                    PlayAnimation(true);
 
                 }, mainCamera.transform);
             }
@@ -365,6 +388,8 @@ public class MapManager : MonoBehaviour
                         movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
 
                         ShowSteps(totalResult);
+
+                        PlayAnimation(true);
 
                     }, mainCamera.transform);
                 }, mainCamera.transform);
@@ -400,6 +425,8 @@ public class MapManager : MonoBehaviour
 
                     movingFrom = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
                     movingTo = MoveTo(currentSection[GameManager.instance.SelectedGamer], currentTile[GameManager.instance.SelectedGamer]);
+
+                    PlayAnimation(true);
 
                 });
 
@@ -502,5 +529,22 @@ public class MapManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    void PlayAnimation(bool input)
+    {
+        GameManager.instance.gamers[GameManager.instance.SelectedGamer].model.GetComponent<Animator>().SetBool("walking", input);
+    }
+
+    public void Hide(bool input)
+    {
+        if (input)
+        {
+            transform.position = new Vector3(0, -400, 0);
+        }
+        else
+        {
+            transform.position = new Vector3(0, -0.62f, 0);
+        }
     }
 }
