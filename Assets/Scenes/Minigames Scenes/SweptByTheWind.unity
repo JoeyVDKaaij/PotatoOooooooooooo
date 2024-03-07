@@ -363,6 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76957d1ac5843f8907a02d7beff31d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSoundEffect: {fileID: 8300000, guid: 3adfecc1c66151a4a927272e9cc0fe2b, type: 3}
+  crashSoundEffect: {fileID: 8300000, guid: e63374f7d331cab4394ff68d62f82b1e, type: 3}
 --- !u!95 &264753995
 Animator:
   serializedVersion: 4

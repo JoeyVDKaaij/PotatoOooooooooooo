@@ -13,10 +13,12 @@ public class MemoryCheckerScript : MonoBehaviour
     private float lookAtAnswerTime = 5;
     [SerializeField]
     private Button[] buttons = null;
+    [SerializeField]
+    private AudioClip correctSoundEffect = null;
+    [SerializeField]
+    private AudioClip incorrectSoundEffect = null;
     
     private int[] solution = { 0, 0, 0, 0 };
-
-    private bool checking = false;
     
     void Start()
     {
@@ -45,8 +47,13 @@ public class MemoryCheckerScript : MonoBehaviour
         {
             MinigameManager.instance.CorrectShipCombo();
             RandomizeShip();
+            AudioManager.instance.PlaySound(correctSoundEffect);
         }
-        else RandomizeShip();
+        else
+        {
+            AudioManager.instance.PlaySound(incorrectSoundEffect);
+            RandomizeShip();
+        }
     }
 
     private void RandomizeShip()

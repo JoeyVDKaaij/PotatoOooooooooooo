@@ -7,9 +7,9 @@ public class AccelerometerCuttingScript : MonoBehaviour
     // Sensitivity of the movement detection
     public float sensitivity = 5f;
 
-    private int cutsNeeded = 30;
+    private float cutsNeeded = 30;
 
-    private int currentCuts = 0;
+    private float currentCuts = 0;
 
     private float timer;
 
@@ -19,8 +19,17 @@ public class AccelerometerCuttingScript : MonoBehaviour
 
     private bool _stopMinigame;
 
+    [SerializeField] private Sprite[] spritesphases = null;
+
+    private float currentSprite = 0;
+    
+    private SpriteRenderer SR = null;
+    
     private void Start()
     {
+        SR = GetComponent<SpriteRenderer>();
+        if (SR != null && spritesphases != null)
+            SR.sprite = spritesphases[(int)currentSprite];
         _animator = GetComponent<Animator>();
     }
 
@@ -49,7 +58,22 @@ public class AccelerometerCuttingScript : MonoBehaviour
                 }
             }
 
-            if (currentCuts >= cutsNeeded) MinigameManager.instance.EndMinigameTimer();
+            if (SR != null && spritesphases != null)
+            {
+                if (currentCuts / cutsNeeded * 100 >= (currentSprite + 1) / spritesphases.Length * 100 && currentSprite + 1 != spritesphases.Length - 1)
+                {
+                    Debug.Log((currentSprite + 1) / spritesphases.Length);
+                    currentSprite++;
+                    SR.sprite = spritesphases[(int)currentSprite];
+                }
+            }
+
+            if (currentCuts >= cutsNeeded)
+            {
+                if (SR != null && spritesphases != null)
+                    SR.sprite = spritesphases[4];
+                MinigameManager.instance.EndMinigameTimer();
+            }
         }
     }
 }

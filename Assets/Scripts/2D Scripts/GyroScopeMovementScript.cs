@@ -8,9 +8,8 @@ public class GyroScopeMovementScript : MonoBehaviour
 
     private float movementSpeed = 5;
 
-    private float driftSpeed = 0;
-
-    private float driftSpeedMultiplier = 0.1f;
+    [SerializeField] private AudioClip movementSoundEffect = null;
+    [SerializeField] private AudioClip crashSoundEffect = null;
     
     private void Start()
     {
@@ -36,14 +35,16 @@ public class GyroScopeMovementScript : MonoBehaviour
             Vector3 movementVector = new Vector3(-gravityDirection.x, 0, 0);
 
             // Apply the movement to the object
-            transform.Translate(movementVector * Time.deltaTime * 5f);
+            transform.Translate(movementVector * Time.deltaTime * movementSpeed);
         }
+        if (movementSoundEffect != null) AudioManager.instance.PlaySound(movementSoundEffect);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
+            if (crashSoundEffect != null) AudioManager.instance.PlaySound(crashSoundEffect);
             MinigameManager.instance.EndMinigameTimer();
         }
     }

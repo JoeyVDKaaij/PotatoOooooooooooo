@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour
                 break;
             case (TileScript.TileType.Minigame):
                 //Minigame
+                StartMinigame();
                 NextTurnPhase();
                 break;
             case (TileScript.TileType.Action):
@@ -205,5 +207,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    private void StartMinigame()
+    {
+        MinigameManager.instance.ChangeMinigame((Minigame)Random.Range(0, Enum.GetValues(typeof(Minigame)).Length));
+        ScenesManager.instance.NextScene();
+    }
 }
